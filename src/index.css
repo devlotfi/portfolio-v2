@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.main-bg {
+  background-color: #171717;
+
+  background-image: radial-gradient(
+      circle at top right,
+      rgba(33, 163, 211, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom center,
+      rgba(33, 92, 211, 0.15) 0%,
+      transparent 80%
+    ),
+    radial-gradient(#171717 65%, transparent),
+    linear-gradient(#ffffff34 1px, transparent 1px),
+    linear-gradient(to right, #ffffff34 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 5rem 5rem, 5rem 5rem;
+  background-attachment: fixed, fixed, fixed, fixed, fixed;
+}
+
+.card-gradient-bg-dark {
+  background: radial-gradient(
+      circle at top right,
+      rgba(33, 163, 211, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom center,
+      rgba(33, 92, 211, 0.157) 0%,
+      transparent 80%
+    ),
+    #1f232b;
+  border: 1px solid #3c3c3c;
+}
+
+.primary-bg {
+  background-image: linear-gradient(to top right, #3f6394, #2dbfe0);
+}

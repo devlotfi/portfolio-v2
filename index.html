@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Debbal Lotfi's Portfolio</title>
+    <style>
+      @keyframes background {
+        from {
+          background-position: 0 0, 0 100vh, 0 100vh;
+        }
+        to {
+          background-position: 0 0, 0 0, 0 0;
+        }
+      }
+
+      #initial-loading {
+        position: fixed;
+        min-height: 100vh;
+        min-width: 100vw;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 1s ease;
+        animation: background 2s ease;
+        pointer-events: none;
+        z-index: 1000;
+
+        background-color: #192131;
+        background-image: radial-gradient(transparent, #192131 50%),
+          linear-gradient(#ffffff34 1px, transparent 1px),
+          linear-gradient(to right, #ffffff34 1px, transparent 1px);
+        background-size: 100% 100%, 5rem 5rem, 5rem 5rem;
+        background-position: center;
+      }
+
+      .initial-loading-hidden {
+        opacity: 0;
+      }
+
+      #initial-loading-svg {
+        height: 7rem;
+      }
+
+      @keyframes line {
+        70% {
+          stroke-dashoffset: 0;
+          fill: transparent;
+        }
+        100% {
+          stroke-dashoffset: 0;
+          fill: white;
+        }
+      }
+
+      #initial-loading-logo-l {
+        stroke: white;
+        stroke-width: 10;
+        stroke-dasharray: 1930;
+        stroke-dashoffset: 1930;
+        animation: line 2s ease;
+        animation-fill-mode: forwards;
+      }
+      #initial-loading-logo-d {
+        stroke: white;
+        stroke-width: 10;
+        stroke-dasharray: 2070;
+        stroke-dashoffset: 2070;
+        animation: line 2s ease;
+        animation-fill-mode: forwards;
+      }
+    </style>
+  </head>
+  <body id="theme-provider">
+    <div id="initial-loading">
+      <svg
+        id="initial-loading-svg"
+        viewBox="0 -10 1028 520"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          id="initial-loading-logo-l"
+          d="M0 506L172.939 0H301.19L146.857 433.714H440.571V506H0Z"
+        />
+        <path
+          id="initial-loading-logo-d"
+          d="M514 506V0H881.143V72.2857H954.571V144.571H1028V361.429H954.571V433.714H881.143V506H514ZM660.857 433.714H807.714V361.429H881.143V144.571H807.714V72.2857H660.857V433.714Z"
+        />
+      </svg>
+    </div>
+
+    <div id="root"></div>
+
+    <script>
+      let windowLoaded = false;
+      let animationFinished = false;
+      window.addEventListener("load", () => {
+        if (animationFinished) {
+          const initialLoading = document.getElementById("initial-loading");
+          initialLoading.classList.add("initial-loading-hidden");
+        }
+        windowLoaded = true;
+      });
+
+      setTimeout(() => {
+        if (windowLoaded) {
+          const initialLoading = document.getElementById("initial-loading");
+          initialLoading.classList.add("initial-loading-hidden");
+        }
+        animationFinished = true;
+      }, 2000);
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
