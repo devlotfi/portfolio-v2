@@ -13,6 +13,7 @@ import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
 import SidebarLink from "./sidebar-link";
 import { NavigationPages } from "../types/navigation-pages";
+import { motion } from "motion/react";
 
 export default function Sidebar() {
   const { appliedTheme } = useContext(ThemeContext);
@@ -54,23 +55,33 @@ export default function Sidebar() {
           </Button>
         </div>
 
-        <div className="flex flex-col space-y-3 mt-[1rem]">
-          <SidebarLink icon={faInfoCircle} linkPage={NavigationPages.HOME}>
-            About me
-          </SidebarLink>
-          <SidebarLink icon={faStar} linkPage={NavigationPages.SKILLS}>
-            Skills
-          </SidebarLink>
-          <SidebarLink
-            icon={faGraduationCap}
-            linkPage={NavigationPages.EXPERIENCE}
+        {navigationData.sidebarOpen ? (
+          <motion.div
+            initial="hidden"
+            animate="show"
+            transition={{
+              staggerChildren: 0.2,
+            }}
+            className="flex flex-col space-y-3 mt-[1rem]"
           >
-            Experience
-          </SidebarLink>
-          <SidebarLink icon={faList} linkPage={NavigationPages.PROJECTS}>
-            Projects
-          </SidebarLink>
-        </div>
+            <SidebarLink icon={faInfoCircle} linkPage={NavigationPages.HOME}>
+              About me
+            </SidebarLink>
+
+            <SidebarLink icon={faStar} linkPage={NavigationPages.SKILLS}>
+              Skills
+            </SidebarLink>
+            <SidebarLink
+              icon={faGraduationCap}
+              linkPage={NavigationPages.EXPERIENCE}
+            >
+              Experience
+            </SidebarLink>
+            <SidebarLink icon={faList} linkPage={NavigationPages.PROJECTS}>
+              Projects
+            </SidebarLink>
+          </motion.div>
+        ) : null}
       </div>
     </>
   );

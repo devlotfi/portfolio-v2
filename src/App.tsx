@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import Navbar from "./components/navbar";
 import { cn } from "@nextui-org/react";
 import { ThemeContext } from "./context/theme-context";
 import { ThemeOptions } from "./types/theme-options";
 import { NavigationContext } from "./context/navigation-context";
-import { motion } from "motion/react";
+import { motion, useScroll } from "motion/react";
 import PageOverlay from "./layout/page-overlay";
 import HomePage from "./pages/home-page";
 import {
@@ -21,13 +21,18 @@ import ProjectsPage from "./pages/projects-page";
 export default function App() {
   const { appliedTheme } = useContext(ThemeContext);
   const { navigationData } = useContext(NavigationContext);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    container: scrollRef,
+  });
 
   return (
     <>
       <Sidebar></Sidebar>
       <motion.div
         className={cn(
-          "flex flex-col h-screen w-screen duration-300",
+          "flex flex-col h-screen w-screen duration-700",
           appliedTheme === ThemeOptions.LIGHT ? "main-bg-light" : "main-bg-dark"
         )}
         style={{
@@ -40,10 +45,16 @@ export default function App() {
         }}
       >
         <Navbar></Navbar>
+        <motion.div
+          className="flex w-screen h-[0.3rem] primary-bg z-10 fixed origin-left"
+          style={{
+            scaleX: scrollYProgress,
+          }}
+        ></motion.div>
 
         <div className="flex min-h-[calc(100vh-5rem)] max-h-[calc(100vh-5rem)] max-w-[100vw] overflow-hidden">
           <motion.div
-            className="flex duration-400 space-x-[10vw]"
+            className="flex duration-700 space-x-[10vw]"
             style={{
               transformOrigin: `${navigationData.transformOrigin} 50vh`,
               transform: `translateX(${navigationData.translateOffset}) scale(${
@@ -51,7 +62,12 @@ export default function App() {
               })`,
             }}
           >
-            <PageOverlay page={NavigationPages.HOME} title="home" icon={faHome}>
+            <PageOverlay
+              page={NavigationPages.HOME}
+              title="home"
+              icon={faHome}
+              scrollRef={scrollRef}
+            >
               <HomePage></HomePage>
             </PageOverlay>
 
@@ -59,6 +75,7 @@ export default function App() {
               page={NavigationPages.SKILLS}
               title="skills"
               icon={faStar}
+              scrollRef={scrollRef}
             >
               <SkillsPage></SkillsPage>
             </PageOverlay>
@@ -67,6 +84,7 @@ export default function App() {
               page={NavigationPages.EXPERIENCE}
               title="experience"
               icon={faGraduationCap}
+              scrollRef={scrollRef}
             >
               <ExperiencePage></ExperiencePage>
             </PageOverlay>
@@ -75,6 +93,7 @@ export default function App() {
               page={NavigationPages.PROJECTS}
               title="projects"
               icon={faStar}
+              scrollRef={scrollRef}
             >
               <ProjectsPage></ProjectsPage>
             </PageOverlay>

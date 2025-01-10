@@ -5,6 +5,12 @@ import { PropsWithChildren, useContext } from "react";
 import { NavigationPages } from "../types/navigation-pages";
 import { NavigationContext } from "../context/navigation-context";
 import { PagesConfig } from "../pages-config";
+import { motion, Variants } from "motion/react";
+
+const childVariant: Variants = {
+  hidden: { opacity: 0, y: 70 },
+  show: { opacity: 1, y: 0 },
+};
 
 interface Props {
   icon: IconProp;
@@ -51,37 +57,48 @@ export default function SidebarLink({
   };
 
   return (
-    <Button
-      onPress={navigate}
-      variant="light"
-      className="h-[3rem] font-bold"
-      startContent={
-        <Card
-          shadow="none"
+    <motion.div
+      className="flex"
+      variants={childVariant}
+      transition={{
+        duration: 0.2,
+        type: "spring",
+        stiffness: 70,
+      }}
+    >
+      <Button
+        fullWidth
+        onPress={navigate}
+        variant="light"
+        className="h-[3rem] font-bold"
+        startContent={
+          <Card
+            shadow="none"
+            className={cn(
+              "h-[2.5rem] w-[2.5rem] justify-center items-center",
+              linkPage === navigationData.page ? "primary-bg" : "bg-transparent"
+            )}
+          >
+            <FontAwesomeIcon
+              className={cn(
+                "text-[18pt]",
+                linkPage === navigationData.page && "text-primary-foreground"
+              )}
+              icon={icon}
+            ></FontAwesomeIcon>
+          </Card>
+        }
+      >
+        <div
           className={cn(
-            "h-[2.5rem] w-[2.5rem] justify-center items-center",
-            linkPage === navigationData.page ? "primary-bg" : "bg-transparent"
+            "flex flex-1 text-[13pt]",
+            linkPage === navigationData.page &&
+              "primary-bg bg-clip-text text-transparent"
           )}
         >
-          <FontAwesomeIcon
-            className={cn(
-              "text-[18pt]",
-              linkPage === navigationData.page && "text-primary-foreground"
-            )}
-            icon={icon}
-          ></FontAwesomeIcon>
-        </Card>
-      }
-    >
-      <div
-        className={cn(
-          "flex flex-1 text-[13pt]",
-          linkPage === navigationData.page &&
-            "primary-bg bg-clip-text text-transparent"
-        )}
-      >
-        {children}
-      </div>
-    </Button>
+          {children}
+        </div>
+      </Button>
+    </motion.div>
   );
 }

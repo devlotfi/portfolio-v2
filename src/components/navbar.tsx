@@ -13,6 +13,17 @@ import { Button } from "@nextui-org/react";
 import { useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion } from "motion/react";
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // Delay between children animations
+    },
+  },
+};
 
 export default function Navbar() {
   const { setNavigationData } = useContext(NavigationContext);
@@ -37,10 +48,29 @@ export default function Navbar() {
             className="text-[20pt]"
           ></FontAwesomeIcon>
         </Button>
-        <Logo className="h-[2rem]"></Logo>
+        <motion.div
+          initial={{ rotate: 180, opacity: 0 }}
+          animate={{ rotate: 0, opacity: 1 }}
+          transition={{
+            duration: 5,
+            delay: 2,
+            type: "spring",
+            stiffness: 70,
+          }}
+        >
+          <Logo className="h-[2rem]"></Logo>
+        </motion.div>
       </div>
 
-      <div className="space-x-2 hidden lg:flex">
+      <motion.div
+        initial="hidden"
+        animate="show"
+        variants={staggerContainer}
+        transition={{
+          staggerChildren: 0.2,
+        }}
+        className="space-x-2 flex"
+      >
         <NavbarLink icon={faInfoCircle} linkPage={NavigationPages.HOME}>
           About me
         </NavbarLink>
@@ -56,7 +86,7 @@ export default function Navbar() {
         <NavbarLink icon={faList} linkPage={NavigationPages.PROJECTS}>
           Projects
         </NavbarLink>
-      </div>
+      </motion.div>
 
       <ThemeDropdown></ThemeDropdown>
     </div>

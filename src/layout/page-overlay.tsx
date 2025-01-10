@@ -1,4 +1,4 @@
-import { PropsWithChildren, useContext, useRef } from "react";
+import { PropsWithChildren, RefObject, useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { Card, cn } from "@nextui-org/react";
 import { ThemeContext } from "../context/theme-context";
@@ -6,12 +6,12 @@ import { ThemeOptions } from "../types/theme-options";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { NavigationPages } from "../types/navigation-pages";
-import { useScroll, useMotionValueEvent, motion } from "motion/react";
 
 interface Props {
   title: string;
   page: NavigationPages;
   icon: IconProp;
+  scrollRef: RefObject<HTMLDivElement | null>;
 }
 
 export default function PageOverlay({
@@ -19,33 +19,20 @@ export default function PageOverlay({
   icon,
   page,
   title,
+  scrollRef,
 }: PropsWithChildren<Props>) {
   const { appliedTheme } = useContext(ThemeContext);
   const { navigationData } = useContext(NavigationContext);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    container: scrollRef,
-  });
-
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log("Page scroll: ", latest);
-  });
 
   return (
     <>
       <div
-        ref={scrollRef}
+        ref={navigationData.page === page ? scrollRef : null}
         className={cn(
-          "flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw] overflow-y-auto",
+          "flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw] overflow-y-auto scroll-smooth",
           navigationData.zoomedOut && "rounded-[2rem] overflow-hidden"
         )}
       >
-        <motion.div
-          className="flex w-screen h-[1rem] bg-primary fixed top-[-1rem] z-[1000]"
-          style={{
-            scaleX: scrollYProgress,
-          }}
-        ></motion.div>
         <div
           className={cn(
             "flex flex-col border border-divider justify-center items-center z-10 absolute top-0 left-0 opacity-0 h-full w-full duration-200 rounded-[2rem]",
@@ -65,7 +52,7 @@ export default function PageOverlay({
               className="text-[70pt] text-primary-foreground"
             ></FontAwesomeIcon>
           </Card>
-          <div className="flex primary-bg bg-clip-text text-transparent text-[45pt] sm:text-[60pt] font-black">
+          <div className="flex primary-bg bg-clip-text text-transparent text-[30pt] sm:text-[60pt] font-black">
             {title.toUpperCase()}
           </div>
         </div>
