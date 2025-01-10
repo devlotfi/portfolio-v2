@@ -6,7 +6,7 @@ import { ThemeOptions } from "../types/theme-options";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { NavigationPages } from "../types/navigation-pages";
-import { useScroll, useMotionValueEvent } from "motion/react";
+import { useScroll, useMotionValueEvent, motion } from "motion/react";
 
 interface Props {
   title: string;
@@ -40,6 +40,12 @@ export default function PageOverlay({
           navigationData.zoomedOut && "rounded-[2rem] overflow-hidden"
         )}
       >
+        <motion.div
+          className="flex w-screen h-[1rem] bg-primary fixed top-[-1rem] z-[1000]"
+          style={{
+            scaleX: scrollYProgress,
+          }}
+        ></motion.div>
         <div
           className={cn(
             "flex flex-col border border-divider justify-center items-center z-10 absolute top-0 left-0 opacity-0 h-full w-full duration-200 rounded-[2rem]",
