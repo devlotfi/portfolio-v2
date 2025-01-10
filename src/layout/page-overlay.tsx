@@ -27,9 +27,8 @@ export default function PageOverlay({
   return (
     <>
       <div
-        ref={navigationData.page === page ? scrollRef : null}
         className={cn(
-          "flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw] overflow-y-auto scroll-smooth",
+          "flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw]",
           navigationData.zoomedOut && "rounded-[2rem] overflow-hidden"
         )}
       >
@@ -56,7 +55,13 @@ export default function PageOverlay({
             {title.toUpperCase()}
           </div>
         </div>
-        {page === navigationData.page ? children : null}
+
+        <div
+          ref={navigationData.page === page ? scrollRef : null}
+          className="flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw] overflow-y-auto scroll-smooth"
+        >
+          {page === navigationData.page ? children : null}
+        </div>
       </div>
     </>
   );

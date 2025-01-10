@@ -26,7 +26,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col home-page-lines">
-      <div className="flex flex-col min-h-[calc(100vh-5rem)] justify-center items-center">
+      <div className="flex flex-col min-h-[calc(100vh-5rem)] pt-[2rem] lg:pt-0 lg:justify-center items-center">
         <div className="flex px-[2rem] flex-col lg:flex-row max-w-screen-md space-x-5">
           <motion.img
             initial={{ rotate: 180, opacity: 0 }}

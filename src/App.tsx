@@ -32,7 +32,7 @@ export default function App() {
       <Sidebar></Sidebar>
       <motion.div
         className={cn(
-          "flex flex-col h-screen w-screen duration-700",
+          "flex flex-col h-screen w-screen duration-500 transition-[background-size,background-position] will-change-[background-size,background-position]",
           appliedTheme === ThemeOptions.LIGHT ? "main-bg-light" : "main-bg-dark"
         )}
         style={{
@@ -54,7 +54,7 @@ export default function App() {
 
         <div className="flex min-h-[calc(100vh-5rem)] max-h-[calc(100vh-5rem)] max-w-[100vw] overflow-hidden">
           <motion.div
-            className="flex duration-700 space-x-[10vw]"
+            className="flex duration-500 space-x-[10vw] transition-[transform-origin,transform] will-change-[transform-origin,transform]"
             style={{
               transformOrigin: `${navigationData.transformOrigin} 50vh`,
               transform: `translateX(${navigationData.translateOffset}) scale(${
