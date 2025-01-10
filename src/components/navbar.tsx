@@ -69,7 +69,7 @@ export default function Navbar() {
         transition={{
           staggerChildren: 0.2,
         }}
-        className="space-x-2 flex"
+        className="space-x-2 hidden lg:flex"
       >
         <NavbarLink icon={faInfoCircle} linkPage={NavigationPages.HOME}>
           About me
