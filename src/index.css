@@ -8,12 +8,7 @@
   font-style: normal;
 }
 
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
-.main-bg {
+.main-bg-dark {
   background-color: #171717;
 
   background-image: radial-gradient(
@@ -29,7 +24,25 @@ html {
     radial-gradient(#171717 65%, transparent),
     linear-gradient(#ffffff34 1px, transparent 1px),
     linear-gradient(to right, #ffffff34 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 5rem 5rem, 5rem 5rem;
+  background-position: 0 0, 0 0, 0 0, 0 3rem, 0 3rem;
+  background-attachment: fixed, fixed, fixed, fixed, fixed;
+}
+.main-bg-light {
+  background-color: #ffffff;
+
+  background-image: radial-gradient(
+      circle at top right,
+      rgba(33, 163, 211, 0.25) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom center,
+      rgba(33, 92, 211, 0.25) 0%,
+      transparent 80%
+    ),
+    radial-gradient(#ffffff 65%, transparent),
+    linear-gradient(#39475b71 1px, transparent 1px),
+    linear-gradient(to right, #39475b71 1px, transparent 1px);
   background-attachment: fixed, fixed, fixed, fixed, fixed;
 }
 
@@ -46,6 +59,20 @@ html {
     ),
     #1f232b;
   border: 1px solid #3c3c3c;
+}
+.card-gradient-bg-light {
+  background: radial-gradient(
+      circle at top right,
+      rgba(33, 163, 211, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom center,
+      rgba(33, 92, 211, 0.1) 0%,
+      transparent 80%
+    ),
+    #ffffff;
+  border: 1px solid #b9b9b9;
 }
 
 .primary-bg {

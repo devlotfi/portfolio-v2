@@ -20,6 +20,36 @@ export default {
           large: "6px",
         },
       },
+      themes: {
+        light: {
+          colors: {
+            foreground: "#273450",
+            background: {
+              foreground: "#273450",
+            },
+            default: {
+              foreground: "#273450",
+            },
+            primary: {
+              foreground: "#FFFFFF",
+            },
+          },
+        },
+        dark: {
+          colors: {
+            foreground: "#FFFFFF",
+            background: {
+              foreground: "#FFFFFF",
+            },
+            default: {
+              foreground: "#FFFFFF",
+            },
+            primary: {
+              foreground: "#FFFFFF",
+            },
+          },
+        },
+      },
     }),
   ],
 };

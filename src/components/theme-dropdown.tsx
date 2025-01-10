@@ -1,21 +1,43 @@
-import { faComputer, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import {
+  faComputer,
+  faMoon,
+  faPaintBrush,
+  faSun,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
+  Button,
+  cn,
 } from "@nextui-org/react";
 import { useContext } from "react";
 import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
 
 export default function ThemeDropdown() {
-  const { themeOption, setTheme } = useContext(ThemeContext);
+  const { themeOption, appliedTheme, setTheme } = useContext(ThemeContext);
 
   return (
-    <Dropdown className="card-gradient-bg-dark">
-      <DropdownTrigger>theme</DropdownTrigger>
+    <Dropdown
+      className={cn(
+        appliedTheme === ThemeOptions.LIGHT
+          ? "card-gradient-bg-light"
+          : "card-gradient-bg-dark"
+      )}
+    >
+      <DropdownTrigger>
+        <Button
+          isIconOnly
+          variant="light"
+          size="lg"
+          className="border-foreground"
+        >
+          <FontAwesomeIcon icon={faPaintBrush}></FontAwesomeIcon>
+        </Button>
+      </DropdownTrigger>
       <DropdownMenu
         selectionMode="single"
         closeOnSelect={false}

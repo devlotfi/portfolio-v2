@@ -1,77 +1,59 @@
-import Logo from "../assets/logo.svg";
 import {
+  faBars,
   faGraduationCap,
   faInfoCircle,
   faList,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import NavbarLink from "./navbar-link";
-import { RefObject, useEffect, useState } from "react";
 import ThemeDropdown from "./theme-dropdown";
+import Logo from "./logo";
+import { NavigationPages } from "../types/navigation-pages";
+import { Button } from "@nextui-org/react";
+import { useContext } from "react";
+import { NavigationContext } from "../context/navigation-context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-interface Props {
-  sectionsRefs: RefObject<HTMLDivElement | null>[];
-}
-
-export default function Navbar({ sectionsRefs }: Props) {
-  const [activeSection, setActiveSection] = useState<string | null>(null);
-
-  useEffect(() => {
-    console.log(sectionsRefs);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.6 }
-    );
-
-    sectionsRefs.forEach((ref) => {
-      if (ref.current) observer.observe(ref.current);
-    });
-
-    return () => {
-      sectionsRefs.forEach((ref) => {
-        if (ref.current) observer.unobserve(ref.current);
-      });
-    };
-  }, [sectionsRefs]);
+export default function Navbar() {
+  const { setNavigationData } = useContext(NavigationContext);
 
   return (
     <div className="sticky backdrop-blur-2xl top-0 flex justify-between items-center min-h-[5rem] px-[1rem] z-10">
-      <img className="h-[2rem]" src={Logo} alt="logo" />
-
-      <div className="flex space-x-2">
-        <NavbarLink
-          sectionId="home"
-          icon={faInfoCircle}
-          activeSectionId={activeSection}
+      <div className="flex items-center space-x-2">
+        <Button
+          onPress={() =>
+            setNavigationData((navigationData) => ({
+              ...navigationData,
+              sidebarOpen: true,
+            }))
+          }
+          className="lg:hidden group"
+          isIconOnly
+          variant="light"
+          size="lg"
         >
+          <FontAwesomeIcon
+            icon={faBars}
+            className="text-[20pt]"
+          ></FontAwesomeIcon>
+        </Button>
+        <Logo className="h-[2rem]"></Logo>
+      </div>
+
+      <div className="space-x-2 hidden lg:flex">
+        <NavbarLink icon={faInfoCircle} linkPage={NavigationPages.HOME}>
           About me
         </NavbarLink>
-        <NavbarLink
-          sectionId="skills"
-          icon={faStar}
-          activeSectionId={activeSection}
-        >
+        <NavbarLink icon={faStar} linkPage={NavigationPages.SKILLS}>
           Skills
         </NavbarLink>
         <NavbarLink
-          sectionId="experience"
           icon={faGraduationCap}
-          activeSectionId={activeSection}
+          linkPage={NavigationPages.EXPERIENCE}
         >
           Experience
         </NavbarLink>
-        <NavbarLink
-          sectionId="projects"
-          icon={faList}
-          activeSectionId={activeSection}
-        >
+        <NavbarLink icon={faList} linkPage={NavigationPages.PROJECTS}>
           Projects
         </NavbarLink>
       </div>

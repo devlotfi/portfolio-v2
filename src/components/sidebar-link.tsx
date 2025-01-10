@@ -11,7 +11,7 @@ interface Props {
   linkPage: NavigationPages;
 }
 
-export default function NavbarLink({
+export default function SidebarLink({
   icon,
   linkPage,
   children,
@@ -29,6 +29,7 @@ export default function NavbarLink({
       ...navigationData,
       zoomedOut: true,
       isNavigating: true,
+      sidebarOpen: false,
     });
     setTimeout(() => {
       setNavigationData((navigationData) => ({
@@ -58,13 +59,13 @@ export default function NavbarLink({
         <Card
           shadow="none"
           className={cn(
-            "h-[2rem] w-[2rem] justify-center items-center",
+            "h-[2.5rem] w-[2.5rem] justify-center items-center",
             linkPage === navigationData.page ? "primary-bg" : "bg-transparent"
           )}
         >
           <FontAwesomeIcon
             className={cn(
-              "text-[15pt]",
+              "text-[18pt]",
               linkPage === navigationData.page && "text-primary-foreground"
             )}
             icon={icon}
@@ -74,7 +75,7 @@ export default function NavbarLink({
     >
       <div
         className={cn(
-          "flex",
+          "flex flex-1 text-[13pt]",
           linkPage === navigationData.page &&
             "primary-bg bg-clip-text text-transparent"
         )}

@@ -1,0 +1,6 @@
+.home-page-lines {
+  background-image: url("../assets/home-page-lines.svg");
+  background-position: center 32rem;
+  background-size: 100rem auto;
+  background-repeat: no-repeat;
+}

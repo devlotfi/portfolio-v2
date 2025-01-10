@@ -1,73 +1,86 @@
-import { useRef } from "react";
+import { useContext } from "react";
 import Navbar from "./components/navbar";
-import Developer from "./assets/developer.svg";
-import { Button } from "@nextui-org/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons/faAngleDoubleDown";
+import { cn } from "@nextui-org/react";
+import { ThemeContext } from "./context/theme-context";
+import { ThemeOptions } from "./types/theme-options";
+import { NavigationContext } from "./context/navigation-context";
+import { motion } from "motion/react";
+import PageOverlay from "./layout/page-overlay";
+import HomePage from "./pages/home-page";
+import {
+  faGraduationCap,
+  faHome,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
+import { NavigationPages } from "./types/navigation-pages";
+import Sidebar from "./components/sidebar";
+import SkillsPage from "./pages/skills-page";
+import ExperiencePage from "./pages/experience-page";
+import ProjectsPage from "./pages/projects-page";
 
 export default function App() {
-  const homeRef = useRef<HTMLDivElement>(null);
-  const skillsRef = useRef<HTMLDivElement>(null);
-  const experienceRef = useRef<HTMLDivElement>(null);
-  const projectsRef = useRef<HTMLDivElement>(null);
+  const { appliedTheme } = useContext(ThemeContext);
+  const { navigationData } = useContext(NavigationContext);
 
   return (
-    <div className="flex flex-col min-h-screen main-bg">
-      <Navbar
-        sectionsRefs={[homeRef, skillsRef, experienceRef, projectsRef]}
-      ></Navbar>
-      <div
-        ref={homeRef}
-        id="home"
-        className="flex h-[calc(100vh-5rem)] justify-center items-center"
+    <>
+      <Sidebar></Sidebar>
+      <motion.div
+        className={cn(
+          "flex flex-col h-screen w-screen duration-300",
+          appliedTheme === ThemeOptions.LIGHT ? "main-bg-light" : "main-bg-dark"
+        )}
+        style={{
+          backgroundPosition: `0 0, 0 0, 0 0, ${navigationData.backgroundOffset} 0, ${navigationData.backgroundOffset} 0`,
+          backgroundSize: `100% 100%, 100% 100%, 100% 100%, ${
+            navigationData.isNavigating
+              ? "3rem 3rem, 3rem 3rem"
+              : "5rem 5rem, 5rem 5rem"
+          }`,
+        }}
       >
-        <div className="flex">
-          <img src={Developer} alt="developer" />
-          <div className="flex flex-col">
-            <div className="flex text-[30pt] font-black">
-              Welcome, my name is
-            </div>
-            <div className="flex text-[30pt] font-black primary-bg bg-clip-text text-transparent">
-              Debbal Lotfi
-            </div>
-            <div className="flex text-[25pt] font-bold opacity-70">
-              Full-Stack Web developer
-            </div>
-            <Button
-              className="primary-bg self-start"
-              startContent={
-                <FontAwesomeIcon icon={faAngleDoubleDown}></FontAwesomeIcon>
-              }
+        <Navbar></Navbar>
+
+        <div className="flex min-h-[calc(100vh-5rem)] max-h-[calc(100vh-5rem)] max-w-[100vw] overflow-hidden">
+          <motion.div
+            className="flex duration-400 space-x-[10vw]"
+            style={{
+              transformOrigin: `${navigationData.transformOrigin} 50vh`,
+              transform: `translateX(${navigationData.translateOffset}) scale(${
+                navigationData.zoomedOut ? "0.5" : "1"
+              })`,
+            }}
+          >
+            <PageOverlay page={NavigationPages.HOME} title="home" icon={faHome}>
+              <HomePage></HomePage>
+            </PageOverlay>
+
+            <PageOverlay
+              page={NavigationPages.SKILLS}
+              title="skills"
+              icon={faStar}
             >
-              About me
-            </Button>
-          </div>
+              <SkillsPage></SkillsPage>
+            </PageOverlay>
+
+            <PageOverlay
+              page={NavigationPages.EXPERIENCE}
+              title="experience"
+              icon={faGraduationCap}
+            >
+              <ExperiencePage></ExperiencePage>
+            </PageOverlay>
+
+            <PageOverlay
+              page={NavigationPages.PROJECTS}
+              title="projects"
+              icon={faStar}
+            >
+              <ProjectsPage></ProjectsPage>
+            </PageOverlay>
+          </motion.div>
         </div>
-      </div>
-      <div id="about-me" className="flex h-screen justify-center items-center">
-        <h1>about me</h1>
-      </div>
-      <div
-        ref={skillsRef}
-        id="skills"
-        className="flex h-screen justify-center items-center"
-      >
-        <h1>skills</h1>
-      </div>
-      <div
-        ref={experienceRef}
-        id="experience"
-        className="flex h-screen justify-center items-center"
-      >
-        <h1>experience</h1>
-      </div>
-      <div
-        ref={projectsRef}
-        id="projects"
-        className="flex h-screen justify-center items-center"
-      >
-        <h1>projects</h1>
-      </div>
-    </div>
+      </motion.div>
+    </>
   );
 }
