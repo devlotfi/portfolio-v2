@@ -31,7 +31,7 @@ export default function App() {
           appliedTheme === ThemeOptions.LIGHT ? "main-bg-light" : "main-bg-dark"
         )}
         style={{
-          backgroundPosition: `0 0, 0 0, 0 0, ${navigationData.backgroundOffset} 0, ${navigationData.backgroundOffset} 0`,
+          backgroundPosition: `0 0, 0 0, 0 0, ${navigationData.backgroundOffset} center, ${navigationData.backgroundOffset} center`,
           backgroundSize: `100% 100%, 100% 100%, 100% 100%, ${
             navigationData.isNavigating
               ? "3rem 3rem, 3rem 3rem"

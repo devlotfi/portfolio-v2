@@ -18,7 +18,7 @@ export default function Navbar() {
   const { setNavigationData } = useContext(NavigationContext);
 
   return (
-    <div className="sticky backdrop-blur-2xl top-0 flex justify-between items-center min-h-[5rem] px-[1rem] z-10">
+    <div className="sticky top-0 flex justify-between items-center min-h-[5rem] px-[1rem] z-10">
       <div className="flex items-center space-x-2">
         <Button
           onPress={() =>
