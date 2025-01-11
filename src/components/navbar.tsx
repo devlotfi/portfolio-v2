@@ -49,8 +49,8 @@ export default function Navbar() {
           ></FontAwesomeIcon>
         </Button>
         <motion.div
-          initial={{ rotate: 180, opacity: 0 }}
-          animate={{ rotate: 0, opacity: 1 }}
+          initial={{ rotate: 90, scale: 0, opacity: 0 }}
+          animate={{ rotate: 0, scale: 1, opacity: 1 }}
           transition={{
             duration: 5,
             delay: 2,

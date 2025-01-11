@@ -1,8 +1,5 @@
 import { useContext, useRef } from "react";
 import Navbar from "./components/navbar";
-import { cn } from "@nextui-org/react";
-import { ThemeContext } from "./context/theme-context";
-import { ThemeOptions } from "./types/theme-options";
 import { NavigationContext } from "./context/navigation-context";
 import { motion, useScroll } from "motion/react";
 import PageOverlay from "./layout/page-overlay";
@@ -17,9 +14,9 @@ import Sidebar from "./components/sidebar";
 import SkillsPage from "./pages/skills-page";
 import ExperiencePage from "./pages/experience-page";
 import ProjectsPage from "./pages/projects-page";
+import SocialSideBtns from "./components/social-side-btns";
 
 export default function App() {
-  const { appliedTheme } = useContext(ThemeContext);
   const { navigationData } = useContext(NavigationContext);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -31,10 +28,7 @@ export default function App() {
     <>
       <Sidebar></Sidebar>
       <motion.div
-        className={cn(
-          "flex flex-col h-screen w-screen duration-500 transition-[background-size,background-position] will-change-[background-size,background-position]",
-          appliedTheme === ThemeOptions.LIGHT ? "main-bg-light" : "main-bg-dark"
-        )}
+        className="flex flex-col h-screen w-screen duration-500 main-bg-light main-bg-dark transition-[background-size,background-position] will-change-[background-size,background-position]"
         style={{
           backgroundPosition: `0 0, 0 0, 0 0, ${navigationData.backgroundOffset} center, ${navigationData.backgroundOffset} center`,
           backgroundSize: `100% 100%, 100% 100%, 100% 100%, ${
@@ -51,6 +45,7 @@ export default function App() {
             scaleX: scrollYProgress,
           }}
         ></motion.div>
+        <SocialSideBtns></SocialSideBtns>
 
         <div className="flex min-h-[calc(100vh-5rem)] max-h-[calc(100vh-5rem)] max-w-[100vw] overflow-hidden">
           <motion.div

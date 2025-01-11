@@ -9,14 +9,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, cn } from "@nextui-org/react";
 import { useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
-import { ThemeContext } from "../context/theme-context";
-import { ThemeOptions } from "../types/theme-options";
 import SidebarLink from "./sidebar-link";
 import { NavigationPages } from "../types/navigation-pages";
 import { motion } from "motion/react";
 
 export default function Sidebar() {
-  const { appliedTheme } = useContext(ThemeContext);
   const { navigationData, setNavigationData } = useContext(NavigationContext);
 
   return (
@@ -29,10 +26,7 @@ export default function Sidebar() {
       ></div>
       <div
         className={cn(
-          "flex flex-col p-[1rem] duration-300 border-r border-divider z-30 h-screen w-[20rem] fixed top-0 left-0 rounded-tr-2xl rounded-br-2xl",
-          appliedTheme === ThemeOptions.LIGHT
-            ? "card-gradient-bg-light"
-            : "card-gradient-bg-dark",
+          "flex flex-col p-[1rem] duration-300 card-gradient-bg-light card-gradient-bg-dark border-r border-divider z-30 h-screen w-[20rem] fixed top-0 left-0 rounded-tr-2xl rounded-br-2xl",
           !navigationData.sidebarOpen && "ml-[-20rem]"
         )}
       >

@@ -3,17 +3,14 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Card, CardBody, cn } from "@nextui-org/react";
+import { Button, Card, CardBody } from "@nextui-org/react";
 import Developer from "../assets/developer.svg";
-import { useContext, useRef } from "react";
-import { ThemeContext } from "../context/theme-context";
-import { ThemeOptions } from "../types/theme-options";
+import { useRef } from "react";
 import "./home-page.css";
 import { Heading } from "../components/heading";
 import { motion } from "motion/react";
 
 export default function HomePage() {
-  const { appliedTheme } = useContext(ThemeContext);
   const aboutMeRef = useRef<HTMLDivElement>(null);
 
   const scrollToAboutMe = () => {
@@ -29,8 +26,8 @@ export default function HomePage() {
       <div className="flex flex-col min-h-[calc(100vh-5rem)] pt-[2rem] lg:pt-0 lg:justify-center items-center">
         <div className="flex px-[2rem] flex-col lg:flex-row max-w-screen-md space-x-5">
           <motion.img
-            initial={{ rotate: 180, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
+            initial={{ rotate: 90, scale: 0, opacity: 0 }}
+            animate={{ rotate: 0, scale: 1, opacity: 1 }}
             transition={{
               duration: 3,
               delay: 1,
@@ -111,12 +108,7 @@ export default function HomePage() {
         className="flex flex-col justify-center items-center min-h-[calc(100vh-5rem)] px-[1rem] py-[10rem]"
       >
         <Card
-          className={cn(
-            "max-w-screen-md border border-divider",
-            appliedTheme === ThemeOptions.LIGHT
-              ? "card-gradient-bg-light"
-              : "card-gradient-bg-dark"
-          )}
+          className="max-w-screen-md border border-divider card-gradient-bg-light card-gradient-bg-dark"
           fullWidth
         >
           <CardBody className="p-[1.5rem] space-y-3 overflow-hidden">

@@ -11,23 +11,16 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-  cn,
 } from "@nextui-org/react";
 import { useContext } from "react";
 import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
 
 export default function ThemeDropdown() {
-  const { themeOption, appliedTheme, setTheme } = useContext(ThemeContext);
+  const { themeOption, setTheme } = useContext(ThemeContext);
 
   return (
-    <Dropdown
-      className={cn(
-        appliedTheme === ThemeOptions.LIGHT
-          ? "card-gradient-bg-light"
-          : "card-gradient-bg-dark"
-      )}
-    >
+    <Dropdown className="card-gradient-bg-light card-gradient-bg-dark border border-divider">
       <DropdownTrigger>
         <Button
           isIconOnly
