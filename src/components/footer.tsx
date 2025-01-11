@@ -1,14 +1,16 @@
 import { motion } from "motion/react";
 import Logo from "./logo";
-import { Button, Link } from "@nextui-org/react";
+import { Button, cn, Link } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
   faLinkedin,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useContext } from "react";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { ThemeContext } from "../context/theme-context";
+import { ThemeOptions } from "../types/theme-options";
 
 interface SocialIconsProps {
   url: string;
@@ -42,8 +44,17 @@ function SocialIcon({
 }
 
 export default function Footer() {
+  const { appliedTheme } = useContext(ThemeContext);
+
   return (
-    <div className="flex sm:flex-row flex-col sm:items-center space-y-10 sm:space-y-0 justify-around px-[2rem] py-[3rem] border-t border-divider card-gradient-bg-dark card-gradient-bg-light">
+    <div
+      className={cn(
+        "flex sm:flex-row flex-col sm:items-center space-y-10 sm:space-y-0 justify-around px-[2rem] py-[3rem] border-t border-divider",
+        appliedTheme === ThemeOptions.LIGHT
+          ? "card-gradient-bg-light"
+          : "card-gradient-bg-dark"
+      )}
+    >
       <motion.div
         className="self-start"
         initial={{ rotate: 90, scale: 0, opacity: 0 }}

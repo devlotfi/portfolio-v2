@@ -16,8 +16,8 @@ interface Props {
 export default function SidebarLink({
   icon,
   linkPage,
-  children,
   delay,
+  children,
 }: PropsWithChildren<Props>) {
   const { navigationData, setNavigationData } = useContext(NavigationContext);
 
@@ -49,8 +49,8 @@ export default function SidebarLink({
           zoomedOut: false,
           isNavigating: false,
         }));
-      }, 700);
-    }, 700);
+      }, 1000);
+    }, 1000);
   };
 
   return (

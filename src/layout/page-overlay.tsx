@@ -1,6 +1,8 @@
 import { PropsWithChildren, useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { Card, cn } from "@nextui-org/react";
+import { ThemeContext } from "../context/theme-context";
+import { ThemeOptions } from "../types/theme-options";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { NavigationPages } from "../types/navigation-pages";
@@ -20,6 +22,7 @@ export default function PageOverlay({
   title,
   hideFooter,
 }: PropsWithChildren<Props>) {
+  const { appliedTheme } = useContext(ThemeContext);
   const { navigationData } = useContext(NavigationContext);
 
   return (
@@ -32,7 +35,10 @@ export default function PageOverlay({
       >
         <div
           className={cn(
-            "flex flex-col space-y-[2rem] border border-divider card-gradient-bg-light card-gradient-bg-dark justify-center items-center z-10 absolute top-0 left-0 opacity-0 h-full w-full duration-500 rounded-[2rem]",
+            "flex flex-col border border-divider justify-center items-center z-10 absolute top-0 left-0 opacity-0 h-full w-full duration-500 rounded-[2rem]",
+            appliedTheme === ThemeOptions.LIGHT
+              ? "card-gradient-bg-light"
+              : "card-gradient-bg-dark",
             navigationData.zoomedOut && "opacity-100",
             !navigationData.zoomedOut && "pointer-events-none"
           )}

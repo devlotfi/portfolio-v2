@@ -8,7 +8,7 @@
   font-style: normal;
 }
 
-.dark .main-bg-dark {
+.main-bg-dark {
   background-color: #171717;
 
   background-image: radial-gradient(
@@ -27,7 +27,7 @@
   background-position: 0 0, 0 0, 0 0, 0 3rem, 0 3rem;
   background-attachment: fixed, fixed, fixed, fixed, fixed;
 }
-.light .main-bg-light {
+.main-bg-light {
   background-color: #ffffff;
 
   background-image: radial-gradient(
@@ -46,7 +46,7 @@
   background-attachment: fixed, fixed, fixed, fixed, fixed;
 }
 
-.dark .card-gradient-bg-dark {
+.card-gradient-bg-dark {
   background: radial-gradient(
       circle at top right,
       rgba(33, 163, 211, 0.15) 0%,
@@ -58,8 +58,9 @@
       transparent 80%
     ),
     #1f232b;
+  border: 1px solid #3c3c3c;
 }
-.light .card-gradient-bg-light {
+.card-gradient-bg-light {
   background: radial-gradient(
       circle at top right,
       rgba(33, 163, 211, 0.1) 0%,
@@ -71,6 +72,7 @@
       transparent 80%
     ),
     #ffffff;
+  border: 1px solid #b9b9b9;
 }
 
 .primary-bg {

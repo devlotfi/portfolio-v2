@@ -15,6 +15,16 @@ import { NavigationContext } from "../context/navigation-context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "motion/react";
 
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // Delay between children animations
+    },
+  },
+};
+
 export default function Navbar() {
   const { setNavigationData } = useContext(NavigationContext);
 
@@ -26,7 +36,7 @@ export default function Navbar() {
           animate={{ opacity: 1, rotate: 0, scale: 1 }}
           transition={{
             duration: 0.5,
-            delay: 2,
+            delay: 2.3,
             type: "spring",
             stiffness: 70,
           }}
@@ -63,7 +73,15 @@ export default function Navbar() {
         </motion.div>
       </div>
 
-      <div className="space-x-2 hidden lg:flex">
+      <motion.div
+        initial="hidden"
+        animate="show"
+        variants={staggerContainer}
+        transition={{
+          staggerChildren: 0.2,
+        }}
+        className="space-x-2 hidden lg:flex"
+      >
         <NavbarLink
           delay={0}
           icon={faInfoCircle}
@@ -88,7 +106,7 @@ export default function Navbar() {
         >
           Projects
         </NavbarLink>
-      </div>
+      </motion.div>
 
       <ThemeDropdown></ThemeDropdown>
     </div>

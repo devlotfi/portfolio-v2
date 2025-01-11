@@ -16,8 +16,8 @@ interface Props {
 export default function NavbarLink({
   icon,
   linkPage,
-  children,
   delay,
+  children,
 }: PropsWithChildren<Props>) {
   const { navigationData, setNavigationData } = useContext(NavigationContext);
 
@@ -48,8 +48,8 @@ export default function NavbarLink({
           zoomedOut: false,
           isNavigating: false,
         }));
-      }, 700);
-    }, 700);
+      }, 1000);
+    }, 1000);
   };
 
   return (
