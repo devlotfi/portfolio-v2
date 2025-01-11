@@ -23,40 +23,44 @@ export default function PageOverlay({
   const { navigationData } = useContext(NavigationContext);
 
   return (
-    <div
-      className={cn(
-        "flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw]",
-        navigationData.zoomedOut && "rounded-[2rem] overflow-hidden"
-      )}
-    >
+    <>
       <div
         className={cn(
-          "flex flex-col space-y-[2rem] border border-divider card-gradient-bg-light card-gradient-bg-dark justify-center items-center z-10 absolute top-0 left-0 opacity-0 h-full w-full duration-500 rounded-[2rem]",
-          navigationData.zoomedOut && "opacity-100",
-          !navigationData.zoomedOut && "pointer-events-none"
+          "flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw]",
+          navigationData.zoomedOut && "rounded-[2rem] overflow-hidden"
         )}
       >
-        <Card
-          shadow="none"
-          className="primary-bg h-[10rem] w-[10rem] sm:h-[15rem] sm:w-[15rem] rounded-[1rem] justify-center items-center"
+        <div
+          className={cn(
+            "flex flex-col space-y-[2rem] border border-divider card-gradient-bg-light card-gradient-bg-dark justify-center items-center z-10 absolute top-0 left-0 opacity-0 h-full w-full duration-500 rounded-[2rem]",
+            navigationData.zoomedOut && "opacity-100",
+            !navigationData.zoomedOut && "pointer-events-none"
+          )}
         >
-          <FontAwesomeIcon
-            icon={icon}
-            className="text-[70pt] text-primary-foreground"
-          ></FontAwesomeIcon>
-        </Card>
-        <div className="flex primary-bg bg-clip-text text-transparent text-[30pt] sm:text-[60pt] font-black">
-          {title.toUpperCase()}
+          <Card
+            shadow="none"
+            className="primary-bg h-[10rem] w-[10rem] sm:h-[15rem] sm:w-[15rem] rounded-[1rem] justify-center items-center"
+          >
+            <FontAwesomeIcon
+              icon={icon}
+              className="text-[70pt] text-primary-foreground"
+            ></FontAwesomeIcon>
+          </Card>
+          <div className="flex primary-bg bg-clip-text text-transparent text-[30pt] sm:text-[60pt] font-black">
+            {title.toUpperCase()}
+          </div>
+        </div>
+
+        <div
+          ref={navigationData.page === page ? navigationData.scrollRef : null}
+          className="flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw] overflow-y-auto scroll-smooth"
+        >
+          {page === navigationData.page ? children : null}
+          {page === navigationData.page && !hideFooter ? (
+            <Footer></Footer>
+          ) : null}
         </div>
       </div>
-
-      <div
-        ref={navigationData.page === page ? navigationData.scrollRef : null}
-        className="flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw] overflow-y-auto scroll-smooth"
-      >
-        {page === navigationData.page ? children : null}
-        {page === navigationData.page && !hideFooter ? <Footer></Footer> : null}
-      </div>
-    </div>
+    </>
   );
 }

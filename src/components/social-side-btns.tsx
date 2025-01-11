@@ -41,7 +41,7 @@ function SocialIcon({
 
 export default function SocialSideBtns() {
   return (
-    <div className="hidden lg:flex flex-col items-center space-y-2 fixed left-[2rem] bottom-0 z-20">
+    <div className="hidden lg:flex flex-col items-center space-y-2 fixed left-[2rem] top-[50vh] translate-y-[-50%] z-20">
       <SocialIcon delay={0.6} url="https://github.com/devlotfi">
         <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon>
       </SocialIcon>
@@ -57,18 +57,6 @@ export default function SocialSideBtns() {
       <SocialIcon delay={0} url="https://x.com/LDebbal">
         <FontAwesomeIcon icon={faXTwitter}></FontAwesomeIcon>
       </SocialIcon>
-
-      <motion.div
-        initial={{ scaleY: 0, opacity: 0 }}
-        animate={{ scaleY: 1, opacity: 1 }}
-        transition={{
-          duration: 0.7,
-          delay: 2,
-          type: "spring",
-          stiffness: 70,
-        }}
-        className="flex w-[0.3rem] h-[7rem] bg-gradient-to-t from-transparent to-foreground origin-bottom"
-      ></motion.div>
     </div>
   );
 }

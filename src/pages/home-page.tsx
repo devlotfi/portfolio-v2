@@ -113,46 +113,22 @@ export default function HomePage() {
         >
           <CardBody className="p-[1.5rem] space-y-3 overflow-hidden">
             <Heading icon={faInfoCircle}>About me</Heading>
-            <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.7,
-                type: "spring",
-                stiffness: 150,
-              }}
-            >
+            <div>
               I am a passionate full-stack web developer with a comprehensive
               background in both front-end and back-end development, as well as
               mobile development. Throughout my career, I have worked on a
               diverse range of projects, building robust and scalable web and
               mobile applications. My expertise spans designing intuitive user
               interfaces, developing efficient server-side logic.
-            </motion.div>
-            <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.7,
-                type: "spring",
-                stiffness: 150,
-              }}
-            >
+            </div>
+            <div>
               I am committed to continuous learning and staying updated with the
               latest industry trends to deliver high-quality and innovative
               solutions. Whether working on a solo project or collaborating with
               a team, I strive to create user-centric applications that meet
               business objectives and provide exceptional user experiences.
-            </motion.div>
-            <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.7,
-                type: "spring",
-                stiffness: 150,
-              }}
-            >
+            </div>
+            <div>
               I hold a Bachelor's degree in Information Systems and Software
               Engineering from{" "}
               <a
@@ -164,7 +140,7 @@ export default function HomePage() {
               </a>
               , where I developed a strong foundation in software engineering
               principles.
-            </motion.div>
+            </div>
           </CardBody>
         </Card>
       </div>

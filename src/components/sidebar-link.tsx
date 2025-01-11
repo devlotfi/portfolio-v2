@@ -49,8 +49,8 @@ export default function SidebarLink({
           zoomedOut: false,
           isNavigating: false,
         }));
-      }, 500);
-    }, 500);
+      }, 700);
+    }, 700);
   };
 
   return (
