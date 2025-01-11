@@ -1,7 +1,7 @@
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import Navbar from "./components/navbar";
 import { NavigationContext } from "./context/navigation-context";
-import { motion, useScroll } from "motion/react";
+import { motion } from "motion/react";
 import PageOverlay from "./layout/page-overlay";
 import HomePage from "./pages/home-page";
 import {
@@ -15,14 +15,10 @@ import SkillsPage from "./pages/skills-page";
 import ExperiencePage from "./pages/experience-page";
 import ProjectsPage from "./pages/projects-page";
 import SocialSideBtns from "./components/social-side-btns";
+import ScrollIndicator from "./components/scroll-indicator";
 
 export default function App() {
   const { navigationData } = useContext(NavigationContext);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    container: scrollRef,
-  });
 
   return (
     <>
@@ -39,12 +35,7 @@ export default function App() {
         }}
       >
         <Navbar></Navbar>
-        <motion.div
-          className="flex w-screen h-[0.3rem] primary-bg z-10 fixed origin-left"
-          style={{
-            scaleX: scrollYProgress,
-          }}
-        ></motion.div>
+        <ScrollIndicator></ScrollIndicator>
         <SocialSideBtns></SocialSideBtns>
 
         <div className="flex min-h-[calc(100vh-5rem)] max-h-[calc(100vh-5rem)] max-w-[100vw] overflow-hidden">
@@ -57,12 +48,7 @@ export default function App() {
               })`,
             }}
           >
-            <PageOverlay
-              page={NavigationPages.HOME}
-              title="home"
-              icon={faHome}
-              scrollRef={scrollRef}
-            >
+            <PageOverlay page={NavigationPages.HOME} title="home" icon={faHome}>
               <HomePage></HomePage>
             </PageOverlay>
 
@@ -70,7 +56,6 @@ export default function App() {
               page={NavigationPages.SKILLS}
               title="skills"
               icon={faStar}
-              scrollRef={scrollRef}
             >
               <SkillsPage></SkillsPage>
             </PageOverlay>
@@ -79,7 +64,6 @@ export default function App() {
               page={NavigationPages.EXPERIENCE}
               title="experience"
               icon={faGraduationCap}
-              scrollRef={scrollRef}
             >
               <ExperiencePage></ExperiencePage>
             </PageOverlay>
@@ -88,7 +72,6 @@ export default function App() {
               page={NavigationPages.PROJECTS}
               title="projects"
               icon={faStar}
-              scrollRef={scrollRef}
             >
               <ProjectsPage></ProjectsPage>
             </PageOverlay>

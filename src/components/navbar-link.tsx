@@ -5,22 +5,19 @@ import { PropsWithChildren, useContext } from "react";
 import { NavigationPages } from "../types/navigation-pages";
 import { NavigationContext } from "../context/navigation-context";
 import { PagesConfig } from "../pages-config";
-import { motion, Variants } from "motion/react";
+import { motion } from "motion/react";
 
 interface Props {
   icon: IconProp;
   linkPage: NavigationPages;
+  delay: number;
 }
-
-const childVariant: Variants = {
-  hidden: { opacity: 0, y: 70 },
-  show: { opacity: 1, y: 0 },
-};
 
 export default function NavbarLink({
   icon,
   linkPage,
   children,
+  delay,
 }: PropsWithChildren<Props>) {
   const { navigationData, setNavigationData } = useContext(NavigationContext);
 
@@ -58,10 +55,11 @@ export default function NavbarLink({
   return (
     <motion.div
       className="flex"
-      variants={childVariant}
+      initial={{ opacity: 0, y: -70 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.5,
-        delay: 1,
+        delay: 2 + delay,
         type: "spring",
         stiffness: 70,
       }}

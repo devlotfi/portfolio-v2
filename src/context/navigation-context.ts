@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, createRef } from "react";
 import { PagesConfig } from "../pages-config";
 import { NavigationData } from "../types/navigation-data";
 import { NavigationPages } from "../types/navigation-pages";
@@ -15,6 +15,7 @@ const initialValue: NavigationContext = {
     zoomedOut: false,
     isNavigating: false,
     sidebarOpen: false,
+    scrollRef: createRef(),
   },
   setNavigationData() {},
 };

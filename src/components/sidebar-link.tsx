@@ -5,22 +5,19 @@ import { PropsWithChildren, useContext } from "react";
 import { NavigationPages } from "../types/navigation-pages";
 import { NavigationContext } from "../context/navigation-context";
 import { PagesConfig } from "../pages-config";
-import { motion, Variants } from "motion/react";
-
-const childVariant: Variants = {
-  hidden: { opacity: 0, y: 70 },
-  show: { opacity: 1, y: 0 },
-};
+import { motion } from "motion/react";
 
 interface Props {
   icon: IconProp;
   linkPage: NavigationPages;
+  delay: number;
 }
 
 export default function SidebarLink({
   icon,
   linkPage,
   children,
+  delay,
 }: PropsWithChildren<Props>) {
   const { navigationData, setNavigationData } = useContext(NavigationContext);
 
@@ -59,9 +56,11 @@ export default function SidebarLink({
   return (
     <motion.div
       className="flex"
-      variants={childVariant}
+      initial={{ opacity: 0, y: 70 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.2,
+        delay,
         type: "spring",
         stiffness: 70,
       }}

@@ -34,7 +34,7 @@ export default function HomePage() {
               type: "spring",
               stiffness: 150,
             }}
-            className="h-[15rem] lg:h-[23rem] self-start"
+            className="h-[15rem] lg:h-[19rem] self-start"
             src={Developer}
             alt="developer"
           />

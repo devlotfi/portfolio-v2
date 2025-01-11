@@ -1,4 +1,4 @@
-import { PropsWithChildren, RefObject, useContext } from "react";
+import { PropsWithChildren, useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { Card, cn } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +10,7 @@ interface Props {
   title: string;
   page: NavigationPages;
   icon: IconProp;
-  scrollRef: RefObject<HTMLDivElement | null>;
+  hideFooter?: boolean;
 }
 
 export default function PageOverlay({
@@ -18,7 +18,7 @@ export default function PageOverlay({
   icon,
   page,
   title,
-  scrollRef,
+  hideFooter,
 }: PropsWithChildren<Props>) {
   const { navigationData } = useContext(NavigationContext);
 
@@ -31,7 +31,7 @@ export default function PageOverlay({
     >
       <div
         className={cn(
-          "flex flex-col border border-divider card-gradient-bg-light card-gradient-bg-dark justify-center items-center z-10 absolute top-0 left-0 opacity-0 h-full w-full duration-200 rounded-[2rem]",
+          "flex flex-col space-y-[2rem] border border-divider card-gradient-bg-light card-gradient-bg-dark justify-center items-center z-10 absolute top-0 left-0 opacity-0 h-full w-full duration-500 rounded-[2rem]",
           navigationData.zoomedOut && "opacity-100",
           !navigationData.zoomedOut && "pointer-events-none"
         )}
@@ -51,12 +51,11 @@ export default function PageOverlay({
       </div>
 
       <div
-        ref={navigationData.page === page ? scrollRef : null}
+        ref={navigationData.page === page ? navigationData.scrollRef : null}
         className="flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw] overflow-y-auto scroll-smooth"
       >
         {page === navigationData.page ? children : null}
-
-        <Footer></Footer>
+        {page === navigationData.page && !hideFooter ? <Footer></Footer> : null}
       </div>
     </div>
   );

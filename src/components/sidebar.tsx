@@ -11,7 +11,6 @@ import { useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import SidebarLink from "./sidebar-link";
 import { NavigationPages } from "../types/navigation-pages";
-import { motion } from "motion/react";
 
 export default function Sidebar() {
   const { navigationData, setNavigationData } = useContext(NavigationContext);
@@ -50,31 +49,37 @@ export default function Sidebar() {
         </div>
 
         {navigationData.sidebarOpen ? (
-          <motion.div
-            initial="hidden"
-            animate="show"
-            transition={{
-              staggerChildren: 0.2,
-            }}
-            className="flex flex-col space-y-3 mt-[1rem]"
-          >
-            <SidebarLink icon={faInfoCircle} linkPage={NavigationPages.HOME}>
+          <div className="flex flex-col space-y-3 mt-[1rem]">
+            <SidebarLink
+              delay={0}
+              icon={faInfoCircle}
+              linkPage={NavigationPages.HOME}
+            >
               About me
             </SidebarLink>
 
-            <SidebarLink icon={faStar} linkPage={NavigationPages.SKILLS}>
+            <SidebarLink
+              delay={0.2}
+              icon={faStar}
+              linkPage={NavigationPages.SKILLS}
+            >
               Skills
             </SidebarLink>
             <SidebarLink
+              delay={0.4}
               icon={faGraduationCap}
               linkPage={NavigationPages.EXPERIENCE}
             >
               Experience
             </SidebarLink>
-            <SidebarLink icon={faList} linkPage={NavigationPages.PROJECTS}>
+            <SidebarLink
+              delay={0.6}
+              icon={faList}
+              linkPage={NavigationPages.PROJECTS}
+            >
               Projects
             </SidebarLink>
-          </motion.div>
+          </div>
         ) : null}
       </div>
     </>
