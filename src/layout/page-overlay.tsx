@@ -59,7 +59,12 @@ export default function PageOverlay({
 
         <div
           ref={navigationData.page === page ? navigationData.scrollRef : null}
-          className="flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw] overflow-y-auto scroll-smooth custom-scrollbar"
+          className={cn(
+            "flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw] overflow-y-auto scroll-smooth",
+            appliedTheme === ThemeOptions.LIGHT
+              ? "custom-scrollbar-light"
+              : "custom-scrollbar-dark"
+          )}
         >
           {page === navigationData.page ? children : null}
           {page === navigationData.page && !hideFooter ? (

@@ -80,21 +80,37 @@
 }
 
 @supports (scrollbar-color: auto) {
-  .custom-scrollbar {
-    scrollbar-color: #33a1c7 rgba(0, 0, 0, 0.3);
+  .custom-scrollbar-dark {
+    scrollbar-color: #33a1c7 #171717;
+  }
+  .custom-scrollbar-light {
+    scrollbar-color: #33a1c7 #ffffff;
   }
 }
 
 @supports selector(::-webkit-scrollbar) {
-  .custom-scrollbar {
+  .custom-scrollbar-light {
     scrollbar-color: auto !important;
   }
-  .custom-scrollbar::-webkit-scrollbar {
-    background: rgba(0, 0, 0, 0.3);
+  .custom-scrollbar-light::-webkit-scrollbar {
+    background: #ffffff;
     border-radius: 100px;
     width: 0.5rem;
   }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
+  .custom-scrollbar-light::-webkit-scrollbar-thumb {
+    background: linear-gradient(to top right, #3f6394, #2dbfe0) !important;
+    border-radius: 100px;
+  }
+
+  .custom-scrollbar-dark {
+    scrollbar-color: auto !important;
+  }
+  .custom-scrollbar-dark::-webkit-scrollbar {
+    background: #171717;
+    border-radius: 100px;
+    width: 0.5rem;
+  }
+  .custom-scrollbar-dark::-webkit-scrollbar-thumb {
     background: linear-gradient(to top right, #3f6394, #2dbfe0) !important;
     border-radius: 100px;
   }
