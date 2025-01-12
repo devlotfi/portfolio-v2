@@ -78,3 +78,24 @@
 .primary-bg {
   background-image: linear-gradient(to top right, #3f6394, #2dbfe0);
 }
+
+@supports (scrollbar-color: auto) {
+  .custom-scrollbar {
+    scrollbar-color: #33a1c7 rgba(0, 0, 0, 0.3);
+  }
+}
+
+@supports selector(::-webkit-scrollbar) {
+  .custom-scrollbar {
+    scrollbar-color: auto !important;
+  }
+  .custom-scrollbar::-webkit-scrollbar {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 100px;
+    width: 0.5rem;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(to top right, #3f6394, #2dbfe0) !important;
+    border-radius: 100px;
+  }
+}
