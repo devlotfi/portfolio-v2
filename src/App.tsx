@@ -48,9 +48,9 @@ export default function App() {
         <div className="flex min-h-[calc(100vh-5rem)] max-h-[calc(100vh-5rem)] max-w-[100vw] overflow-hidden">
           <motion.div
             className={cn(
-              "flex space-x-[10vw]",
+              "flex space-x-[10vw] will-change-[transform-origin,transform]",
               navigationData.isNavigating &&
-                "duration-1000 transition-[transform-origin,transform] will-change-[transform-origin,transform]"
+                "duration-1000 transition-[transform-origin,transform]"
             )}
             style={{
               transformOrigin: `${navigationData.transformOrigin} 50vh`,

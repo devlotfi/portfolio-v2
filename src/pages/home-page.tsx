@@ -32,10 +32,10 @@ export default function HomePage() {
             initial={{ rotate: 90, scale: 0, opacity: 0 }}
             animate={{ rotate: 0, scale: 1, opacity: 1 }}
             transition={{
-              duration: 3,
+              duration: 1,
               delay: 1,
               type: "spring",
-              stiffness: 150,
+              stiffness: 70,
             }}
             className="h-[15rem] lg:h-[19rem] self-start"
             src={Developer}
@@ -46,10 +46,10 @@ export default function HomePage() {
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{
-                duration: 0.7,
+                duration: 1,
                 delay: 1,
                 type: "spring",
-                stiffness: 150,
+                stiffness: 70,
               }}
               className="flex text-[20pt] font-bold primary-bg bg-clip-text text-transparent"
             >
@@ -59,10 +59,10 @@ export default function HomePage() {
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{
-                duration: 0.7,
+                duration: 1,
                 delay: 1.2,
                 type: "spring",
-                stiffness: 150,
+                stiffness: 70,
               }}
               className="flex text-[35pt] font-black"
             >
@@ -72,10 +72,10 @@ export default function HomePage() {
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{
-                duration: 0.7,
+                duration: 1,
                 delay: 1.5,
                 type: "spring",
-                stiffness: 150,
+                stiffness: 70,
               }}
               className="flex text-[15pt] opacity-70"
             >
@@ -89,7 +89,7 @@ export default function HomePage() {
                 duration: 0.7,
                 delay: 1.7,
                 type: "spring",
-                stiffness: 150,
+                stiffness: 70,
               }}
             >
               <Button
@@ -126,9 +126,8 @@ export default function HomePage() {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{
                 duration: 0.7,
-                type: "spring",
-                stiffness: 150,
               }}
+              viewport={{ once: true }}
             >
               I am a passionate full-stack web developer with a comprehensive
               background in both front-end and back-end development, as well as
@@ -142,9 +141,8 @@ export default function HomePage() {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{
                 duration: 0.7,
-                type: "spring",
-                stiffness: 150,
               }}
+              viewport={{ once: true }}
             >
               I am committed to continuous learning and staying updated with the
               latest industry trends to deliver high-quality and innovative
@@ -157,9 +155,8 @@ export default function HomePage() {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{
                 duration: 0.7,
-                type: "spring",
-                stiffness: 150,
               }}
+              viewport={{ once: true }}
             >
               I hold a Bachelor's degree in Information Systems and Software
               Engineering from{" "}
