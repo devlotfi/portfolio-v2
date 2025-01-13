@@ -35,7 +35,7 @@ export default function App() {
         style={{
           backgroundPosition: `0 0, 0 0, 0 0, ${navigationData.backgroundOffset} center, ${navigationData.backgroundOffset} center`,
           backgroundSize: `100% 100%, 100% 100%, 100% 100%, ${
-            navigationData.isNavigating
+            navigationData.zoomedOut
               ? "3rem 3rem, 3rem 3rem"
               : "5rem 5rem, 5rem 5rem"
           }`,
@@ -47,7 +47,11 @@ export default function App() {
 
         <div className="flex min-h-[calc(100vh-5rem)] max-h-[calc(100vh-5rem)] max-w-[100vw] overflow-hidden">
           <motion.div
-            className="flex duration-1000 space-x-[10vw] transition-[transform-origin,transform] will-change-[transform-origin,transform]"
+            className={cn(
+              "flex space-x-[10vw]",
+              navigationData.isNavigating &&
+                "duration-1000 transition-[transform-origin,transform] will-change-[transform-origin,transform]"
+            )}
             style={{
               transformOrigin: `${navigationData.transformOrigin} 50vh`,
               transform: `translateX(${navigationData.translateOffset}) scale(${

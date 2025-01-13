@@ -4,8 +4,8 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { PropsWithChildren, useContext } from "react";
 import { NavigationPages } from "../types/navigation-pages";
 import { NavigationContext } from "../context/navigation-context";
-import { PagesConfig } from "../pages-config";
 import { motion } from "motion/react";
+import useNavigate from "../hooks/use-navigate";
 
 interface Props {
   icon: IconProp;
@@ -19,39 +19,8 @@ export default function SidebarLink({
   delay,
   children,
 }: PropsWithChildren<Props>) {
-  const { navigationData, setNavigationData } = useContext(NavigationContext);
-
-  const navigate = () => {
-    if (navigationData.isNavigating || navigationData.page === linkPage) {
-      return;
-    }
-
-    const nextPage = PagesConfig[linkPage];
-
-    setNavigationData({
-      ...navigationData,
-      zoomedOut: true,
-      isNavigating: true,
-      sidebarOpen: false,
-    });
-    setTimeout(() => {
-      setNavigationData((navigationData) => ({
-        ...navigationData,
-        transformOrigin: nextPage.transformOrigin,
-        translateOffset: nextPage.translateOffset,
-        backgroundOffset: nextPage.backgroundOffset,
-        page: linkPage,
-      }));
-
-      setTimeout(() => {
-        setNavigationData((navigationData) => ({
-          ...navigationData,
-          zoomedOut: false,
-          isNavigating: false,
-        }));
-      }, 1000);
-    }, 1000);
-  };
+  const { navigationData } = useContext(NavigationContext);
+  const { navigate } = useNavigate();
 
   return (
     <motion.div
@@ -67,7 +36,7 @@ export default function SidebarLink({
     >
       <Button
         fullWidth
-        onPress={navigate}
+        onPress={() => navigate(linkPage)}
         variant="light"
         className="h-[3rem] font-bold"
         startContent={
