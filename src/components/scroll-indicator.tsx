@@ -43,7 +43,7 @@ export default function ScrollIndicator() {
               type: "spring",
               stiffness: 70,
             }}
-            className="fixed bottom-[3rem] right-[3rem] z-20"
+            className="fixed bottom-[2rem] right-[2rem] lg:bottom-[3rem] lg:right-[3rem] z-20"
           >
             <Button
               onPress={scrollToTop}
