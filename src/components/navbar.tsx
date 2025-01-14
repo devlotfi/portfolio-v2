@@ -1,5 +1,6 @@
 import {
   faBars,
+  faFileLines,
   faGraduationCap,
   faInfoCircle,
   faList,
@@ -14,16 +15,6 @@ import { useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "motion/react";
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2, // Delay between children animations
-    },
-  },
-};
 
 export default function Navbar() {
   const { setNavigationData } = useContext(NavigationContext);
@@ -73,15 +64,7 @@ export default function Navbar() {
         </motion.div>
       </div>
 
-      <motion.div
-        initial="hidden"
-        animate="show"
-        variants={staggerContainer}
-        transition={{
-          staggerChildren: 0.2,
-        }}
-        className="space-x-2 hidden lg:flex"
-      >
+      <div className="space-x-2 hidden lg:flex">
         <NavbarLink
           delay={0}
           icon={faInfoCircle}
@@ -106,7 +89,14 @@ export default function Navbar() {
         >
           Projects
         </NavbarLink>
-      </motion.div>
+        <NavbarLink
+          delay={0.8}
+          icon={faFileLines}
+          linkPage={NavigationPages.RESUME}
+        >
+          Resume
+        </NavbarLink>
+      </div>
 
       <ThemeDropdown></ThemeDropdown>
     </div>

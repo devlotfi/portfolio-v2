@@ -22,4 +22,9 @@ export const PagesConfig: { [key in NavigationPages]: PageAttributes } = {
     transformOrigin: "calc(350vw + 30vw)",
     translateOffset: "calc(-300vw + -30vw)",
   },
+  [NavigationPages.RESUME]: {
+    backgroundOffset: "-20rem",
+    transformOrigin: "calc(450vw + 40vw)",
+    translateOffset: "calc(-400vw + -40vw)",
+  },
 };

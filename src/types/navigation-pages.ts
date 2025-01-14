@@ -3,4 +3,5 @@ export enum NavigationPages {
   SKILLS = "SKILLS",
   EXPERIENCE = "EXPERIENCE",
   PROJECTS = "PROJECTS",
+  RESUME = "RESUME",
 }

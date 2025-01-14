@@ -8,6 +8,7 @@ import { motion } from "motion/react";
 import PageOverlay from "./layout/page-overlay";
 import HomePage from "./pages/home-page";
 import {
+  faFileLines,
   faGraduationCap,
   faHome,
   faStar,
@@ -19,6 +20,7 @@ import ExperiencePage from "./pages/experience-page";
 import ProjectsPage from "./pages/projects-page";
 import ScrollIndicator from "./components/scroll-indicator";
 import SocialSideBtns from "./components/social-side-btns";
+import ResumePage from "./pages/resume-page";
 
 export default function App() {
   const { appliedTheme } = useContext(ThemeContext);
@@ -42,7 +44,9 @@ export default function App() {
         }}
       >
         <Navbar></Navbar>
-        <ScrollIndicator></ScrollIndicator>
+        <ScrollIndicator
+          hideWhenIn={[NavigationPages.RESUME]}
+        ></ScrollIndicator>
         <SocialSideBtns></SocialSideBtns>
 
         <div className="flex min-h-[calc(100vh-5rem)] max-h-[calc(100vh-5rem)] max-w-[100vw] overflow-hidden">
@@ -54,9 +58,11 @@ export default function App() {
             )}
             style={{
               transformOrigin: `${navigationData.transformOrigin} 50vh`,
-              transform: `translateX(${navigationData.translateOffset}) scale(${
+              transform: `translate3d(${
+                navigationData.translateOffset
+              }, 0, 0) scale3d(${navigationData.zoomedOut ? "0.5" : "1"}, ${
                 navigationData.zoomedOut ? "0.5" : "1"
-              })`,
+              }, 100%)`,
             }}
           >
             <PageOverlay page={NavigationPages.HOME} title="home" icon={faHome}>
@@ -85,6 +91,15 @@ export default function App() {
               icon={faStar}
             >
               <ProjectsPage></ProjectsPage>
+            </PageOverlay>
+
+            <PageOverlay
+              page={NavigationPages.RESUME}
+              title="resume"
+              icon={faFileLines}
+              hideFooter
+            >
+              <ResumePage></ResumePage>
             </PageOverlay>
           </motion.div>
         </div>

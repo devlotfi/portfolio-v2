@@ -1,4 +1,5 @@
 import {
+  faFileLines,
   faGraduationCap,
   faInfoCircle,
   faList,
@@ -84,6 +85,13 @@ export default function Sidebar() {
               linkPage={NavigationPages.PROJECTS}
             >
               Projects
+            </SidebarLink>
+            <SidebarLink
+              delay={0.8}
+              icon={faFileLines}
+              linkPage={NavigationPages.RESUME}
+            >
+              Resume
             </SidebarLink>
           </div>
         ) : null}

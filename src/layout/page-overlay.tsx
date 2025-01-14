@@ -66,9 +66,11 @@ export default function PageOverlay({
               : "custom-scrollbar-dark"
           )}
         >
-          {page === navigationData.page ? children : null}
-          {page === navigationData.page && !hideFooter ? (
-            <Footer></Footer>
+          {page === navigationData.page && !navigationData.zoomedOut ? (
+            <>
+              {children}
+              {!hideFooter ? <Footer></Footer> : null}
+            </>
           ) : null}
         </div>
       </div>
