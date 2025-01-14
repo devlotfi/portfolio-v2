@@ -46,9 +46,10 @@ export default function ScrollIndicator({ hideWhenIn }: Props) {
             <motion.div
               initial={{ rotate: 90, scale: 0, opacity: 0 }}
               animate={{ rotate: 0, scale: 1, opacity: 1 }}
+              whileHover={{ scale: 1.1 }}
               exit={{ rotate: 90, scale: 0, opacity: 0 }}
               transition={{
-                duration: 5,
+                duration: 3,
                 type: "spring",
                 stiffness: 70,
               }}

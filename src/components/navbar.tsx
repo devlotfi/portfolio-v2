@@ -64,39 +64,34 @@ export default function Navbar() {
         </motion.div>
       </div>
 
-      <div className="space-x-2 hidden lg:flex">
-        <NavbarLink
-          delay={0}
-          icon={faInfoCircle}
-          linkPage={NavigationPages.HOME}
-        >
+      <motion.div
+        className="space-x-2 hidden lg:flex"
+        initial="hidden"
+        animate="visible"
+        transition={{
+          delayChildren: 2,
+          staggerChildren: 0.2,
+        }}
+      >
+        <NavbarLink icon={faInfoCircle} linkPage={NavigationPages.HOME}>
           About me
         </NavbarLink>
-        <NavbarLink delay={0.2} icon={faStar} linkPage={NavigationPages.SKILLS}>
+        <NavbarLink icon={faStar} linkPage={NavigationPages.SKILLS}>
           Skills
         </NavbarLink>
         <NavbarLink
-          delay={0.4}
           icon={faGraduationCap}
           linkPage={NavigationPages.EXPERIENCE}
         >
           Experience
         </NavbarLink>
-        <NavbarLink
-          delay={0.6}
-          icon={faList}
-          linkPage={NavigationPages.PROJECTS}
-        >
+        <NavbarLink icon={faList} linkPage={NavigationPages.PROJECTS}>
           Projects
         </NavbarLink>
-        <NavbarLink
-          delay={0.8}
-          icon={faFileLines}
-          linkPage={NavigationPages.RESUME}
-        >
+        <NavbarLink icon={faFileLines} linkPage={NavigationPages.RESUME}>
           Resume
         </NavbarLink>
-      </div>
+      </motion.div>
 
       <ThemeDropdown></ThemeDropdown>
     </div>

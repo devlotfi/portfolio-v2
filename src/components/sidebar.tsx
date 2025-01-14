@@ -14,6 +14,7 @@ import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
 import SidebarLink from "./sidebar-link";
 import { NavigationPages } from "../types/navigation-pages";
+import { motion } from "motion/react";
 
 export default function Sidebar() {
   const { appliedTheme } = useContext(ThemeContext);
@@ -22,8 +23,14 @@ export default function Sidebar() {
   return (
     <>
       <div
+        onClick={() =>
+          setNavigationData((navigationData) => ({
+            ...navigationData,
+            sidebarOpen: false,
+          }))
+        }
         className={cn(
-          "flex h-screen w-screen fixed top-0 left-0 z-20 bg-black opacity-50 duration-300",
+          "flex h-screen w-screen fixed top-0 left-0 z-20 bg-black opacity-50 duration-300 cursor-pointer",
           !navigationData.sidebarOpen && "opacity-0 pointer-events-none"
         )}
       ></div>
@@ -56,44 +63,34 @@ export default function Sidebar() {
         </div>
 
         {navigationData.sidebarOpen ? (
-          <div className="flex flex-col space-y-3 mt-[1rem]">
-            <SidebarLink
-              delay={0}
-              icon={faInfoCircle}
-              linkPage={NavigationPages.HOME}
-            >
+          <motion.div
+            className="flex flex-col space-y-3 mt-[1rem]"
+            initial="hidden"
+            animate="visible"
+            transition={{
+              staggerChildren: 0.2,
+            }}
+          >
+            <SidebarLink icon={faInfoCircle} linkPage={NavigationPages.HOME}>
               About me
             </SidebarLink>
 
-            <SidebarLink
-              delay={0.2}
-              icon={faStar}
-              linkPage={NavigationPages.SKILLS}
-            >
+            <SidebarLink icon={faStar} linkPage={NavigationPages.SKILLS}>
               Skills
             </SidebarLink>
             <SidebarLink
-              delay={0.4}
               icon={faGraduationCap}
               linkPage={NavigationPages.EXPERIENCE}
             >
               Experience
             </SidebarLink>
-            <SidebarLink
-              delay={0.6}
-              icon={faList}
-              linkPage={NavigationPages.PROJECTS}
-            >
+            <SidebarLink icon={faList} linkPage={NavigationPages.PROJECTS}>
               Projects
             </SidebarLink>
-            <SidebarLink
-              delay={0.8}
-              icon={faFileLines}
-              linkPage={NavigationPages.RESUME}
-            >
+            <SidebarLink icon={faFileLines} linkPage={NavigationPages.RESUME}>
               Resume
             </SidebarLink>
-          </div>
+          </motion.div>
         ) : null}
       </div>
     </>

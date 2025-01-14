@@ -5,29 +5,42 @@ import {
   faLinkedin,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { PropsWithChildren } from "react";
+import { ComponentPropsWithRef } from "react";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "motion/react";
 
 interface SocialIconsProps {
   url: string;
-  delay: number;
 }
 
 function SocialIcon({
   url,
   children,
-  delay,
-}: PropsWithChildren<SocialIconsProps>) {
+  ref,
+}: ComponentPropsWithRef<"div"> & SocialIconsProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, rotate: 90, scale: 0 }}
-      animate={{ opacity: 1, rotate: 0, scale: 1 }}
-      transition={{
-        duration: 0.5,
-        delay: 2 + delay,
-        type: "spring",
-        stiffness: 70,
+      ref={ref}
+      whileHover={{
+        rotate: 30,
+        paddingTop: "1rem",
+        paddingBottom: "1rem",
+        transition: {
+          duration: 0.3,
+        },
+      }}
+      variants={{
+        hidden: {
+          opacity: 0,
+          rotate: 90,
+        },
+        visible: {
+          opacity: 1,
+          rotate: 0,
+          transition: {
+            duration: 0.5,
+          },
+        },
       }}
     >
       <Link href={url} target="_blank">
@@ -43,24 +56,31 @@ function SocialIcon({
   );
 }
 
+const MotionSocialIcon = motion.create(SocialIcon);
+
 export default function SocialSideBtns() {
   return (
-    <div className="hidden lg:flex flex-col items-center space-y-2 fixed left-[2rem] top-[50vh] translate-y-[-50%] z-20">
-      <SocialIcon delay={0.6} url="https://github.com/devlotfi">
+    <motion.div
+      className="hidden lg:flex flex-col items-center space-y-2 fixed left-[2rem] top-[50vh] translate-y-[-50%] z-20"
+      initial="hidden"
+      animate="visible"
+      transition={{
+        delayChildren: 2,
+        staggerChildren: 0.2,
+      }}
+    >
+      <MotionSocialIcon url="https://github.com/devlotfi">
         <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon>
-      </SocialIcon>
-      <SocialIcon delay={0.4} url="mailto:debbal.lotfi.dev@gmail.com">
+      </MotionSocialIcon>
+      <MotionSocialIcon url="mailto:debbal.lotfi.dev@gmail.com">
         <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
-      </SocialIcon>
-      <SocialIcon
-        delay={0.2}
-        url="https://www.linkedin.com/in/lotfi-debbal-64489a2ba/"
-      >
+      </MotionSocialIcon>
+      <MotionSocialIcon url="https://www.linkedin.com/in/lotfi-debbal-64489a2ba/">
         <FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon>
-      </SocialIcon>
-      <SocialIcon delay={0} url="https://x.com/LDebbal">
+      </MotionSocialIcon>
+      <MotionSocialIcon url="https://x.com/LDebbal">
         <FontAwesomeIcon icon={faXTwitter}></FontAwesomeIcon>
-      </SocialIcon>
-    </div>
+      </MotionSocialIcon>
+    </motion.div>
   );
 }
