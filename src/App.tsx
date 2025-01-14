@@ -27,8 +27,6 @@ export default function App() {
   const { appliedTheme } = useContext(ThemeContext);
   const { navigationData } = useContext(NavigationContext);
 
-  console.log("render app");
-
   return (
     <>
       <Sidebar></Sidebar>

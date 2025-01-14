@@ -24,8 +24,6 @@ export default function HomePage() {
     }
   };
 
-  console.log("render home");
-
   return (
     <div className="flex flex-col home-page-lines">
       <div className="flex flex-col min-h-[calc(100vh-5rem)] pt-[2rem] lg:pt-0 lg:justify-center items-center">

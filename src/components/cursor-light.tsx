@@ -41,7 +41,7 @@ export default function CusorLight() {
     <motion.div
       ref={cursorRef}
       className={cn(
-        "flex fixed h-[25rem] w-[25rem]",
+        "flex fixed h-[50vh] w-[50vh] mouse-cursor",
         appliedTheme === ThemeOptions.LIGHT ? "cursor-light" : "cursor-dark"
       )}
       style={{ x, y }}

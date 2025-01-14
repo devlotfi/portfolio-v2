@@ -30,7 +30,7 @@ export default function ScrollIndicator({ hideWhenIn }: Props) {
 
   if (
     (!hideWhenIn || hideWhenIn.indexOf(navigationData.page) === -1) &&
-    !navigationData.zoomedOut
+    !navigationData.isNavigating
   ) {
     return (
       <>

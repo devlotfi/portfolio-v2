@@ -25,8 +25,6 @@ export default function PageOverlay({
   const { appliedTheme } = useContext(ThemeContext);
   const { navigationData } = useContext(NavigationContext);
 
-  console.log("render overlay");
-
   return (
     <>
       <div
@@ -60,7 +58,6 @@ export default function PageOverlay({
         </div>
 
         <ScrollShadow
-          orientation="vertical"
           ref={navigationData.page === page ? navigationData.scrollRef : null}
           className={cn(
             "flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw] overflow-y-auto scroll-smooth",
