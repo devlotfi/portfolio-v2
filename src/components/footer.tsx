@@ -18,7 +18,11 @@ interface SocialIconsProps {
 function SocialIcon({ url, children }: PropsWithChildren<SocialIconsProps>) {
   return (
     <Link href={url} target="_blank">
-      <Button variant="light" isIconOnly className="text-[22pt]">
+      <Button
+        variant="light"
+        isIconOnly
+        className="text-[22pt] pointer-events-none"
+      >
         {children}
       </Button>
     </Link>

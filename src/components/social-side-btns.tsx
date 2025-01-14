@@ -31,7 +31,11 @@ function SocialIcon({
       }}
     >
       <Link href={url} target="_blank">
-        <Button variant="light" isIconOnly className="text-[20pt]">
+        <Button
+          variant="light"
+          isIconOnly
+          className="text-[20pt] pointer-events-none"
+        >
           {children}
         </Button>
       </Link>
