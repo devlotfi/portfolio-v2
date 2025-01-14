@@ -21,10 +21,13 @@ import ProjectsPage from "./pages/projects-page";
 import ScrollIndicator from "./components/scroll-indicator";
 import SocialSideBtns from "./components/social-side-btns";
 import ResumePage from "./pages/resume-page";
+import CusorLight from "./components/cursor-light";
 
 export default function App() {
   const { appliedTheme } = useContext(ThemeContext);
   const { navigationData } = useContext(NavigationContext);
+
+  console.log("render app");
 
   return (
     <>
@@ -44,6 +47,7 @@ export default function App() {
         }}
       >
         <Navbar></Navbar>
+        <CusorLight></CusorLight>
         <ScrollIndicator
           hideWhenIn={[NavigationPages.RESUME]}
         ></ScrollIndicator>

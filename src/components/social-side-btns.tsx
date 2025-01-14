@@ -25,6 +25,7 @@ function SocialIcon({
         rotate: 30,
         paddingTop: "1rem",
         paddingBottom: "1rem",
+        scale: 1.5,
         transition: {
           duration: 0.3,
         },

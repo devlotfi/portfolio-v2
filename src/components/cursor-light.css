@@ -1,0 +1,7 @@
+.cursor-light {
+  background: radial-gradient(rgba(50, 162, 199, 0.25), transparent 70%);
+}
+
+.cursor-dark {
+  background: radial-gradient(rgba(50, 162, 199, 0.1), transparent 70%);
+}

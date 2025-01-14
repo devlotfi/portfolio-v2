@@ -1,6 +1,6 @@
 import { PropsWithChildren, useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
-import { Card, cn } from "@nextui-org/react";
+import { Card, cn, ScrollShadow } from "@nextui-org/react";
 import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,6 +24,8 @@ export default function PageOverlay({
 }: PropsWithChildren<Props>) {
   const { appliedTheme } = useContext(ThemeContext);
   const { navigationData } = useContext(NavigationContext);
+
+  console.log("render overlay");
 
   return (
     <>
@@ -57,7 +59,8 @@ export default function PageOverlay({
           </div>
         </div>
 
-        <div
+        <ScrollShadow
+          orientation="vertical"
           ref={navigationData.page === page ? navigationData.scrollRef : null}
           className={cn(
             "flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw] overflow-y-auto scroll-smooth",
@@ -72,7 +75,7 @@ export default function PageOverlay({
               {!hideFooter ? <Footer></Footer> : null}
             </>
           ) : null}
-        </div>
+        </ScrollShadow>
       </div>
     </>
   );

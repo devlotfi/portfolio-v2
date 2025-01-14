@@ -24,16 +24,34 @@ export default function HomePage() {
     }
   };
 
+  console.log("render home");
+
   return (
     <div className="flex flex-col home-page-lines">
       <div className="flex flex-col min-h-[calc(100vh-5rem)] pt-[2rem] lg:pt-0 lg:justify-center items-center">
-        <div className="flex px-[2rem] flex-col lg:flex-row max-w-screen-md space-x-5">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          transition={{
+            staggerChildren: 0.2,
+          }}
+          className="flex px-[2rem] flex-col lg:flex-row max-w-screen-md space-x-5"
+        >
           <motion.img
-            initial={{ rotate: 90, scale: 0, opacity: 0 }}
-            animate={{ rotate: 0, scale: 1, opacity: 1 }}
+            variants={{
+              hidden: {
+                rotate: 90,
+                scale: 0,
+                opacity: 0,
+              },
+              visible: {
+                rotate: 0,
+                scale: 1,
+                opacity: 1,
+              },
+            }}
             transition={{
               duration: 1,
-              delay: 1,
               type: "spring",
               stiffness: 70,
             }}
@@ -43,11 +61,18 @@ export default function HomePage() {
           />
           <div className="flex flex-col">
             <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
+              variants={{
+                hidden: {
+                  y: 50,
+                  opacity: 0,
+                },
+                visible: {
+                  y: 0,
+                  opacity: 1,
+                },
+              }}
               transition={{
                 duration: 1,
-                delay: 1,
                 type: "spring",
                 stiffness: 70,
               }}
@@ -56,11 +81,18 @@ export default function HomePage() {
               Welcome, my name is
             </motion.div>
             <motion.div
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
+              variants={{
+                hidden: {
+                  y: 50,
+                  opacity: 0,
+                },
+                visible: {
+                  y: 0,
+                  opacity: 1,
+                },
+              }}
               transition={{
                 duration: 1,
-                delay: 1.2,
                 type: "spring",
                 stiffness: 70,
               }}
@@ -69,11 +101,18 @@ export default function HomePage() {
               Debbal Lotfi
             </motion.div>
             <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
+              variants={{
+                hidden: {
+                  y: 50,
+                  opacity: 0,
+                },
+                visible: {
+                  y: 0,
+                  opacity: 1,
+                },
+              }}
               transition={{
                 duration: 1,
-                delay: 1.5,
                 type: "spring",
                 stiffness: 70,
               }}
@@ -83,11 +122,22 @@ export default function HomePage() {
               digital solutions
             </motion.div>
             <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
+              className="self-start"
+              variants={{
+                hidden: {
+                  y: 50,
+                  opacity: 0,
+                },
+                visible: {
+                  y: 0,
+                  opacity: 1,
+                },
+              }}
+              whileHover={{
+                scale: 1.1,
+              }}
               transition={{
                 duration: 0.7,
-                delay: 1.7,
                 type: "spring",
                 stiffness: 70,
               }}
@@ -104,7 +154,7 @@ export default function HomePage() {
               </Button>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
       <div
         ref={aboutMeRef}
