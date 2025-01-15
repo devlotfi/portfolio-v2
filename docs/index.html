@@ -12,15 +12,6 @@
     />
     <title>Debbal Lotfi's Portfolio</title>
     <style>
-      @keyframes background {
-        from {
-          background-position: 0 0, 0 100vh, 0 100vh;
-        }
-        to {
-          background-position: 0 0, 0 0, 0 0;
-        }
-      }
-
       #initial-loading {
         position: fixed;
         min-height: 100vh;
@@ -30,15 +21,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: 1s ease;
-        animation: background 2s ease;
-        pointer-events: none;
+        transition: 1s ease opacity;
         z-index: 1000;
       }
 
       .initial-loading-bg-dark {
         background-color: #192131;
-        background-image: radial-gradient(transparent, #192131 50%),
+        background-image: radial-gradient(transparent, #192131 30%),
           linear-gradient(#ffffff34 1px, transparent 1px),
           linear-gradient(to right, #ffffff34 1px, transparent 1px);
         background-size: 100% 100%, 5rem 5rem, 5rem 5rem;
@@ -46,7 +35,7 @@
       }
       .initial-loading-bg-light {
         background-color: #ffffff;
-        background-image: radial-gradient(transparent, #ffffff 50%),
+        background-image: radial-gradient(transparent, #ffffff 30%),
           linear-gradient(#39475b71 1px, transparent 1px),
           linear-gradient(to right, #39475b71 1px, transparent 1px);
         background-size: 100% 100%, 5rem 5rem, 5rem 5rem;
@@ -54,6 +43,7 @@
       }
 
       .initial-loading-hidden {
+        pointer-events: none;
         opacity: 0;
       }
 
@@ -103,9 +93,9 @@
         animation: line-dark 2s ease;
       }
     </style>
-    <script type="module" crossorigin src="/portfolio-v2/assets/index-BBbyXIcr.js"></script>
+    <script type="module" crossorigin src="/portfolio-v2/assets/index-DnRQn2Re.js"></script>
     <link rel="modulepreload" crossorigin href="/portfolio-v2/assets/nextui-ClVRno2R.js">
-    <link rel="stylesheet" crossorigin href="/portfolio-v2/assets/index-B33reQvs.css">
+    <link rel="stylesheet" crossorigin href="/portfolio-v2/assets/index-DaTs3IgS.css">
   </head>
   <body id="theme-provider">
     <div id="initial-loading">
@@ -134,31 +124,41 @@
       const logoD = document.getElementById("initial-loading-logo-d");
       const theme = localStorage.getItem("THEME");
 
-      if (theme === "LIGHT") {
+      if (
+        theme === "LIGHT" ||
+        (window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: light)").matches)
+      ) {
         initialLoading.classList.add("initial-loading-bg-light");
-        logoL.classList.add("initial-loading-logo-light");
-        logoD.classList.add("initial-loading-logo-light");
-      } else {
+      } else if (
+        theme === "DARK" ||
+        (window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
         initialLoading.classList.add("initial-loading-bg-dark");
-        logoL.classList.add("initial-loading-logo-dark");
-        logoD.classList.add("initial-loading-logo-dark");
       }
 
-      let windowLoaded = false;
-      let animationFinished = false;
       window.addEventListener("load", () => {
-        if (animationFinished) {
-          initialLoading.classList.add("initial-loading-hidden");
+        if (
+          theme === "LIGHT" ||
+          (window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: light)").matches)
+        ) {
+          logoL.classList.add("initial-loading-logo-light");
+          logoD.classList.add("initial-loading-logo-light");
+        } else if (
+          theme === "DARK" ||
+          (window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          logoL.classList.add("initial-loading-logo-dark");
+          logoD.classList.add("initial-loading-logo-dark");
         }
-        windowLoaded = true;
-      });
 
-      setTimeout(() => {
-        if (windowLoaded) {
+        setTimeout(() => {
           initialLoading.classList.add("initial-loading-hidden");
-        }
-        animationFinished = true;
-      }, 2000);
+        }, 2000);
+      });
     </script>
   </body>
 </html>

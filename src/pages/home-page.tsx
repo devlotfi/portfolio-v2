@@ -35,24 +35,7 @@ export default function HomePage() {
           }}
           className="flex px-[2rem] flex-col lg:flex-row max-w-screen-md space-x-5"
         >
-          <motion.img
-            variants={{
-              hidden: {
-                rotate: 90,
-                scale: 0,
-                opacity: 0,
-              },
-              visible: {
-                rotate: 0,
-                scale: 1,
-                opacity: 1,
-              },
-            }}
-            transition={{
-              duration: 1,
-              type: "spring",
-              stiffness: 70,
-            }}
+          <img
             className="h-[15rem] lg:h-[19rem] self-start"
             src={Developer}
             alt="developer"
@@ -158,68 +141,68 @@ export default function HomePage() {
         ref={aboutMeRef}
         className="flex flex-col justify-center items-center min-h-[calc(100vh-5rem)] px-[1rem] py-[10rem]"
       >
-        <Card
-          className={cn(
-            "max-w-screen-md border border-divider",
-            appliedTheme === ThemeOptions.LIGHT
-              ? "card-gradient-bg-light"
-              : "card-gradient-bg-dark"
-          )}
-          fullWidth
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={{
+            hidden: {
+              y: 50,
+              opacity: 0,
+            },
+            visible: {
+              y: 0,
+              opacity: 1,
+            },
+          }}
+          transition={{
+            duration: 1,
+            type: "spring",
+            stiffness: 70,
+          }}
         >
-          <CardBody className="p-[1.5rem] space-y-3 overflow-hidden">
-            <Heading icon={faInfoCircle}>About me</Heading>
-            <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.7,
-              }}
-              viewport={{ once: true }}
-            >
-              I am a passionate full-stack web developer with a comprehensive
-              background in both front-end and back-end development, as well as
-              mobile development. Throughout my career, I have worked on a
-              diverse range of projects, building robust and scalable web and
-              mobile applications. My expertise spans designing intuitive user
-              interfaces, developing efficient server-side logic.
-            </motion.div>
-            <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.7,
-              }}
-              viewport={{ once: true }}
-            >
-              I am committed to continuous learning and staying updated with the
-              latest industry trends to deliver high-quality and innovative
-              solutions. Whether working on a solo project or collaborating with
-              a team, I strive to create user-centric applications that meet
-              business objectives and provide exceptional user experiences.
-            </motion.div>
-            <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.7,
-              }}
-              viewport={{ once: true }}
-            >
-              I hold a Bachelor's degree in Information Systems and Software
-              Engineering from{" "}
-              <a
-                className="inline underline primary-bg bg-clip-text text-transparent"
-                href="https://www.usthb.dz/"
-                target="_blank"
-              >
-                USTHB University
-              </a>
-              , where I developed a strong foundation in software engineering
-              principles.
-            </motion.div>
-          </CardBody>
-        </Card>
+          <Card
+            className={cn(
+              "max-w-screen-md border border-divider",
+              appliedTheme === ThemeOptions.LIGHT
+                ? "card-gradient-bg-light"
+                : "card-gradient-bg-dark"
+            )}
+            fullWidth
+          >
+            <CardBody className="p-[1.5rem] space-y-3 overflow-hidden">
+              <Heading icon={faInfoCircle}>About me</Heading>
+              <div>
+                I am a passionate full-stack web developer with a comprehensive
+                background in both front-end and back-end development, as well
+                as mobile development. Throughout my career, I have worked on a
+                diverse range of projects, building robust and scalable web and
+                mobile applications. My expertise spans designing intuitive user
+                interfaces, developing efficient server-side logic.
+              </div>
+              <div>
+                I am committed to continuous learning and staying updated with
+                the latest industry trends to deliver high-quality and
+                innovative solutions. Whether working on a solo project or
+                collaborating with a team, I strive to create user-centric
+                applications that meet business objectives and provide
+                exceptional user experiences.
+              </div>
+              <div>
+                I hold a Bachelor's degree in Information Systems and Software
+                Engineering from{" "}
+                <a
+                  className="inline underline primary-bg bg-clip-text text-transparent"
+                  href="https://www.usthb.dz/"
+                  target="_blank"
+                >
+                  USTHB University
+                </a>
+                , where I developed a strong foundation in software engineering
+                principles.
+              </div>
+            </CardBody>
+          </Card>
+        </motion.div>
       </div>
     </div>
   );
