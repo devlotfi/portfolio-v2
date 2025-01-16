@@ -1,6 +1,5 @@
 import {
   faBars,
-  faFileLines,
   faGraduationCap,
   faInfoCircle,
   faList,
@@ -87,9 +86,6 @@ export default function Navbar() {
         </NavbarLink>
         <NavbarLink icon={faList} linkPage={NavigationPages.PROJECTS}>
           Projects
-        </NavbarLink>
-        <NavbarLink icon={faFileLines} linkPage={NavigationPages.RESUME}>
-          Resume
         </NavbarLink>
       </motion.div>
 

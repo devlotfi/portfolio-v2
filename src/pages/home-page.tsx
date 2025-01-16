@@ -1,9 +1,10 @@
 import {
   faAngleDoubleDown,
+  faFileLines,
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Card, CardBody, cn } from "@nextui-org/react";
+import { Button, Card, CardBody, cn, Link } from "@nextui-org/react";
 import Developer from "../assets/developer.svg";
 import { useContext, useRef } from "react";
 import { ThemeContext } from "../context/theme-context";
@@ -102,38 +103,78 @@ export default function HomePage() {
               A Full-Stack Software Engineer crafting scalable and efficient
               digital solutions
             </motion.div>
-            <motion.div
-              className="self-start"
-              variants={{
-                hidden: {
-                  y: 50,
-                  opacity: 0,
-                },
-                visible: {
-                  y: 0,
-                  opacity: 1,
-                },
-              }}
-              whileHover={{
-                scale: 1.1,
-              }}
-              transition={{
-                duration: 0.7,
-                type: "spring",
-                stiffness: 70,
-              }}
-            >
-              <Button
-                color="primary"
-                className="primary-bg self-start mt-[1rem]"
-                startContent={
-                  <FontAwesomeIcon icon={faAngleDoubleDown}></FontAwesomeIcon>
-                }
-                onPress={scrollToAboutMe}
+            <div className="flex space-x-2">
+              <motion.div
+                className="self-start"
+                variants={{
+                  hidden: {
+                    y: 50,
+                    opacity: 0,
+                  },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                  },
+                }}
+                whileHover={{
+                  scale: 1.1,
+                }}
+                transition={{
+                  duration: 0.7,
+                  type: "spring",
+                  stiffness: 70,
+                }}
               >
-                About me
-              </Button>
-            </motion.div>
+                <Button
+                  color="primary"
+                  className="primary-bg self-start mt-[1rem]"
+                  startContent={
+                    <FontAwesomeIcon icon={faAngleDoubleDown}></FontAwesomeIcon>
+                  }
+                  onPress={scrollToAboutMe}
+                >
+                  About me
+                </Button>
+              </motion.div>
+              <motion.div
+                className="self-start"
+                variants={{
+                  hidden: {
+                    y: 50,
+                    opacity: 0,
+                  },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                  },
+                }}
+                whileHover={{
+                  scale: 1.1,
+                }}
+                transition={{
+                  duration: 0.7,
+                  type: "spring",
+                  stiffness: 70,
+                }}
+              >
+                <Link
+                  href={`${import.meta.env.BASE_URL}resume.pdf`}
+                  target="_blank"
+                >
+                  <Button
+                    color="default"
+                    variant="bordered"
+                    className="self-start mt-[1rem] border-foreground text-foreground pointer-events-none"
+                    startContent={
+                      <FontAwesomeIcon icon={faFileLines}></FontAwesomeIcon>
+                    }
+                    onPress={scrollToAboutMe}
+                  >
+                    Resume
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>

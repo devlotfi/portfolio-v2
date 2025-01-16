@@ -8,9 +8,9 @@ import { motion } from "motion/react";
 import PageOverlay from "./layout/page-overlay";
 import HomePage from "./pages/home-page";
 import {
-  faFileLines,
   faGraduationCap,
   faHome,
+  faList,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavigationPages } from "./types/navigation-pages";
@@ -20,7 +20,6 @@ import ExperiencePage from "./pages/experience-page";
 import ProjectsPage from "./pages/projects-page";
 import ScrollIndicator from "./components/scroll-indicator";
 import SocialSideBtns from "./components/social-side-btns";
-import ResumePage from "./pages/resume-page";
 import CusorLight from "./components/cursor-light";
 
 export default function App() {
@@ -46,9 +45,7 @@ export default function App() {
       >
         <Navbar></Navbar>
         <CusorLight></CusorLight>
-        <ScrollIndicator
-          hideWhenIn={[NavigationPages.RESUME]}
-        ></ScrollIndicator>
+        <ScrollIndicator></ScrollIndicator>
         <SocialSideBtns></SocialSideBtns>
 
         <div className="flex min-h-[calc(100vh-5rem)] max-h-[calc(100vh-5rem)] max-w-[100vw] overflow-hidden">
@@ -90,18 +87,9 @@ export default function App() {
             <PageOverlay
               page={NavigationPages.PROJECTS}
               title="projects"
-              icon={faStar}
+              icon={faList}
             >
               <ProjectsPage></ProjectsPage>
-            </PageOverlay>
-
-            <PageOverlay
-              page={NavigationPages.RESUME}
-              title="resume"
-              icon={faFileLines}
-              hideFooter
-            >
-              <ResumePage></ResumePage>
             </PageOverlay>
           </motion.div>
         </div>
