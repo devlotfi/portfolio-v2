@@ -58,7 +58,6 @@
       transparent 80%
     ),
     #1f232b;
-  border: 1px solid #3c3c3c;
 }
 .card-outline-dark {
   border: 1px solid hsl(var(--nextui-divider));

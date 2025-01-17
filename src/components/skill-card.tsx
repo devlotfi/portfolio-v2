@@ -13,20 +13,23 @@ export default function SkillCard({ title, image }: Props) {
 
   return (
     <Card
+      shadow="none"
       className={cn(
-        "flex flex-col border-divider",
+        "flex flex-col border border-divider",
         appliedTheme === ThemeOptions.LIGHT
           ? "card-gradient-bg-light"
           : "card-gradient-bg-dark"
       )}
       isPressable
     >
-      <div className="flex h-[4rem] w-[4rem] justify-center items-center">
+      <div className="flex h-[5rem] w-[5rem] justify-center items-center">
         <img className="h-[2.5rem]" src={image} alt="image" />
       </div>
-      <Divider></Divider>
-      <div className="flex w-full justify-center items-center py-[0.3rem]">
-        <div className="flex text-[9pt] leading-[0.5rem]">{title}</div>
+
+      <div className="flex w-full justify-center items-center py-[0.5rem]">
+        <div className="flex text-[9pt] leading-[0.5rem] font-bold">
+          {title}
+        </div>
       </div>
     </Card>
   );

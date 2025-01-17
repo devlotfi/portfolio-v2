@@ -5,7 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Card, CardBody, cn, Link } from "@nextui-org/react";
-import Developer from "../assets/developer.svg";
+import Developer from "../assets/freepik/developer.svg";
 import { useContext, useRef } from "react";
 import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";

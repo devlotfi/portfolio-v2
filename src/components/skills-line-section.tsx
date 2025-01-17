@@ -13,6 +13,7 @@ interface Props {
   endBottomLeft?: boolean;
   endBottomRight?: boolean;
   icon: IconProp;
+  index?: number;
 }
 
 export default function SkillsLineSection({
@@ -26,13 +27,14 @@ export default function SkillsLineSection({
   endBottomLeft,
   endBottomRight,
   icon,
+  index,
 }: PropsWithChildren<Props>) {
   return (
     <div className="flex flex-col relative p-[3rem]">
       <div
         className={cn(
-          "flex absolute top-0 h-full w-1/2 border-divider",
-          top && "border-t-[2px] mt-[-2px]",
+          "flex absolute top-0 h-full w-1/2 border-divider pointer-events-none",
+          top && "border-t-[2px]",
           bottom && "border-b-[2px]",
           left && "border-l-[2px] left-0",
           right && "border-r-[2px] right-0",
@@ -41,6 +43,9 @@ export default function SkillsLineSection({
           bottom && right && "rounded-br-3xl",
           bottom && left && "rounded-bl-3xl"
         )}
+        style={{
+          marginTop: index ? `-${index * 2}px` : undefined,
+        }}
       ></div>
       {endTopLeft || endTopRight || endBottomLeft || endBottomRight ? (
         <div
@@ -51,6 +56,9 @@ export default function SkillsLineSection({
             endBottomLeft && "bottom-0 left-0 -translate-x-1/2 translate-y-1/2",
             endBottomRight && "bottom-0 right-0 translate-x-1/2 translate-y-1/2"
           )}
+          style={{
+            marginTop: index ? `-${index * 2}rem` : undefined,
+          }}
         ></div>
       ) : null}
       <Card
