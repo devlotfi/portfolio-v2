@@ -72,7 +72,7 @@ export default function Navbar() {
           staggerChildren: 0.2,
         }}
       >
-        <NavbarLink icon={faInfoCircle} linkPage={NavigationPages.HOME}>
+        <NavbarLink icon={faInfoCircle} linkPage={NavigationPages.ABOUT}>
           About me
         </NavbarLink>
         <NavbarLink icon={faStar} linkPage={NavigationPages.SKILLS}>

@@ -32,7 +32,7 @@ export function Heading({
           className={cn("text-primary-foreground", classNames.icon)}
         ></FontAwesomeIcon>
       </div>
-      <div className={cn("font-bold", classNames.text)}>{children}</div>
+      <div className={cn("font-black", classNames.text)}>{children}</div>
     </div>
   );
 }

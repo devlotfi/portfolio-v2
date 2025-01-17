@@ -8,6 +8,10 @@ interface Props {
   bottom?: boolean;
   left?: boolean;
   right?: boolean;
+  endTopLeft?: boolean;
+  endTopRight?: boolean;
+  endBottomLeft?: boolean;
+  endBottomRight?: boolean;
   icon: IconProp;
 }
 
@@ -17,10 +21,14 @@ export default function SkillsLineSection({
   bottom,
   left,
   right,
+  endTopLeft,
+  endTopRight,
+  endBottomLeft,
+  endBottomRight,
   icon,
 }: PropsWithChildren<Props>) {
   return (
-    <div className="flex relative p-[3rem]">
+    <div className="flex flex-col relative p-[3rem]">
       <div
         className={cn(
           "flex absolute top-0 h-full w-1/2 border-divider",
@@ -34,15 +42,26 @@ export default function SkillsLineSection({
           bottom && left && "rounded-bl-3xl"
         )}
       ></div>
+      {endTopLeft || endTopRight || endBottomLeft || endBottomRight ? (
+        <div
+          className={cn(
+            "flex absolute h-[1rem] w-[1rem] bg-divider rounded-full",
+            endTopLeft && "top-0 left-0 -translate-x-1/2 -translate-y-1/2",
+            endTopRight && "top-0 right-0 translate-x-1/2 -translate-y-1/2",
+            endBottomLeft && "bottom-0 left-0 -translate-x-1/2 translate-y-1/2",
+            endBottomRight && "bottom-0 right-0 translate-x-1/2 translate-y-1/2"
+          )}
+        ></div>
+      ) : null}
       <Card
         className={cn(
-          "flex absolute top-1/2 -translate-y-1/2 primary-bg justify-center items-center h-[3rem] w-[3rem]",
+          "flex absolute top-1/2 -translate-y-1/2 primary-bg justify-center items-center h-[2rem] w-[2rem] md:h-[3rem] md:w-[3rem]",
           left && "-translate-x-1/2 left-0",
           right && "translate-x-1/2 right-0"
         )}
       >
         <FontAwesomeIcon
-          className="text-[17pt] text-primary-foreground"
+          className="text-[15pt] md:text-[17pt] text-primary-foreground"
           icon={icon}
         ></FontAwesomeIcon>
       </Card>

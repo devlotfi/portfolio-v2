@@ -62,7 +62,7 @@ const MotionSocialIcon = motion.create(SocialIcon);
 export default function SocialSideBtns() {
   return (
     <motion.div
-      className="hidden lg:flex flex-col items-center space-y-2 fixed left-[2rem] top-[50vh] translate-y-[-50%] z-20"
+      className="hidden lg:flex flex-col items-center space-y-2 fixed left-[1rem] xl:left-[2rem] top-[50vh] translate-y-[-50%] z-20"
       initial="hidden"
       animate="visible"
       transition={{

@@ -70,7 +70,7 @@ export default function Sidebar() {
               staggerChildren: 0.2,
             }}
           >
-            <SidebarLink icon={faInfoCircle} linkPage={NavigationPages.HOME}>
+            <SidebarLink icon={faInfoCircle} linkPage={NavigationPages.ABOUT}>
               About me
             </SidebarLink>
 
