@@ -1,24 +1,25 @@
-import { PropsWithChildren, useRef, useState } from "react";
+import { createRef, PropsWithChildren, useRef, useState } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { PagesConfig } from "../pages-config";
 import { NavigationData } from "../types/navigation-data";
 import { NavigationPages } from "../types/navigation-pages";
-import { useScroll } from "motion/react";
+import { NavigationPagesRefs } from "../types/navigation-pages-refs";
 
 export default function NavigationProvider({ children }: PropsWithChildren) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    container: scrollRef,
+  const pageRefs = useRef<NavigationPagesRefs>({
+    [NavigationPages.ABOUT]: createRef(),
+    [NavigationPages.SKILLS]: createRef(),
+    [NavigationPages.EXPERIENCE]: createRef(),
+    [NavigationPages.PROJECTS]: createRef(),
   });
 
   const [navigationData, setNavigationData] = useState<NavigationData>({
-    page: NavigationPages.HOME,
-    ...PagesConfig.HOME,
+    page: NavigationPages.ABOUT,
+    ...PagesConfig.ABOUT,
     zoomedOut: false,
     isNavigating: false,
     sidebarOpen: false,
-    scrollRef,
-    scrollYProgress,
+    pageRefs,
   });
 
   return (

@@ -9,7 +9,7 @@ import PageOverlay from "./layout/page-overlay";
 import HomePage from "./pages/home-page";
 import {
   faGraduationCap,
-  faHome,
+  faInfoCircle,
   faList,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
@@ -64,7 +64,11 @@ export default function App() {
               }, 100%)`,
             }}
           >
-            <PageOverlay page={NavigationPages.HOME} title="home" icon={faHome}>
+            <PageOverlay
+              page={NavigationPages.ABOUT}
+              title="about"
+              icon={faInfoCircle}
+            >
               <HomePage></HomePage>
             </PageOverlay>
 

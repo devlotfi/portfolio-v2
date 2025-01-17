@@ -2,7 +2,7 @@ import { NavigationPages } from "./types/navigation-pages";
 import { PageAttributes } from "./types/page-attributes";
 
 export const PagesConfig: { [key in NavigationPages]: PageAttributes } = {
-  [NavigationPages.HOME]: {
+  [NavigationPages.ABOUT]: {
     backgroundOffset: "0vw",
     transformOrigin: "50vw",
     translateOffset: "0vw",

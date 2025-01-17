@@ -1,5 +1,5 @@
 export enum NavigationPages {
-  HOME = "HOME",
+  ABOUT = "ABOUT",
   SKILLS = "SKILLS",
   EXPERIENCE = "EXPERIENCE",
   PROJECTS = "PROJECTS",

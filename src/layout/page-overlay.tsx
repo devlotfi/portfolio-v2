@@ -58,7 +58,7 @@ export default function PageOverlay({
         </div>
 
         <ScrollShadow
-          ref={navigationData.page === page ? navigationData.scrollRef : null}
+          ref={navigationData.pageRefs.current[page]}
           className={cn(
             "flex flex-col relative min-h-[calc(100vh-5rem)] min-w-[100vw] overflow-y-auto scroll-smooth",
             appliedTheme === ThemeOptions.LIGHT

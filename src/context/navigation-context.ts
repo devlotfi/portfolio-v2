@@ -1,7 +1,8 @@
-import { createContext, createRef } from "react";
+import { createContext, createRef, RefObject } from "react";
 import { PagesConfig } from "../pages-config";
 import { NavigationData } from "../types/navigation-data";
 import { NavigationPages } from "../types/navigation-pages";
+import { NavigationPagesRefs } from "../types/navigation-pages-refs";
 
 interface NavigationContext {
   navigationData: NavigationData;
@@ -10,12 +11,13 @@ interface NavigationContext {
 
 const initialValue: NavigationContext = {
   navigationData: {
-    page: NavigationPages.HOME,
-    ...PagesConfig.HOME,
+    page: NavigationPages.ABOUT,
+    ...PagesConfig.ABOUT,
     zoomedOut: false,
     isNavigating: false,
     sidebarOpen: false,
-    scrollRef: createRef(),
+    pageRefs:
+      createRef<NavigationPagesRefs>() as RefObject<NavigationPagesRefs>,
   },
   setNavigationData() {},
 };

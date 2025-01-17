@@ -1,4 +1,9 @@
-import { motion, useMotionValueEvent, AnimatePresence } from "motion/react";
+import {
+  motion,
+  useMotionValueEvent,
+  AnimatePresence,
+  useScroll,
+} from "motion/react";
 import { useContext, useState } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { Button } from "@nextui-org/react";
@@ -14,7 +19,12 @@ export default function ScrollIndicator({ hideWhenIn }: Props) {
   const { navigationData } = useContext(NavigationContext);
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
 
-  useMotionValueEvent(navigationData.scrollYProgress!, "change", (current) => {
+  const { scrollYProgress } = useScroll({
+    container: navigationData.pageRefs.current[navigationData.page],
+    layoutEffect: false,
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (current === 0) {
       setShowScrollTop(false);
     } else {
@@ -23,8 +33,10 @@ export default function ScrollIndicator({ hideWhenIn }: Props) {
   });
 
   const scrollToTop = () => {
-    if (navigationData.scrollRef.current) {
-      navigationData.scrollRef.current.scrollTop = 0;
+    const pageRef =
+      navigationData.pageRefs.current[navigationData.page].current;
+    if (pageRef) {
+      pageRef.scrollTop = 0;
     }
   };
 
@@ -37,7 +49,7 @@ export default function ScrollIndicator({ hideWhenIn }: Props) {
         <motion.div
           className="flex w-screen h-[0.3rem] primary-bg z-10 fixed origin-left"
           style={{
-            scaleX: navigationData.scrollYProgress,
+            scaleX: scrollYProgress,
           }}
         ></motion.div>
 

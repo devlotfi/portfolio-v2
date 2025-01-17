@@ -1,6 +1,6 @@
 import { RefObject } from "react";
 import { NavigationPages } from "./navigation-pages";
-import { MotionValue } from "motion/react";
+import { NavigationPagesRefs } from "./navigation-pages-refs";
 
 export interface NavigationData {
   page: NavigationPages;
@@ -10,6 +10,5 @@ export interface NavigationData {
   zoomedOut: boolean;
   isNavigating: boolean;
   sidebarOpen: boolean;
-  scrollRef: RefObject<HTMLDivElement | null>;
-  scrollYProgress?: MotionValue<number>;
+  pageRefs: RefObject<NavigationPagesRefs>;
 }
