@@ -22,10 +22,9 @@ function SocialIcon({
     <motion.div
       ref={ref}
       whileHover={{
-        rotate: 30,
         paddingTop: "1rem",
         paddingBottom: "1rem",
-        scale: 1.5,
+        scale: 1.2,
         transition: {
           duration: 0.3,
         },
@@ -44,15 +43,16 @@ function SocialIcon({
         },
       }}
     >
-      <Link href={url} target="_blank">
-        <Button
-          variant="light"
-          isIconOnly
-          className="text-[20pt] pointer-events-none"
-        >
-          {children}
-        </Button>
-      </Link>
+      <Button
+        href={url}
+        target="_blank"
+        as={Link}
+        variant="light"
+        isIconOnly
+        className="text-[20pt]"
+      >
+        {children}
+      </Button>
     </motion.div>
   );
 }

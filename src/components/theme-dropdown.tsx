@@ -12,6 +12,7 @@ import {
   DropdownItem,
   Button,
   cn,
+  Card,
 } from "@nextui-org/react";
 import { useContext } from "react";
 import { ThemeContext } from "../context/theme-context";
@@ -71,21 +72,33 @@ export default function ThemeDropdown() {
           }}
         >
           <DropdownItem
-            startContent={<FontAwesomeIcon icon={faComputer}></FontAwesomeIcon>}
+            startContent={
+              <Card className="h-[1.8rem] w-[1.8rem] justify-center items-center primary-bg text-primary-foreground">
+                <FontAwesomeIcon icon={faComputer}></FontAwesomeIcon>
+              </Card>
+            }
             key={ThemeOptions.SYSTEM}
             textValue="system"
           >
             System
           </DropdownItem>
           <DropdownItem
-            startContent={<FontAwesomeIcon icon={faSun}></FontAwesomeIcon>}
+            startContent={
+              <Card className="h-[1.8rem] w-[1.8rem] justify-center items-center primary-bg text-primary-foreground">
+                <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
+              </Card>
+            }
             key={ThemeOptions.LIGHT}
             textValue="light"
           >
             Light
           </DropdownItem>
           <DropdownItem
-            startContent={<FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>}
+            startContent={
+              <Card className="h-[1.8rem] w-[1.8rem] justify-center items-center primary-bg text-primary-foreground">
+                <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
+              </Card>
+            }
             key={ThemeOptions.DARK}
             textValue="dark"
           >

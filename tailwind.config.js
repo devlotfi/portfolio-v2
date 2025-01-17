@@ -23,6 +23,7 @@ export default {
       themes: {
         light: {
           colors: {
+            divider: "#b9b9b9",
             foreground: "#273450",
             background: {
               foreground: "#273450",
@@ -37,6 +38,7 @@ export default {
         },
         dark: {
           colors: {
+            divider: "#575f69",
             foreground: "#FFFFFF",
             background: {
               foreground: "#FFFFFF",

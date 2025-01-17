@@ -60,7 +60,7 @@ export default function HomePage() {
               }}
               className="flex text-[20pt] font-bold primary-bg bg-clip-text text-transparent"
             >
-              Welcome, my name is
+              Hi, my name is
             </motion.div>
             <motion.div
               variants={{
@@ -103,7 +103,7 @@ export default function HomePage() {
               A Full-Stack Software Engineer crafting scalable and efficient
               digital solutions
             </motion.div>
-            <div className="flex space-x-2">
+            <div className="flex space-x-2 mt-[1rem]">
               <motion.div
                 className="self-start"
                 variants={{
@@ -126,14 +126,15 @@ export default function HomePage() {
                 }}
               >
                 <Button
-                  color="primary"
-                  className="primary-bg self-start mt-[1rem]"
+                  as={Link}
+                  href={`${import.meta.env.BASE_URL}resume.pdf`}
+                  target="_blank"
+                  className="primary-bg text-primary-foreground"
                   startContent={
-                    <FontAwesomeIcon icon={faAngleDoubleDown}></FontAwesomeIcon>
+                    <FontAwesomeIcon icon={faFileLines}></FontAwesomeIcon>
                   }
-                  onPress={scrollToAboutMe}
                 >
-                  About me
+                  Resume
                 </Button>
               </motion.div>
               <motion.div
@@ -157,22 +158,16 @@ export default function HomePage() {
                   stiffness: 70,
                 }}
               >
-                <Link
-                  href={`${import.meta.env.BASE_URL}resume.pdf`}
-                  target="_blank"
+                <Button
+                  className="font-bold"
+                  variant="light"
+                  startContent={
+                    <FontAwesomeIcon icon={faAngleDoubleDown}></FontAwesomeIcon>
+                  }
+                  onPress={scrollToAboutMe}
                 >
-                  <Button
-                    color="default"
-                    variant="bordered"
-                    className="self-start mt-[1rem] border-foreground text-foreground pointer-events-none"
-                    startContent={
-                      <FontAwesomeIcon icon={faFileLines}></FontAwesomeIcon>
-                    }
-                    onPress={scrollToAboutMe}
-                  >
-                    Resume
-                  </Button>
-                </Link>
+                  About me
+                </Button>
               </motion.div>
             </div>
           </div>
@@ -203,10 +198,10 @@ export default function HomePage() {
         >
           <Card
             className={cn(
-              "max-w-screen-md border border-divider",
+              "max-w-screen-md",
               appliedTheme === ThemeOptions.LIGHT
-                ? "card-gradient-bg-light"
-                : "card-gradient-bg-dark"
+                ? "card-gradient-bg-light card-outline-light"
+                : "card-gradient-bg-dark card-outline-dark"
             )}
             fullWidth
           >

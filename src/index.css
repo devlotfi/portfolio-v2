@@ -60,6 +60,12 @@
     #1f232b;
   border: 1px solid #3c3c3c;
 }
+.card-outline-dark {
+  border: 1px solid hsl(var(--nextui-divider));
+  outline: 7px solid hsl(var(--nextui-divider) / 0.3);
+  outline-offset: 0;
+}
+
 .card-gradient-bg-light {
   background: radial-gradient(
       circle at top right,
@@ -72,7 +78,11 @@
       transparent 80%
     ),
     #ffffff;
-  border: 1px solid #b9b9b9;
+}
+.card-outline-light {
+  border: 1px solid hsl(var(--nextui-divider));
+  outline: 7px solid hsl(var(--nextui-divider) / 0.3);
+  outline-offset: 0;
 }
 
 .primary-bg {
