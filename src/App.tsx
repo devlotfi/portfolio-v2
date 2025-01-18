@@ -1,103 +1,54 @@
 import { useContext } from "react";
 import Navbar from "./components/navbar";
-import { cn } from "@nextui-org/react";
+import { cn, ScrollShadow } from "@nextui-org/react";
 import { ThemeContext } from "./context/theme-context";
 import { ThemeOptions } from "./types/theme-options";
 import { NavigationContext } from "./context/navigation-context";
-import { motion } from "motion/react";
-import PageOverlay from "./layout/page-overlay";
 import HomePage from "./pages/home-page";
-import {
-  faGraduationCap,
-  faInfoCircle,
-  faList,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
-import { NavigationPages } from "./types/navigation-pages";
 import Sidebar from "./components/sidebar";
-import SkillsPage from "./pages/skills-page";
-import ExperiencePage from "./pages/experience-page";
-import ProjectsPage from "./pages/projects-page";
 import ScrollIndicator from "./components/scroll-indicator";
 import SocialSideBtns from "./components/social-side-btns";
 import CusorLight from "./components/cursor-light";
+import Footer from "./components/footer";
+import { HashRouter, Route, Routes } from "react-router";
+import SkillsPage from "./pages/skills-page";
+import ExperiencePage from "./pages/experience-page";
+import ProjectsPage from "./pages/projects-page";
 
 export default function App() {
   const { appliedTheme } = useContext(ThemeContext);
   const { navigationData } = useContext(NavigationContext);
 
   return (
-    <>
+    <HashRouter>
       <Sidebar></Sidebar>
-      <motion.div
+      <CusorLight></CusorLight>
+      <ScrollIndicator></ScrollIndicator>
+      <SocialSideBtns></SocialSideBtns>
+      <div
         className={cn(
-          "flex flex-col h-screen w-screen duration-1000 transition-[background-size,background-position] will-change-[background-size,background-position]",
+          "flex flex-col h-screen",
           appliedTheme === ThemeOptions.LIGHT ? "main-bg-light" : "main-bg-dark"
         )}
-        style={{
-          backgroundPosition: `0 0, 0 0, 0 0, ${navigationData.backgroundOffset} center, ${navigationData.backgroundOffset} center`,
-          backgroundSize: `100% 100%, 100% 100%, 100% 100%, ${
-            navigationData.zoomedOut
-              ? "3rem 3rem, 3rem 3rem"
-              : "5rem 5rem, 5rem 5rem"
-          }`,
-        }}
       >
         <Navbar></Navbar>
-        <CusorLight></CusorLight>
-        <ScrollIndicator></ScrollIndicator>
-        <SocialSideBtns></SocialSideBtns>
 
-        <div className="flex min-h-[calc(100vh-5rem)] max-h-[calc(100vh-5rem)] max-w-[100vw] overflow-hidden">
-          <motion.div
-            className={cn(
-              "flex space-x-[10vw] will-change-[transform-origin,transform]",
-              navigationData.isNavigating &&
-                "duration-1000 transition-[transform-origin,transform]"
-            )}
-            style={{
-              transformOrigin: `${navigationData.transformOrigin} 50vh`,
-              transform: `translate3d(${
-                navigationData.translateOffset
-              }, 0, 0) scale3d(${navigationData.zoomedOut ? "0.5" : "1"}, ${
-                navigationData.zoomedOut ? "0.5" : "1"
-              }, 100%)`,
-            }}
-          >
-            <PageOverlay
-              page={NavigationPages.ABOUT}
-              title="about"
-              icon={faInfoCircle}
-            >
-              <HomePage></HomePage>
-            </PageOverlay>
-
-            <PageOverlay
-              page={NavigationPages.SKILLS}
-              title="skills"
-              icon={faStar}
-            >
-              <SkillsPage></SkillsPage>
-            </PageOverlay>
-
-            <PageOverlay
-              page={NavigationPages.EXPERIENCE}
-              title="experience"
-              icon={faGraduationCap}
-            >
-              <ExperiencePage></ExperiencePage>
-            </PageOverlay>
-
-            <PageOverlay
-              page={NavigationPages.PROJECTS}
-              title="projects"
-              icon={faList}
-            >
-              <ProjectsPage></ProjectsPage>
-            </PageOverlay>
-          </motion.div>
-        </div>
-      </motion.div>
-    </>
+        <ScrollShadow ref={navigationData.scrollRef} className="scroll-smooth">
+          <Routes>
+            <Route index element={<HomePage></HomePage>}></Route>
+            <Route path="/skills" element={<SkillsPage></SkillsPage>}></Route>
+            <Route
+              path="/experience"
+              element={<ExperiencePage></ExperiencePage>}
+            ></Route>
+            <Route
+              path="/projects"
+              element={<ProjectsPage></ProjectsPage>}
+            ></Route>
+          </Routes>
+          <Footer></Footer>
+        </ScrollShadow>
+      </div>
+    </HashRouter>
   );
 }

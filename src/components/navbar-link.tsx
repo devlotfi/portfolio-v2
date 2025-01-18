@@ -1,25 +1,23 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Card, cn } from "@nextui-org/react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { ComponentPropsWithRef, useContext } from "react";
-import { NavigationPages } from "../types/navigation-pages";
-import { NavigationContext } from "../context/navigation-context";
+import { ComponentPropsWithRef } from "react";
 import { motion } from "motion/react";
-import useNavigate from "../hooks/use-navigate";
+import { useLocation, useNavigate } from "react-router";
 
 interface Props {
   icon: IconProp;
-  linkPage: NavigationPages;
+  url: string;
 }
 
 function NavbarLinkComponent({
   icon,
-  linkPage,
+  url,
   children,
   ref,
 }: ComponentPropsWithRef<"div"> & Props) {
-  const { navigationData } = useContext(NavigationContext);
-  const { navigate } = useNavigate();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   return (
     <motion.div
@@ -46,7 +44,7 @@ function NavbarLinkComponent({
       }}
     >
       <Button
-        onPress={() => navigate(linkPage)}
+        onPress={() => navigate(url)}
         variant="light"
         className="h-[3rem] font-bold"
         startContent={
@@ -54,13 +52,13 @@ function NavbarLinkComponent({
             shadow="none"
             className={cn(
               "h-[2rem] w-[2rem] justify-center items-center",
-              linkPage === navigationData.page ? "primary-bg" : "bg-transparent"
+              pathname === url ? "primary-bg" : "bg-transparent"
             )}
           >
             <FontAwesomeIcon
               className={cn(
                 "text-[15pt]",
-                linkPage === navigationData.page && "text-primary-foreground"
+                pathname === url && "text-primary-foreground"
               )}
               icon={icon}
             ></FontAwesomeIcon>
@@ -70,8 +68,7 @@ function NavbarLinkComponent({
         <div
           className={cn(
             "flex",
-            linkPage === navigationData.page &&
-              "primary-bg bg-clip-text text-transparent"
+            pathname === url && "primary-bg bg-clip-text text-transparent"
           )}
         >
           {children}

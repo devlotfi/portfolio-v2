@@ -8,7 +8,6 @@ import {
 import NavbarLink from "./navbar-link";
 import ThemeDropdown from "./theme-dropdown";
 import Logo from "./logo";
-import { NavigationPages } from "../types/navigation-pages";
 import { Button } from "@nextui-org/react";
 import { useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
@@ -72,19 +71,16 @@ export default function Navbar() {
           staggerChildren: 0.2,
         }}
       >
-        <NavbarLink icon={faInfoCircle} linkPage={NavigationPages.ABOUT}>
+        <NavbarLink icon={faInfoCircle} url={"/"}>
           About me
         </NavbarLink>
-        <NavbarLink icon={faStar} linkPage={NavigationPages.SKILLS}>
+        <NavbarLink icon={faStar} url={"/skills"}>
           Skills
         </NavbarLink>
-        <NavbarLink
-          icon={faGraduationCap}
-          linkPage={NavigationPages.EXPERIENCE}
-        >
+        <NavbarLink icon={faGraduationCap} url={"/experience"}>
           Experience
         </NavbarLink>
-        <NavbarLink icon={faList} linkPage={NavigationPages.PROJECTS}>
+        <NavbarLink icon={faList} url={"/projects"}>
           Projects
         </NavbarLink>
       </motion.div>

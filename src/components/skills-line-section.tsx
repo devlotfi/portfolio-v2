@@ -62,6 +62,7 @@ export default function SkillsLineSection({
         ></div>
       ) : null}
       <Card
+        shadow="none"
         className={cn(
           "flex absolute top-1/2 -translate-y-1/2 primary-bg justify-center items-center h-[2rem] w-[2rem] md:h-[3rem] md:w-[3rem]",
           left && "-translate-x-1/2 left-0",

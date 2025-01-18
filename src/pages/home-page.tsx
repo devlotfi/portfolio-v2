@@ -1,5 +1,6 @@
 import {
   faAngleDoubleDown,
+  faAt,
   faFileLines,
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
@@ -166,7 +167,7 @@ export default function HomePage() {
                   }
                   onPress={scrollToAboutMe}
                 >
-                  About me
+                  About me & Contact
                 </Button>
               </motion.div>
             </div>
@@ -175,7 +176,7 @@ export default function HomePage() {
       </div>
       <div
         ref={aboutMeRef}
-        className="flex flex-col justify-center items-center min-h-[calc(100vh-5rem)] px-[1rem] py-[10rem]"
+        className="flex flex-col space-y-[3rem] justify-center items-center px-[1rem] py-[10rem]"
       >
         <motion.div
           initial="hidden"
@@ -197,6 +198,7 @@ export default function HomePage() {
           }}
         >
           <Card
+            shadow="none"
             className={cn(
               "max-w-screen-md",
               appliedTheme === ThemeOptions.LIGHT
@@ -207,6 +209,70 @@ export default function HomePage() {
           >
             <CardBody className="p-[1.5rem] space-y-3 overflow-hidden">
               <Heading icon={faInfoCircle}>About me</Heading>
+              <div>
+                I am a passionate full-stack web developer with a comprehensive
+                background in both front-end and back-end development, as well
+                as mobile development. Throughout my career, I have worked on a
+                diverse range of projects, building robust and scalable web and
+                mobile applications. My expertise spans designing intuitive user
+                interfaces, developing efficient server-side logic.
+              </div>
+              <div>
+                I am committed to continuous learning and staying updated with
+                the latest industry trends to deliver high-quality and
+                innovative solutions. Whether working on a solo project or
+                collaborating with a team, I strive to create user-centric
+                applications that meet business objectives and provide
+                exceptional user experiences.
+              </div>
+              <div>
+                I hold a Bachelor's degree in Information Systems and Software
+                Engineering from{" "}
+                <a
+                  className="inline underline primary-bg bg-clip-text text-transparent"
+                  href="https://www.usthb.dz/"
+                  target="_blank"
+                >
+                  USTHB University
+                </a>
+                , where I developed a strong foundation in software engineering
+                principles.
+              </div>
+            </CardBody>
+          </Card>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={{
+            hidden: {
+              y: 50,
+              opacity: 0,
+            },
+            visible: {
+              y: 0,
+              opacity: 1,
+            },
+          }}
+          transition={{
+            duration: 1,
+            type: "spring",
+            stiffness: 70,
+          }}
+        >
+          <Card
+            shadow="none"
+            className={cn(
+              "max-w-screen-md",
+              appliedTheme === ThemeOptions.LIGHT
+                ? "card-gradient-bg-light card-outline-light"
+                : "card-gradient-bg-dark card-outline-dark"
+            )}
+            fullWidth
+          >
+            <CardBody className="p-[1.5rem] space-y-3 overflow-hidden">
+              <Heading icon={faAt}>Contact me</Heading>
               <div>
                 I am a passionate full-stack web developer with a comprehensive
                 background in both front-end and back-end development, as well

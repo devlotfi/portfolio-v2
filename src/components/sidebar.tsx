@@ -12,7 +12,6 @@ import { NavigationContext } from "../context/navigation-context";
 import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
 import SidebarLink from "./sidebar-link";
-import { NavigationPages } from "../types/navigation-pages";
 import { motion } from "motion/react";
 
 export default function Sidebar() {
@@ -70,20 +69,17 @@ export default function Sidebar() {
               staggerChildren: 0.2,
             }}
           >
-            <SidebarLink icon={faInfoCircle} linkPage={NavigationPages.ABOUT}>
+            <SidebarLink icon={faInfoCircle} url={"/"}>
               About me
             </SidebarLink>
 
-            <SidebarLink icon={faStar} linkPage={NavigationPages.SKILLS}>
+            <SidebarLink icon={faStar} url={"/skills"}>
               Skills
             </SidebarLink>
-            <SidebarLink
-              icon={faGraduationCap}
-              linkPage={NavigationPages.EXPERIENCE}
-            >
+            <SidebarLink icon={faGraduationCap} url={"/experience"}>
               Experience
             </SidebarLink>
-            <SidebarLink icon={faList} linkPage={NavigationPages.PROJECTS}>
+            <SidebarLink icon={faList} url={"/projects"}>
               Projects
             </SidebarLink>
           </motion.div>

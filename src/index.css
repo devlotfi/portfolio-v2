@@ -25,6 +25,7 @@
     linear-gradient(#ffffff34 1px, transparent 1px),
     linear-gradient(to right, #ffffff34 1px, transparent 1px);
   background-position: 0 0, 0 0, 0 0, 0 3rem, 0 3rem;
+  background-size: 100% 100%, 100% 100%, 100% 100%, 5rem 5rem, 5rem 5rem;
   background-attachment: fixed, fixed, fixed, fixed, fixed;
 }
 .main-bg-light {

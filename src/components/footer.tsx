@@ -35,7 +35,7 @@ export default function Footer() {
   return (
     <div
       className={cn(
-        "flex sm:flex-row flex-col sm:items-center space-y-10 sm:space-y-0 justify-around px-[2rem] py-[3rem] border border-divider",
+        "flex sm:flex-row flex-col sm:items-center space-y-10 sm:space-y-0 justify-around px-[2rem] py-[3rem] border-t border-divider",
         appliedTheme === ThemeOptions.LIGHT
           ? "card-gradient-bg-light"
           : "card-gradient-bg-dark"
