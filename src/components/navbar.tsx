@@ -8,7 +8,7 @@ import {
 import NavbarLink from "./navbar-link";
 import ThemeDropdown from "./theme-dropdown";
 import Logo from "./logo";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import { useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

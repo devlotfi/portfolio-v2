@@ -3,16 +3,42 @@ import {
   faAt,
   faFileLines,
   faInfoCircle,
+  faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Card, CardBody, cn, Link } from "@nextui-org/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  cn,
+  Input,
+  Link,
+  Textarea,
+} from "@heroui/react";
 import Developer from "../assets/freepik/developer.svg";
 import { useContext, useRef } from "react";
 import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
 import "./home-page.css";
 import { Heading } from "../components/heading";
-import { motion } from "motion/react";
+import { motion, Variants } from "motion/react";
+import { Transition } from "motion";
+
+const variants: Variants = {
+  hidden: {
+    y: 50,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
+const transition: Transition = {
+  duration: 1,
+  type: "spring",
+  stiffness: 70,
+};
 
 export default function HomePage() {
   const { appliedTheme } = useContext(ThemeContext);
@@ -37,68 +63,31 @@ export default function HomePage() {
           }}
           className="flex px-[2rem] flex-col lg:flex-row max-w-screen-md space-x-5"
         >
-          <img
+          <motion.img
+            variants={variants}
+            transition={transition}
             className="h-[15rem] lg:h-[19rem] self-start"
             src={Developer}
             alt="developer"
           />
           <div className="flex flex-col">
             <motion.div
-              variants={{
-                hidden: {
-                  y: 50,
-                  opacity: 0,
-                },
-                visible: {
-                  y: 0,
-                  opacity: 1,
-                },
-              }}
-              transition={{
-                duration: 1,
-                type: "spring",
-                stiffness: 70,
-              }}
+              variants={variants}
+              transition={transition}
               className="flex text-[20pt] font-bold primary-bg bg-clip-text text-transparent"
             >
               Hi, my name is
             </motion.div>
             <motion.div
-              variants={{
-                hidden: {
-                  y: 50,
-                  opacity: 0,
-                },
-                visible: {
-                  y: 0,
-                  opacity: 1,
-                },
-              }}
-              transition={{
-                duration: 1,
-                type: "spring",
-                stiffness: 70,
-              }}
+              variants={variants}
+              transition={transition}
               className="flex text-[35pt] font-black"
             >
               Debbal Lotfi
             </motion.div>
             <motion.div
-              variants={{
-                hidden: {
-                  y: 50,
-                  opacity: 0,
-                },
-                visible: {
-                  y: 0,
-                  opacity: 1,
-                },
-              }}
-              transition={{
-                duration: 1,
-                type: "spring",
-                stiffness: 70,
-              }}
+              variants={variants}
+              transition={transition}
               className="flex text-[15pt] opacity-70"
             >
               A Full-Stack Software Engineer crafting scalable and efficient
@@ -107,30 +96,18 @@ export default function HomePage() {
             <div className="flex space-x-2 mt-[1rem]">
               <motion.div
                 className="self-start"
-                variants={{
-                  hidden: {
-                    y: 50,
-                    opacity: 0,
-                  },
-                  visible: {
-                    y: 0,
-                    opacity: 1,
-                  },
-                }}
+                variants={variants}
+                transition={transition}
                 whileHover={{
                   scale: 1.1,
-                }}
-                transition={{
-                  duration: 0.7,
-                  type: "spring",
-                  stiffness: 70,
                 }}
               >
                 <Button
                   as={Link}
                   href={`${import.meta.env.BASE_URL}resume.pdf`}
                   target="_blank"
-                  className="primary-bg text-primary-foreground"
+                  color="primary"
+                  className="primary-bg"
                   startContent={
                     <FontAwesomeIcon icon={faFileLines}></FontAwesomeIcon>
                   }
@@ -140,23 +117,10 @@ export default function HomePage() {
               </motion.div>
               <motion.div
                 className="self-start"
-                variants={{
-                  hidden: {
-                    y: 50,
-                    opacity: 0,
-                  },
-                  visible: {
-                    y: 0,
-                    opacity: 1,
-                  },
-                }}
+                variants={variants}
+                transition={transition}
                 whileHover={{
                   scale: 1.1,
-                }}
-                transition={{
-                  duration: 0.7,
-                  type: "spring",
-                  stiffness: 70,
                 }}
               >
                 <Button
@@ -181,29 +145,16 @@ export default function HomePage() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          variants={{
-            hidden: {
-              y: 50,
-              opacity: 0,
-            },
-            visible: {
-              y: 0,
-              opacity: 1,
-            },
-          }}
-          transition={{
-            duration: 1,
-            type: "spring",
-            stiffness: 70,
-          }}
+          variants={variants}
+          transition={transition}
         >
           <Card
             shadow="none"
             className={cn(
               "max-w-screen-md",
               appliedTheme === ThemeOptions.LIGHT
-                ? "card-gradient-bg-light card-outline-light"
-                : "card-gradient-bg-dark card-outline-dark"
+                ? "card-gradient-bg-light-100 card-outline-light"
+                : "card-gradient-bg-dark-100 card-outline-dark"
             )}
             fullWidth
           >
@@ -243,65 +194,59 @@ export default function HomePage() {
         </motion.div>
 
         <motion.div
+          className="max-w-screen-md w-full"
           initial="hidden"
           whileInView="visible"
-          variants={{
-            hidden: {
-              y: 50,
-              opacity: 0,
-            },
-            visible: {
-              y: 0,
-              opacity: 1,
-            },
-          }}
-          transition={{
-            duration: 1,
-            type: "spring",
-            stiffness: 70,
-          }}
+          variants={variants}
+          transition={transition}
         >
           <Card
             shadow="none"
             className={cn(
-              "max-w-screen-md",
               appliedTheme === ThemeOptions.LIGHT
-                ? "card-gradient-bg-light card-outline-light"
-                : "card-gradient-bg-dark card-outline-dark"
+                ? "card-gradient-bg-light-100 card-outline-light"
+                : "card-gradient-bg-dark-100 card-outline-dark"
             )}
             fullWidth
           >
             <CardBody className="p-[1.5rem] space-y-3 overflow-hidden">
               <Heading icon={faAt}>Contact me</Heading>
-              <div>
-                I am a passionate full-stack web developer with a comprehensive
-                background in both front-end and back-end development, as well
-                as mobile development. Throughout my career, I have worked on a
-                diverse range of projects, building robust and scalable web and
-                mobile applications. My expertise spans designing intuitive user
-                interfaces, developing efficient server-side logic.
-              </div>
-              <div>
-                I am committed to continuous learning and staying updated with
-                the latest industry trends to deliver high-quality and
-                innovative solutions. Whether working on a solo project or
-                collaborating with a team, I strive to create user-centric
-                applications that meet business objectives and provide
-                exceptional user experiences.
-              </div>
-              <div>
-                I hold a Bachelor's degree in Information Systems and Software
-                Engineering from{" "}
-                <a
-                  className="inline underline primary-bg bg-clip-text text-transparent"
-                  href="https://www.usthb.dz/"
-                  target="_blank"
-                >
-                  USTHB University
-                </a>
-                , where I developed a strong foundation in software engineering
-                principles.
-              </div>
+              <Input
+                classNames={{
+                  inputWrapper: cn(
+                    "border border-divider",
+                    appliedTheme === ThemeOptions.LIGHT
+                      ? "card-gradient-bg-light-200"
+                      : "card-gradient-bg-dark-200"
+                  ),
+                }}
+                label="Email"
+                placeholder="Enter your email"
+                type="email"
+              />
+              <Textarea
+                isClearable
+                classNames={{
+                  inputWrapper: cn(
+                    "border border-divider",
+                    appliedTheme === ThemeOptions.LIGHT
+                      ? "card-gradient-bg-light-200"
+                      : "card-gradient-bg-dark-200"
+                  ),
+                }}
+                label="Description"
+                placeholder="Enter your description"
+              />
+
+              <Button
+                color="primary"
+                className="primary-bg"
+                startContent={
+                  <FontAwesomeIcon icon={faPaperPlane}></FontAwesomeIcon>
+                }
+              >
+                Submit
+              </Button>
             </CardBody>
           </Card>
         </motion.div>

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Navbar from "./components/navbar";
-import { cn, ScrollShadow } from "@nextui-org/react";
+import { cn, ScrollShadow } from "@heroui/react";
 import { ThemeContext } from "./context/theme-context";
 import { ThemeOptions } from "./types/theme-options";
 import { NavigationContext } from "./context/navigation-context";
@@ -10,45 +10,54 @@ import ScrollIndicator from "./components/scroll-indicator";
 import SocialSideBtns from "./components/social-side-btns";
 import CusorLight from "./components/cursor-light";
 import Footer from "./components/footer";
-import { HashRouter, Route, Routes } from "react-router";
 import SkillsPage from "./pages/skills-page";
-import ExperiencePage from "./pages/experience-page";
-import ProjectsPage from "./pages/projects-page";
+import { motion, useScroll, useTransform } from "motion/react";
 
 export default function App() {
   const { appliedTheme } = useContext(ThemeContext);
   const { navigationData } = useContext(NavigationContext);
 
+  const { scrollY } = useScroll({
+    container: navigationData.scrollRef,
+    layoutEffect: false,
+  });
+
+  const bgPosition = useTransform(
+    scrollY,
+    (value) => `0 0, 0 0, 0 0, 0 -${value / 10}px, 0 -${value / 10}px`
+  );
+
   return (
-    <HashRouter>
+    <>
       <Sidebar></Sidebar>
       <CusorLight></CusorLight>
       <ScrollIndicator></ScrollIndicator>
       <SocialSideBtns></SocialSideBtns>
-      <div
+      <motion.div
         className={cn(
           "flex flex-col h-screen",
           appliedTheme === ThemeOptions.LIGHT ? "main-bg-light" : "main-bg-dark"
         )}
+        style={{
+          backgroundPosition: bgPosition,
+        }}
       >
         <Navbar></Navbar>
 
-        <ScrollShadow ref={navigationData.scrollRef} className="scroll-smooth">
-          <Routes>
-            <Route index element={<HomePage></HomePage>}></Route>
-            <Route path="/skills" element={<SkillsPage></SkillsPage>}></Route>
-            <Route
-              path="/experience"
-              element={<ExperiencePage></ExperiencePage>}
-            ></Route>
-            <Route
-              path="/projects"
-              element={<ProjectsPage></ProjectsPage>}
-            ></Route>
-          </Routes>
+        <ScrollShadow
+          ref={navigationData.scrollRef}
+          className={cn(
+            "scroll-smooth overflow-x-hidden",
+            appliedTheme === ThemeOptions.LIGHT
+              ? "custom-scrollbar-light"
+              : "custom-scrollbar-dark"
+          )}
+        >
+          <HomePage></HomePage>
+          <SkillsPage></SkillsPage>
           <Footer></Footer>
         </ScrollShadow>
-      </div>
-    </HashRouter>
+      </motion.div>
+    </>
   );
 }

@@ -24,7 +24,7 @@
     radial-gradient(#171717 65%, transparent),
     linear-gradient(#ffffff34 1px, transparent 1px),
     linear-gradient(to right, #ffffff34 1px, transparent 1px);
-  background-position: 0 0, 0 0, 0 0, 0 3rem, 0 3rem;
+
   background-size: 100% 100%, 100% 100%, 100% 100%, 5rem 5rem, 5rem 5rem;
   background-attachment: fixed, fixed, fixed, fixed, fixed;
 }
@@ -44,10 +44,11 @@
     radial-gradient(#ffffff 65%, transparent),
     linear-gradient(#39475b71 1px, transparent 1px),
     linear-gradient(to right, #39475b71 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 5rem 5rem, 5rem 5rem;
   background-attachment: fixed, fixed, fixed, fixed, fixed;
 }
 
-.card-gradient-bg-dark {
+.card-gradient-bg-dark-100 {
   background: radial-gradient(
       circle at top right,
       rgba(33, 163, 211, 0.15) 0%,
@@ -55,18 +56,31 @@
     ),
     radial-gradient(
       circle at bottom center,
-      rgba(33, 92, 211, 0.157) 0%,
+      rgba(33, 92, 211, 0.15) 0%,
       transparent 80%
     ),
     #1f232b;
 }
+.card-gradient-bg-dark-200 {
+  background: radial-gradient(
+      circle at top right,
+      rgba(33, 163, 211, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+        circle at bottom center,
+        rgba(33, 92, 211, 0.1) 0%,
+        transparent 80%
+      )
+      #171717;
+}
 .card-outline-dark {
-  border: 1px solid hsl(var(--nextui-divider));
-  outline: 7px solid hsl(var(--nextui-divider) / 0.3);
+  border: 1px solid hsl(var(--heroui-divider));
+  outline: 7px solid hsl(var(--heroui-divider) / 0.3);
   outline-offset: 0;
 }
 
-.card-gradient-bg-light {
+.card-gradient-bg-light-100 {
   background: radial-gradient(
       circle at top right,
       rgba(33, 163, 211, 0.1) 0%,
@@ -79,9 +93,22 @@
     ),
     #ffffff;
 }
+.card-gradient-bg-light-200 {
+  background: radial-gradient(
+      circle at top right,
+      rgba(33, 163, 211, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom center,
+      rgba(33, 92, 211, 0.15) 0%,
+      transparent 80%
+    ),
+    #f7f7f7;
+}
 .card-outline-light {
-  border: 1px solid hsl(var(--nextui-divider));
-  outline: 7px solid hsl(var(--nextui-divider) / 0.3);
+  border: 1px solid hsl(var(--heroui-divider));
+  outline: 7px solid hsl(var(--heroui-divider) / 0.3);
   outline-offset: 0;
 }
 

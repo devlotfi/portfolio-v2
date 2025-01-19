@@ -13,7 +13,7 @@ import {
   Button,
   cn,
   Card,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { useContext } from "react";
 import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
@@ -37,8 +37,8 @@ export default function ThemeDropdown() {
       <Dropdown
         className={cn(
           appliedTheme === ThemeOptions.LIGHT
-            ? "card-gradient-bg-light"
-            : "card-gradient-bg-dark"
+            ? "card-gradient-bg-light-100"
+            : "card-gradient-bg-dark-100"
         )}
       >
         <DropdownTrigger>

@@ -6,7 +6,7 @@ import {
 } from "motion/react";
 import { useContext, useState } from "react";
 import { NavigationContext } from "../context/navigation-context";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleUp } from "@fortawesome/free-solid-svg-icons";
 
@@ -58,7 +58,8 @@ export default function ScrollIndicator() {
           >
             <Button
               onPress={scrollToTop}
-              className="primary-bg text-primary-foreground"
+              color="primary"
+              className="primary-bg"
               size="lg"
               radius="full"
               isIconOnly

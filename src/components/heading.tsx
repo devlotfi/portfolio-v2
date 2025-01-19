@@ -1,6 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { cn } from "@nextui-org/react";
+import { cn } from "@heroui/react";
 import { PropsWithChildren } from "react";
 
 interface ClassNames {

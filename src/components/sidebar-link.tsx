@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Card, cn } from "@nextui-org/react";
+import { Button, Card, cn } from "@heroui/react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { ComponentPropsWithRef } from "react";
 import { motion } from "motion/react";
-import { useLocation, useNavigate } from "react-router";
 
 interface Props {
   icon: IconProp;
@@ -16,9 +15,6 @@ function SidebarLinkComponent({
   children,
   ref,
 }: ComponentPropsWithRef<"div"> & Props) {
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
-
   return (
     <motion.div
       className="flex"
@@ -41,7 +37,7 @@ function SidebarLinkComponent({
     >
       <Button
         fullWidth
-        onPress={() => navigate(url)}
+        onPress={() => {}}
         variant="light"
         className="h-[3rem] font-bold"
         startContent={
@@ -49,14 +45,11 @@ function SidebarLinkComponent({
             shadow="none"
             className={cn(
               "h-[2.5rem] w-[2.5rem] justify-center items-center",
-              url === pathname ? "primary-bg" : "bg-transparent"
+              true ? "primary-bg" : "bg-transparent"
             )}
           >
             <FontAwesomeIcon
-              className={cn(
-                "text-[18pt]",
-                url === pathname && "text-primary-foreground"
-              )}
+              className={cn("text-[18pt]", true && "text-primary-foreground")}
               icon={icon}
             ></FontAwesomeIcon>
           </Card>
@@ -65,7 +58,7 @@ function SidebarLinkComponent({
         <div
           className={cn(
             "flex flex-1 text-[13pt]",
-            url === pathname && "primary-bg bg-clip-text text-transparent"
+            true && "primary-bg bg-clip-text text-transparent"
           )}
         >
           {children}

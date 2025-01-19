@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef } from "react";
 import { motion, SpringOptions, useMotionValue, useSpring } from "motion/react";
 import "./cursor-light.css";
 import { ThemeContext } from "../context/theme-context";
-import { cn } from "@nextui-org/react";
+import { cn } from "@heroui/react";
 import { ThemeOptions } from "../types/theme-options";
 
 const spring: SpringOptions = { damping: 15, stiffness: 150, restDelta: 0.001 };

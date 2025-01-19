@@ -6,7 +6,7 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, cn } from "@nextui-org/react";
+import { Button, cn } from "@heroui/react";
 import { useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { ThemeContext } from "../context/theme-context";
@@ -36,8 +36,8 @@ export default function Sidebar() {
         className={cn(
           "flex flex-col p-[1rem] duration-300 border-r border-divider z-30 h-screen w-[20rem] fixed top-0 left-0 rounded-tr-2xl rounded-br-2xl",
           appliedTheme === ThemeOptions.LIGHT
-            ? "card-gradient-bg-light"
-            : "card-gradient-bg-dark",
+            ? "card-gradient-bg-light-100"
+            : "card-gradient-bg-dark-100",
           !navigationData.sidebarOpen && "ml-[-20rem]"
         )}
       >

@@ -23,18 +23,12 @@ import JavaSVG from "../assets/skills/java.svg";
 
 import ReactSVG from "../assets/skills/react.svg";
 import TailwindSVG from "../assets/skills/tailwind.svg";
-import ReactQuerySVG from "../assets/skills/react-query.svg";
-import NextUISVG from "../assets/skills/next-ui.svg";
-import FormikSVG from "../assets/skills/formik.svg";
-import FontawesomeSVG from "../assets/skills/fontawesome.svg";
-import MotionSVG from "../assets/skills/motion.svg";
-import ApolloSVG from "../assets/skills/apollo.svg";
+import HeroUISVG from "../assets/skills/hero-ui.svg";
 import DaisyUISVG from "../assets/skills/daisy-ui.svg";
-import I18nSVG from "../assets/skills/i18n.svg";
 
 export default function SkillsPage() {
   return (
-    <div className="flex flex-col flex-1 items-center px-[2rem] md:px-[2.5rem] lg:px-[6rem]">
+    <div className="flex flex-col flex-1 items-center px-[1.5rem] md:px-[2.5rem] lg:px-[6rem]">
       <div className="flex flex-col w-full max-w-screen-md">
         <div className="flex flex-col mt-[2rem]">
           <SkillsLineSection icon={faCode} left bottom endTopLeft index={0}>
@@ -67,23 +61,8 @@ export default function SkillsPage() {
                 <div className="flex gap-3 items-start flex-wrap">
                   <SkillCard title="React" image={ReactSVG}></SkillCard>
                   <SkillCard title="Tailwind" image={TailwindSVG}></SkillCard>
-                  <SkillCard
-                    title="React Query"
-                    image={ReactQuerySVG}
-                  ></SkillCard>
-                  <SkillCard title="Next UI" image={NextUISVG}></SkillCard>
+                  <SkillCard title="Hero UI" image={HeroUISVG}></SkillCard>
                   <SkillCard title="Daisy UI" image={DaisyUISVG}></SkillCard>
-                  <SkillCard
-                    title="Fontawesome"
-                    image={FontawesomeSVG}
-                  ></SkillCard>
-                  <SkillCard title="Formik" image={FormikSVG}></SkillCard>
-                  <SkillCard
-                    title="Framer motion"
-                    image={MotionSVG}
-                  ></SkillCard>
-                  <SkillCard title="Apollo" image={ApolloSVG}></SkillCard>
-                  <SkillCard title="I18n" image={I18nSVG}></SkillCard>
                 </div>
               </div>
               <img className="h-[15rem]" src={FrontendSVG} alt="desktop" />

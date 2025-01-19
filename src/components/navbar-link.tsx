@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Card, cn } from "@nextui-org/react";
+import { Button, Card, cn } from "@heroui/react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { ComponentPropsWithRef } from "react";
+import { ComponentPropsWithRef, useContext } from "react";
 import { motion } from "motion/react";
-import { useLocation, useNavigate } from "react-router";
+import { NavigationContext } from "../context/navigation-context";
 
 interface Props {
   icon: IconProp;
@@ -16,8 +16,7 @@ function NavbarLinkComponent({
   children,
   ref,
 }: ComponentPropsWithRef<"div"> & Props) {
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
+  const { navigationData } = useContext(NavigationContext);
 
   return (
     <motion.div
@@ -44,7 +43,7 @@ function NavbarLinkComponent({
       }}
     >
       <Button
-        onPress={() => navigate(url)}
+        onPress={() => {}}
         variant="light"
         className="h-[3rem] font-bold"
         startContent={
@@ -52,14 +51,11 @@ function NavbarLinkComponent({
             shadow="none"
             className={cn(
               "h-[2rem] w-[2rem] justify-center items-center",
-              pathname === url ? "primary-bg" : "bg-transparent"
+              true ? "primary-bg" : "bg-transparent"
             )}
           >
             <FontAwesomeIcon
-              className={cn(
-                "text-[15pt]",
-                pathname === url && "text-primary-foreground"
-              )}
+              className={cn("text-[15pt]", true && "text-primary-foreground")}
               icon={icon}
             ></FontAwesomeIcon>
           </Card>
@@ -68,7 +64,7 @@ function NavbarLinkComponent({
         <div
           className={cn(
             "flex",
-            pathname === url && "primary-bg bg-clip-text text-transparent"
+            true && "primary-bg bg-clip-text text-transparent"
           )}
         >
           {children}

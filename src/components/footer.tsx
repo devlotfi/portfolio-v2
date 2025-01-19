@@ -1,5 +1,5 @@
 import Logo from "./logo";
-import { Button, cn, Link } from "@nextui-org/react";
+import { Button, cn, Link } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
@@ -37,8 +37,8 @@ export default function Footer() {
       className={cn(
         "flex sm:flex-row flex-col sm:items-center space-y-10 sm:space-y-0 justify-around px-[2rem] py-[3rem] border-t border-divider",
         appliedTheme === ThemeOptions.LIGHT
-          ? "card-gradient-bg-light"
-          : "card-gradient-bg-dark"
+          ? "card-gradient-bg-light-100"
+          : "card-gradient-bg-dark-100"
       )}
     >
       <div className="self-start">
