@@ -1,5 +1,6 @@
-import { createContext, createRef } from "react";
+import { createContext, createRef, RefObject } from "react";
 import { NavigationData } from "../types/navigation-data";
+import { SectionRefs } from "../types/section-refs";
 
 interface NavigationContext {
   navigationData: NavigationData;
@@ -10,6 +11,7 @@ const initialValue: NavigationContext = {
   navigationData: {
     sidebarOpen: false,
     scrollRef: createRef(),
+    sectionRefs: createRef() as RefObject<SectionRefs>,
   },
   setNavigationData() {},
 };

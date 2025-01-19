@@ -1,4 +1,5 @@
 import {
+  faAt,
   faGraduationCap,
   faInfoCircle,
   faList,
@@ -13,6 +14,7 @@ import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
 import SidebarLink from "./sidebar-link";
 import { motion } from "motion/react";
+import { NavigationSections } from "../types/navigation-sections";
 
 export default function Sidebar() {
   const { appliedTheme } = useContext(ThemeContext);
@@ -69,18 +71,24 @@ export default function Sidebar() {
               staggerChildren: 0.2,
             }}
           >
-            <SidebarLink icon={faInfoCircle} url={"/"}>
+            <SidebarLink icon={faInfoCircle} section={NavigationSections.ABOUT}>
               About me
             </SidebarLink>
 
-            <SidebarLink icon={faStar} url={"/skills"}>
+            <SidebarLink icon={faStar} section={NavigationSections.SKILLS}>
               Skills
             </SidebarLink>
-            <SidebarLink icon={faGraduationCap} url={"/experience"}>
+            <SidebarLink
+              icon={faGraduationCap}
+              section={NavigationSections.EXPERIENCE}
+            >
               Experience
             </SidebarLink>
-            <SidebarLink icon={faList} url={"/projects"}>
+            <SidebarLink icon={faList} section={NavigationSections.PROJECTS}>
               Projects
+            </SidebarLink>
+            <SidebarLink icon={faAt} section={NavigationSections.CONTACT}>
+              Contact
             </SidebarLink>
           </motion.div>
         ) : null}

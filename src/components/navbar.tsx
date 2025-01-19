@@ -1,4 +1,5 @@
 import {
+  faAt,
   faBars,
   faGraduationCap,
   faInfoCircle,
@@ -13,6 +14,7 @@ import { useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "motion/react";
+import { NavigationSections } from "../types/navigation-sections";
 
 export default function Navbar() {
   const { setNavigationData } = useContext(NavigationContext);
@@ -71,17 +73,23 @@ export default function Navbar() {
           staggerChildren: 0.2,
         }}
       >
-        <NavbarLink icon={faInfoCircle} url={"/"}>
+        <NavbarLink icon={faInfoCircle} section={NavigationSections.ABOUT}>
           About me
         </NavbarLink>
-        <NavbarLink icon={faStar} url={"/skills"}>
+        <NavbarLink icon={faStar} section={NavigationSections.SKILLS}>
           Skills
         </NavbarLink>
-        <NavbarLink icon={faGraduationCap} url={"/experience"}>
+        <NavbarLink
+          icon={faGraduationCap}
+          section={NavigationSections.EXPERIENCE}
+        >
           Experience
         </NavbarLink>
-        <NavbarLink icon={faList} url={"/projects"}>
+        <NavbarLink icon={faList} section={NavigationSections.PROJECTS}>
           Projects
+        </NavbarLink>
+        <NavbarLink icon={faAt} section={NavigationSections.CONTACT}>
+          Contact
         </NavbarLink>
       </motion.div>
 

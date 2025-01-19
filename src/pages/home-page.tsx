@@ -23,6 +23,7 @@ import "./home-page.css";
 import { Heading } from "../components/heading";
 import { motion, Variants } from "motion/react";
 import { Transition } from "motion";
+import { NavigationContext } from "../context/navigation-context";
 
 const variants: Variants = {
   hidden: {
@@ -41,6 +42,7 @@ const transition: Transition = {
 };
 
 export default function HomePage() {
+  const { navigationData } = useContext(NavigationContext);
   const { appliedTheme } = useContext(ThemeContext);
   const aboutMeRef = useRef<HTMLDivElement>(null);
 
@@ -53,13 +55,17 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex flex-col home-page-lines">
+    <div
+      className="flex flex-col home-page-lines"
+      ref={navigationData.sectionRefs.current.ABOUT}
+    >
       <div className="flex flex-col min-h-[calc(100vh-5rem)] pt-[2rem] lg:pt-0 lg:justify-center items-center">
         <motion.div
           initial="hidden"
           animate="visible"
           transition={{
             staggerChildren: 0.2,
+            delayChildren: 2,
           }}
           className="flex px-[2rem] flex-col lg:flex-row max-w-screen-md space-x-5"
         >

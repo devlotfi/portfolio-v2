@@ -25,10 +25,17 @@ import ReactSVG from "../assets/skills/react.svg";
 import TailwindSVG from "../assets/skills/tailwind.svg";
 import HeroUISVG from "../assets/skills/hero-ui.svg";
 import DaisyUISVG from "../assets/skills/daisy-ui.svg";
+import { useContext } from "react";
+import { NavigationContext } from "../context/navigation-context";
 
 export default function SkillsPage() {
+  const { navigationData } = useContext(NavigationContext);
+
   return (
-    <div className="flex flex-col flex-1 items-center px-[1.5rem] md:px-[2.5rem] lg:px-[6rem]">
+    <div
+      className="flex flex-col flex-1 items-center px-[1.5rem] md:px-[2.5rem] lg:px-[6rem]"
+      ref={navigationData.sectionRefs.current.SKILLS}
+    >
       <div className="flex flex-col w-full max-w-screen-md">
         <div className="flex flex-col mt-[2rem]">
           <SkillsLineSection icon={faCode} left bottom endTopLeft index={0}>

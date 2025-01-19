@@ -1,20 +1,24 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Card, cn } from "@heroui/react";
+import { Button, Card } from "@heroui/react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { ComponentPropsWithRef } from "react";
+import { ComponentPropsWithRef, useContext } from "react";
 import { motion } from "motion/react";
+import { NavigationSections } from "../types/navigation-sections";
+import { NavigationContext } from "../context/navigation-context";
 
 interface Props {
   icon: IconProp;
-  url: string;
+  section: NavigationSections;
 }
 
 function SidebarLinkComponent({
   icon,
-  url,
+  section,
   children,
   ref,
 }: ComponentPropsWithRef<"div"> & Props) {
+  const { navigationData, setNavigationData } = useContext(NavigationContext);
+
   return (
     <motion.div
       className="flex"
@@ -37,32 +41,32 @@ function SidebarLinkComponent({
     >
       <Button
         fullWidth
-        onPress={() => {}}
+        onPress={() => {
+          setNavigationData((navigationData) => ({
+            ...navigationData,
+            sidebarOpen: false,
+          }));
+          if (navigationData.sectionRefs.current[section].current) {
+            navigationData.sectionRefs.current[section].current.scrollIntoView({
+              block: "start",
+            });
+          }
+        }}
         variant="light"
         className="h-[3rem] font-bold"
         startContent={
           <Card
             shadow="none"
-            className={cn(
-              "h-[2.5rem] w-[2.5rem] justify-center items-center",
-              true ? "primary-bg" : "bg-transparent"
-            )}
+            className="h-[2.5rem] w-[2.5rem] justify-center items-center primary-bg"
           >
             <FontAwesomeIcon
-              className={cn("text-[18pt]", true && "text-primary-foreground")}
+              className="text-[18pt] text-primary-foreground"
               icon={icon}
             ></FontAwesomeIcon>
           </Card>
         }
       >
-        <div
-          className={cn(
-            "flex flex-1 text-[13pt]",
-            true && "primary-bg bg-clip-text text-transparent"
-          )}
-        >
-          {children}
-        </div>
+        <div className="flex flex-1 text-[13pt]">{children}</div>
       </Button>
     </motion.div>
   );

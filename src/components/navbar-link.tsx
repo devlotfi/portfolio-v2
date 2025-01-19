@@ -1,18 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Card, cn } from "@heroui/react";
+import { Button } from "@heroui/react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { ComponentPropsWithRef, useContext } from "react";
 import { motion } from "motion/react";
 import { NavigationContext } from "../context/navigation-context";
+import { NavigationSections } from "../types/navigation-sections";
 
 interface Props {
   icon: IconProp;
-  url: string;
+  section: NavigationSections;
 }
 
 function NavbarLinkComponent({
   icon,
-  url,
+  section,
   children,
   ref,
 }: ComponentPropsWithRef<"div"> & Props) {
@@ -43,32 +44,23 @@ function NavbarLinkComponent({
       }}
     >
       <Button
-        onPress={() => {}}
+        onPress={() => {
+          if (navigationData.sectionRefs.current[section].current) {
+            navigationData.sectionRefs.current[section].current.scrollIntoView({
+              block: "start",
+            });
+          }
+        }}
         variant="light"
         className="h-[3rem] font-bold"
         startContent={
-          <Card
-            shadow="none"
-            className={cn(
-              "h-[2rem] w-[2rem] justify-center items-center",
-              true ? "primary-bg" : "bg-transparent"
-            )}
-          >
-            <FontAwesomeIcon
-              className={cn("text-[15pt]", true && "text-primary-foreground")}
-              icon={icon}
-            ></FontAwesomeIcon>
-          </Card>
+          <FontAwesomeIcon
+            className="text-[12pt]"
+            icon={icon}
+          ></FontAwesomeIcon>
         }
       >
-        <div
-          className={cn(
-            "flex",
-            true && "primary-bg bg-clip-text text-transparent"
-          )}
-        >
-          {children}
-        </div>
+        <div className="flex">{children}</div>
       </Button>
     </motion.div>
   );
