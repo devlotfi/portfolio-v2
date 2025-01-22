@@ -11,7 +11,6 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-  cn,
   Card,
 } from "@heroui/react";
 import { useContext } from "react";
@@ -20,7 +19,7 @@ import { ThemeOptions } from "../types/theme-options";
 import { motion } from "motion/react";
 
 export default function ThemeDropdown() {
-  const { themeOption, appliedTheme, setTheme } = useContext(ThemeContext);
+  const { themeOption, setTheme } = useContext(ThemeContext);
 
   return (
     <motion.div
@@ -34,13 +33,7 @@ export default function ThemeDropdown() {
         },
       }}
     >
-      <Dropdown
-        className={cn(
-          appliedTheme === ThemeOptions.LIGHT
-            ? "card-gradient-bg-light-100"
-            : "card-gradient-bg-dark-100"
-        )}
-      >
+      <Dropdown className="card-gradient-bg-light-100 dark:card-gradient-bg-dark-100">
         <DropdownTrigger>
           <Button
             isIconOnly

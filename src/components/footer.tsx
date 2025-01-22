@@ -1,15 +1,13 @@
 import Logo from "./logo";
-import { Button, cn, Link } from "@heroui/react";
+import { Button, Link } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
   faLinkedin,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { PropsWithChildren, useContext } from "react";
+import { PropsWithChildren } from "react";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { ThemeContext } from "../context/theme-context";
-import { ThemeOptions } from "../types/theme-options";
 
 interface SocialIconsProps {
   url: string;
@@ -30,17 +28,8 @@ function SocialIcon({ url, children }: PropsWithChildren<SocialIconsProps>) {
 }
 
 export default function Footer() {
-  const { appliedTheme } = useContext(ThemeContext);
-
   return (
-    <div
-      className={cn(
-        "flex sm:flex-row flex-col sm:items-center space-y-10 sm:space-y-0 justify-around px-[2rem] py-[3rem] border-t border-divider",
-        appliedTheme === ThemeOptions.LIGHT
-          ? "card-gradient-bg-light-100"
-          : "card-gradient-bg-dark-100"
-      )}
-    >
+    <div className="flex sm:flex-row flex-col sm:items-center space-y-10 sm:space-y-0 justify-around px-[2rem] py-[3rem] border-t border-divider card-gradient-bg-light-100 dark:card-gradient-bg-dark-100">
       <div className="self-start">
         <Logo className="h-[3.5rem]"></Logo>
       </div>

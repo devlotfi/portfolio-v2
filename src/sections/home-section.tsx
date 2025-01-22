@@ -1,25 +1,13 @@
 import {
   faAngleDoubleDown,
-  faAt,
   faFileLines,
   faInfoCircle,
-  faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  Button,
-  Card,
-  CardBody,
-  cn,
-  Input,
-  Link,
-  Textarea,
-} from "@heroui/react";
+import { Button, Card, CardBody, Link } from "@heroui/react";
 import Developer from "../assets/freepik/developer.svg";
 import { useContext, useRef } from "react";
-import { ThemeContext } from "../context/theme-context";
-import { ThemeOptions } from "../types/theme-options";
-import "./home-page.css";
+import "./home-section.css";
 import { Heading } from "../components/heading";
 import { motion, Variants } from "motion/react";
 import { Transition } from "motion";
@@ -41,15 +29,14 @@ const transition: Transition = {
   stiffness: 70,
 };
 
-export default function HomePage() {
+export default function HomeSection() {
   const { navigationData } = useContext(NavigationContext);
-  const { appliedTheme } = useContext(ThemeContext);
   const aboutMeRef = useRef<HTMLDivElement>(null);
 
   const scrollToAboutMe = () => {
     if (aboutMeRef.current) {
       aboutMeRef.current.scrollIntoView({
-        block: "nearest",
+        block: "center",
       });
     }
   };
@@ -156,12 +143,7 @@ export default function HomePage() {
         >
           <Card
             shadow="none"
-            className={cn(
-              "max-w-screen-md",
-              appliedTheme === ThemeOptions.LIGHT
-                ? "card-gradient-bg-light-100 card-outline-light"
-                : "card-gradient-bg-dark-100 card-outline-dark"
-            )}
+            className="max-w-screen-md card-gradient-bg-light-100 card-outline-light dark:card-gradient-bg-dark-100 dark:card-outline-dark"
             fullWidth
           >
             <CardBody className="p-[1.5rem] space-y-3 overflow-hidden">
@@ -195,64 +177,6 @@ export default function HomePage() {
                 , where I developed a strong foundation in software engineering
                 principles.
               </div>
-            </CardBody>
-          </Card>
-        </motion.div>
-
-        <motion.div
-          className="max-w-screen-md w-full"
-          initial="hidden"
-          whileInView="visible"
-          variants={variants}
-          transition={transition}
-        >
-          <Card
-            shadow="none"
-            className={cn(
-              appliedTheme === ThemeOptions.LIGHT
-                ? "card-gradient-bg-light-100 card-outline-light"
-                : "card-gradient-bg-dark-100 card-outline-dark"
-            )}
-            fullWidth
-          >
-            <CardBody className="p-[1.5rem] space-y-3 overflow-hidden">
-              <Heading icon={faAt}>Contact me</Heading>
-              <Input
-                classNames={{
-                  inputWrapper: cn(
-                    "border border-divider",
-                    appliedTheme === ThemeOptions.LIGHT
-                      ? "card-gradient-bg-light-200"
-                      : "card-gradient-bg-dark-200"
-                  ),
-                }}
-                label="Email"
-                placeholder="Enter your email"
-                type="email"
-              />
-              <Textarea
-                isClearable
-                classNames={{
-                  inputWrapper: cn(
-                    "border border-divider",
-                    appliedTheme === ThemeOptions.LIGHT
-                      ? "card-gradient-bg-light-200"
-                      : "card-gradient-bg-dark-200"
-                  ),
-                }}
-                label="Description"
-                placeholder="Enter your description"
-              />
-
-              <Button
-                color="primary"
-                className="primary-bg"
-                startContent={
-                  <FontAwesomeIcon icon={faPaperPlane}></FontAwesomeIcon>
-                }
-              >
-                Submit
-              </Button>
             </CardBody>
           </Card>
         </motion.div>

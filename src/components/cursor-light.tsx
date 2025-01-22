@@ -1,14 +1,10 @@
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion, SpringOptions, useMotionValue, useSpring } from "motion/react";
 import "./cursor-light.css";
-import { ThemeContext } from "../context/theme-context";
-import { cn } from "@heroui/react";
-import { ThemeOptions } from "../types/theme-options";
 
 const spring: SpringOptions = { damping: 15, stiffness: 150, restDelta: 0.001 };
 
 export default function CusorLight() {
-  const { appliedTheme } = useContext(ThemeContext);
   const xPoint = useMotionValue(0);
   const yPoint = useMotionValue(0);
   const x = useSpring(xPoint, spring);
@@ -40,10 +36,7 @@ export default function CusorLight() {
   return (
     <motion.div
       ref={cursorRef}
-      className={cn(
-        "flex fixed h-[50vh] w-[50vh] mouse-cursor",
-        appliedTheme === ThemeOptions.LIGHT ? "cursor-light" : "cursor-dark"
-      )}
+      className="flex fixed h-[50vh] w-[50vh] mouse-cursor cursor-light dark:cursor-dark"
       style={{ x, y }}
     ></motion.div>
   );

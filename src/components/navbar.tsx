@@ -20,7 +20,7 @@ export default function Navbar() {
   const { setNavigationData } = useContext(NavigationContext);
 
   return (
-    <div className="flex justify-between items-center min-h-[5rem] px-[1rem] z-10">
+    <div className="flex justify-between items-center sticky top-0 min-h-[5rem] px-[1rem] z-10">
       <div className="flex items-center space-x-2">
         <motion.div
           initial={{ opacity: 0, rotate: 90, scale: 0 }}

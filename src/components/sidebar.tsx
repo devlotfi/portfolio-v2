@@ -10,14 +10,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, cn } from "@heroui/react";
 import { useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
-import { ThemeContext } from "../context/theme-context";
-import { ThemeOptions } from "../types/theme-options";
 import SidebarLink from "./sidebar-link";
 import { motion } from "motion/react";
 import { NavigationSections } from "../types/navigation-sections";
 
 export default function Sidebar() {
-  const { appliedTheme } = useContext(ThemeContext);
   const { navigationData, setNavigationData } = useContext(NavigationContext);
 
   return (
@@ -36,10 +33,7 @@ export default function Sidebar() {
       ></div>
       <div
         className={cn(
-          "flex flex-col p-[1rem] duration-300 border-r border-divider z-30 h-screen w-[20rem] fixed top-0 left-0 rounded-tr-2xl rounded-br-2xl",
-          appliedTheme === ThemeOptions.LIGHT
-            ? "card-gradient-bg-light-100"
-            : "card-gradient-bg-dark-100",
+          "flex flex-col p-[1rem] duration-300 border-r border-divider z-30 h-screen w-[20rem] fixed top-0 left-0 rounded-tr-2xl rounded-br-2xl card-gradient-bg-light-100 dark:card-gradient-bg-dark-100",
           !navigationData.sidebarOpen && "ml-[-20rem]"
         )}
       >

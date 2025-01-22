@@ -1,20 +1,18 @@
 import { useContext } from "react";
 import Navbar from "./components/navbar";
-import { cn, ScrollShadow } from "@heroui/react";
-import { ThemeContext } from "./context/theme-context";
-import { ThemeOptions } from "./types/theme-options";
+import { ScrollShadow } from "@heroui/react";
 import { NavigationContext } from "./context/navigation-context";
-import HomePage from "./pages/home-page";
+import HomeSection from "./sections/home-section";
 import Sidebar from "./components/sidebar";
 import ScrollIndicator from "./components/scroll-indicator";
 import SocialSideBtns from "./components/social-side-btns";
-import CusorLight from "./components/cursor-light";
 import Footer from "./components/footer";
-import SkillsPage from "./pages/skills-page";
+import SkillsSection from "./sections/skills-section";
 import { motion, useScroll, useTransform } from "motion/react";
+import ContactSection from "./sections/contact-section";
+import ProjectsSection from "./sections/projects-section";
 
 export default function App() {
-  const { appliedTheme } = useContext(ThemeContext);
   const { navigationData } = useContext(NavigationContext);
 
   const { scrollY } = useScroll({
@@ -22,7 +20,7 @@ export default function App() {
     layoutEffect: false,
   });
 
-  const bgPosition = useTransform(
+  const backgroundPosition = useTransform(
     scrollY,
     (value) => `0 0, 0 0, 0 0, 0 -${value / 10}px, 0 -${value / 10}px`
   );
@@ -30,31 +28,24 @@ export default function App() {
   return (
     <>
       <Sidebar></Sidebar>
-      <CusorLight></CusorLight>
       <ScrollIndicator></ScrollIndicator>
       <SocialSideBtns></SocialSideBtns>
       <motion.div
-        className={cn(
-          "flex flex-col h-screen",
-          appliedTheme === ThemeOptions.LIGHT ? "main-bg-light" : "main-bg-dark"
-        )}
+        className="flex flex-col h-screen main-bg-light dark:main-bg-dark"
         style={{
-          backgroundPosition: bgPosition,
+          backgroundPosition: backgroundPosition,
         }}
       >
         <Navbar></Navbar>
 
         <ScrollShadow
           ref={navigationData.scrollRef}
-          className={cn(
-            "scroll-smooth overflow-x-hidden",
-            appliedTheme === ThemeOptions.LIGHT
-              ? "custom-scrollbar-light"
-              : "custom-scrollbar-dark"
-          )}
+          className="scroll-smooth overflow-x-hidden custom-scrollbar-light dark:custom-scrollbar-dark"
         >
-          <HomePage></HomePage>
-          <SkillsPage></SkillsPage>
+          <HomeSection></HomeSection>
+          <SkillsSection></SkillsSection>
+          <ProjectsSection></ProjectsSection>
+          <ContactSection></ContactSection>
           <Footer></Footer>
         </ScrollShadow>
       </motion.div>

@@ -10,6 +10,7 @@ export default {
   theme: {
     extend: {},
   },
+  darkMode: "class",
   plugins: [
     heroui({
       addCommonColors: true,
@@ -23,7 +24,7 @@ export default {
       themes: {
         light: {
           colors: {
-            divider: "#b9b9b9",
+            divider: "#b0bed7",
             foreground: "#273450",
             background: {
               foreground: "#273450",
