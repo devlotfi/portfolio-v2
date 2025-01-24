@@ -1,55 +1,35 @@
-import { useContext } from "react";
-import Navbar from "./components/navbar";
-import { ScrollShadow } from "@heroui/react";
-import { NavigationContext } from "./context/navigation-context";
-import HomeSection from "./sections/home-section";
-import Sidebar from "./components/sidebar";
-import ScrollIndicator from "./components/scroll-indicator";
-import SocialSideBtns from "./components/social-side-btns";
-import Footer from "./components/footer";
-import SkillsSection from "./sections/skills-section";
-import { motion, useScroll, useTransform } from "motion/react";
-import ContactSection from "./sections/contact-section";
-import ProjectsSection from "./sections/projects-section";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
-export default function App() {
-  const { navigationData } = useContext(NavigationContext);
-
-  const { scrollY } = useScroll({
-    container: navigationData.scrollRef,
-    layoutEffect: false,
-  });
-
-  const backgroundPosition = useTransform(
-    scrollY,
-    (value) => `0 0, 0 0, 0 0, 0 -${value / 10}px, 0 -${value / 10}px`
-  );
+function App() {
+  const [count, setCount] = useState(0)
 
   return (
     <>
-      <Sidebar></Sidebar>
-      <ScrollIndicator></ScrollIndicator>
-      <SocialSideBtns></SocialSideBtns>
-      <motion.div
-        className="flex flex-col h-[100dvh] main-bg-light dark:main-bg-dark"
-        style={{
-          backgroundPosition: backgroundPosition,
-        }}
-      >
-        <Navbar></Navbar>
-
-        <ScrollShadow
-          ref={navigationData.scrollRef}
-          isEnabled={false}
-          className="scroll-smooth overflow-x-hidden custom-scrollbar-light dark:custom-scrollbar-dark"
-        >
-          <HomeSection></HomeSection>
-          <SkillsSection></SkillsSection>
-          <ProjectsSection></ProjectsSection>
-          <ContactSection></ContactSection>
-          <Footer></Footer>
-        </ScrollShadow>
-      </motion.div>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
     </>
-  );
+  )
 }
+
+export default App

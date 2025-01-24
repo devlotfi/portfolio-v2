@@ -1,156 +1,68 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
 
-* {
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .main-bg-dark {
-    background-color: #171717;
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
 
-    background-image: radial-gradient(
-        circle at top right,
-        rgba(33, 163, 211, 0.15) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at bottom center,
-        rgba(33, 92, 211, 0.15) 0%,
-        transparent 80%
-      ),
-      radial-gradient(#171717 65%, transparent),
-      linear-gradient(#ffffff34 1px, transparent 1px),
-      linear-gradient(to right, #ffffff34 1px, transparent 1px);
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
 
-    background-size: 100% 100%, 100% 100%, 100% 100%, 5rem 5rem, 5rem 5rem;
-    background-attachment: fixed, fixed, fixed, fixed, fixed;
-  }
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
 
-  .main-bg-light {
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
     background-color: #ffffff;
-
-    background-image: radial-gradient(
-        circle at top right,
-        rgba(33, 163, 211, 0.25) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at bottom center,
-        rgba(33, 92, 211, 0.25) 0%,
-        transparent 80%
-      ),
-      radial-gradient(#ffffff 65%, transparent),
-      linear-gradient(#39475b71 1px, transparent 1px),
-      linear-gradient(to right, #39475b71 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 100% 100%, 5rem 5rem, 5rem 5rem;
-    background-attachment: fixed, fixed, fixed, fixed, fixed;
   }
-  .card-gradient-bg-dark-100 {
-    background: radial-gradient(
-        circle at top right,
-        rgba(33, 163, 211, 0.15) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at bottom center,
-        rgba(33, 92, 211, 0.15) 0%,
-        transparent 80%
-      ),
-      #1f232b;
+  a:hover {
+    color: #747bff;
   }
-  .card-gradient-bg-dark-200 {
-    background: radial-gradient(
-        circle at top right,
-        rgba(33, 163, 211, 0.1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-          circle at bottom center,
-          rgba(33, 92, 211, 0.1) 0%,
-          transparent 80%
-        )
-        #171717;
+  button {
+    background-color: #f9f9f9;
   }
-  .card-outline-dark {
-    border: 1px solid hsl(var(--heroui-divider));
-    outline: 7px solid hsl(var(--heroui-divider) / 0.3);
-    outline-offset: 0;
-  }
-
-  .card-gradient-bg-light-100 {
-    background: radial-gradient(
-        circle at top right,
-        rgba(33, 163, 211, 0.1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at bottom center,
-        rgba(33, 92, 211, 0.1) 0%,
-        transparent 80%
-      ),
-      #ffffff;
-  }
-  .card-gradient-bg-light-200 {
-    background: radial-gradient(
-        circle at top right,
-        rgba(33, 163, 211, 0.15) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at bottom center,
-        rgba(33, 92, 211, 0.15) 0%,
-        transparent 80%
-      ),
-      #f7f7f7;
-  }
-  .card-outline-light {
-    border: 1px solid hsl(var(--heroui-divider));
-    outline: 7px solid hsl(var(--heroui-divider) / 0.3);
-    outline-offset: 0;
-  }
-
-  @supports (scrollbar-color: auto) {
-    .custom-scrollbar-dark {
-      scrollbar-color: #33a1c7 #171717;
-    }
-    .custom-scrollbar-light {
-      scrollbar-color: #33a1c7 #ffffff;
-    }
-  }
-
-  @supports selector(::-webkit-scrollbar) {
-    .custom-scrollbar-light {
-      scrollbar-color: auto !important;
-    }
-    .custom-scrollbar-light::-webkit-scrollbar {
-      background: #ffffff;
-      border-radius: 100px;
-      width: 0.5rem;
-    }
-    .custom-scrollbar-light::-webkit-scrollbar-thumb {
-      background: linear-gradient(to top right, #3f6394, #2dbfe0) !important;
-      border-radius: 100px;
-    }
-
-    .custom-scrollbar-dark {
-      scrollbar-color: auto !important;
-    }
-    .custom-scrollbar-dark::-webkit-scrollbar {
-      background: #171717;
-      border-radius: 100px;
-      width: 0.5rem;
-    }
-    .custom-scrollbar-dark::-webkit-scrollbar-thumb {
-      background: linear-gradient(to top right, #3f6394, #2dbfe0) !important;
-      border-radius: 100px;
-    }
-  }
-}
-
-.primary-bg {
-  background-image: linear-gradient(to top right, #3f6394, #2dbfe0);
 }
