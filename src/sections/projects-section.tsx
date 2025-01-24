@@ -1,16 +1,18 @@
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { Heading } from "../components/heading";
-import { Card, CardBody } from "@heroui/react";
+import { Card, CardBody, cn } from "@heroui/react";
 import ReactSVG from "../assets/skills/react.svg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NavigationContext } from "../context/navigation-context";
+import { motion } from "motion/react";
 
 export default function ProjectsSection() {
   const { navigationData } = useContext(NavigationContext);
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <div
-      className="flex flex-col items-center relative"
+      className="flex flex-col items-center relative px-[1rem]"
       ref={navigationData.sectionRefs.current.PROJECTS}
     >
       <div className="flex justify-center items-center w-full space-x-3 py-[3rem] max-w-screen-lg">
@@ -60,6 +62,21 @@ export default function ProjectsSection() {
           />
         </CardBody>
       </Card>
+
+      <div className="flex h-[10rem] w-[20rem]">
+        <motion.div
+          layout
+          onClick={() => setOpen(!open)}
+          className={cn(
+            "flex mt-[2rem] flex-1 flex-col cursor-pointer border border-divider card-gradient-bg-dark-100 rounded-md",
+            open && "fixed top-0 left-0 h-screen w-screen z-[1000] mt-0"
+          )}
+        >
+          <div className="flex h-[5rem] bg-red-300">
+            <div className="flex h-[5rem] w-[5rem] bg-green-400"></div>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 }

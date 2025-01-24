@@ -31,7 +31,7 @@ export default function App() {
       <ScrollIndicator></ScrollIndicator>
       <SocialSideBtns></SocialSideBtns>
       <motion.div
-        className="flex flex-col h-screen main-bg-light dark:main-bg-dark"
+        className="flex flex-col h-[100dvh] main-bg-light dark:main-bg-dark"
         style={{
           backgroundPosition: backgroundPosition,
         }}
@@ -40,6 +40,7 @@ export default function App() {
 
         <ScrollShadow
           ref={navigationData.scrollRef}
+          isEnabled={false}
           className="scroll-smooth overflow-x-hidden custom-scrollbar-light dark:custom-scrollbar-dark"
         >
           <HomeSection></HomeSection>

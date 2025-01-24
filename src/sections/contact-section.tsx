@@ -18,7 +18,7 @@ export default function ContactSection() {
         Get in touch
       </div>
       <motion.div
-        className="max-w-screen-md w-full"
+        className="max-w-screen-md w-full px-[1rem]"
         initial="hidden"
         whileInView="visible"
       >

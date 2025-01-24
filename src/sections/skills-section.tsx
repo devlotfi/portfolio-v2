@@ -56,6 +56,9 @@ export default function SkillsSection() {
   return (
     <div
       className="flex flex-col flex-1 items-center px-[1.5rem] md:px-[2.5rem] lg:px-[6rem]"
+      style={{
+        background: "radial-gradient(at top, cyan / 20, transparent 20%)",
+      }}
       ref={navigationData.sectionRefs.current.SKILLS}
     >
       <div className="flex justify-center items-center w-full space-x-3 py-[3rem] max-w-screen-lg">
@@ -68,7 +71,7 @@ export default function SkillsSection() {
           <SkillsLineSection icon={faCode} left bottom endTopLeft index={0}>
             <div className="flex flex-col md:flex-row gap-7">
               <img
-                className="h-[10rem]"
+                className="h-[10rem] hidden md:flex"
                 src={ProgrammingSVG}
                 alt="programming"
               />
@@ -92,7 +95,11 @@ export default function SkillsSection() {
           </SkillsLineSection>
           <SkillsLineSection icon={faWindowRestore} right top bottom index={1}>
             <div className="flex flex-col md:flex-row gap-7">
-              <img className="h-[10rem]" src={FrontendSVG} alt="frontend" />
+              <img
+                className="h-[10rem] hidden md:flex"
+                src={FrontendSVG}
+                alt="frontend"
+              />
               <div className="flex flex-col space-y-3">
                 <div className="flex font-black text-[20pt]">Front-end</div>
                 <div className="flex gap-3 items-start flex-wrap">
@@ -109,7 +116,11 @@ export default function SkillsSection() {
           </SkillsLineSection>
           <SkillsLineSection icon={faServer} left top bottom index={4}>
             <div className="flex flex-col md:flex-row gap-7">
-              <img className="h-[10rem]" src={BackendSVG} alt="backend" />
+              <img
+                className="h-[10rem] hidden md:flex"
+                src={BackendSVG}
+                alt="backend"
+              />
               <div className="flex flex-col space-y-3">
                 <div className="flex font-black text-[20pt]">Back-end</div>
                 <div className="flex gap-3 items-start flex-wrap">
@@ -129,7 +140,11 @@ export default function SkillsSection() {
           </SkillsLineSection>
           <SkillsLineSection icon={faDatabase} right top bottom index={5}>
             <div className="flex flex-col md:flex-row gap-7">
-              <img className="h-[10rem]" src={DatabaseSVG} alt="database" />
+              <img
+                className="h-[10rem] hidden md:flex"
+                src={DatabaseSVG}
+                alt="database"
+              />
               <div className="flex flex-col space-y-3">
                 <div className="flex font-black text-[20pt]">Databases</div>
                 <div className="flex gap-3 items-start flex-wrap">
@@ -142,7 +157,11 @@ export default function SkillsSection() {
           </SkillsLineSection>
           <SkillsLineSection icon={faWrench} left top endBottomLeft index={7}>
             <div className="flex flex-col md:flex-row gap-7">
-              <img className="h-[10rem]" src={ToolsSVG} alt="programming" />
+              <img
+                className="h-[10rem] hidden md:flex"
+                src={ToolsSVG}
+                alt="programming"
+              />
               <div className="flex flex-col space-y-3">
                 <div className="flex font-black text-[20pt]">Other tools</div>
                 <div className="flex gap-3 items-start flex-wrap">
