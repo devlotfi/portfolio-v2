@@ -17,6 +17,8 @@ export default function ProjectsSection() {
         <HighlightedProject index={0}></HighlightedProject>
         <HighlightedProject index={1}></HighlightedProject>
         <HighlightedProject index={2}></HighlightedProject>
+        <HighlightedProject index={3}></HighlightedProject>
+        <HighlightedProject index={4}></HighlightedProject>
       </div>
 
       <SectionTitle icon={faList}>All projects</SectionTitle>

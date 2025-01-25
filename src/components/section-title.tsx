@@ -12,7 +12,7 @@ export default function SectionTitle({
   icon,
 }: PropsWithChildren<Props>) {
   return (
-    <motion.div className="flex items-center gap-3 w-full max-w-screen-lg my-[5rem]">
+    <motion.div className="flex items-center gap-3 w-full max-w-screen-lg mt-[10rem]">
       <div className="flex items-center gap-3">
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -31,11 +31,8 @@ export default function SectionTitle({
         transition={{
           duration: 0.7,
         }}
-        className="flex flex-1 items-center origin-left"
-      >
-        <div className="flex h-[1rem] w-[1rem] bg-divider rounded-full translate-x-1/2"></div>
-        <div className="flex flex-1 h-[2px] bg-gradient-to-r from-divider to-transparent"></div>
-      </motion.div>
+        className="flex flex-1 items-center origin-left h-[2px] bg-gradient-to-r from-divider to-transparent"
+      ></motion.div>
       <motion.div
         initial={{ scale: 0, rotate: 90, opacity: 0 }}
         whileInView={{ scale: 1, rotate: 0, opacity: 1 }}
