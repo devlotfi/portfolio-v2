@@ -25,12 +25,12 @@ export default {
         light: {
           colors: {
             divider: "#b0bed7",
-            foreground: "#273450",
+            foreground: "#2c4271",
             background: {
-              foreground: "#273450",
+              foreground: "#2c4271",
             },
             default: {
-              foreground: "#273450",
+              foreground: "#2c4271",
             },
             primary: {
               DEFAULT: "#2EB9DC",
@@ -41,12 +41,12 @@ export default {
         dark: {
           colors: {
             divider: "#575f69",
-            foreground: "#FFFFFF",
+            foreground: "#dbe7f3",
             background: {
-              foreground: "#FFFFFF",
+              foreground: "#dbe7f3",
             },
             default: {
-              foreground: "#FFFFFF",
+              foreground: "#dbe7f3",
             },
             primary: {
               DEFAULT: "#2EB9DC",

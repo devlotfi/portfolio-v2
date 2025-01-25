@@ -1,50 +1,54 @@
 import { PropsWithChildren } from "react";
-import SectionTitleLines from "../assets/section-title-lines.svg";
 import { motion } from "motion/react";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function SectionTitle({ children }: PropsWithChildren) {
+interface Props {
+  icon: IconProp;
+}
+
+export default function SectionTitle({
+  children,
+  icon,
+}: PropsWithChildren<Props>) {
   return (
-    <motion.div className="flex w-full max-w-screen-xl my-[5rem] h-[10rem]">
-      <motion.div
-        initial={{ opacity: 0, x: "-50%" }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{
-          duration: 0.7,
-        }}
-        className="flex flex-1"
-        style={{
-          background: `url("${SectionTitleLines}")`,
-          maskImage: "linear-gradient(to left, red, transparent)",
-          backgroundRepeat: "no-repeat no-repeat",
-          backgroundPosition: "right center",
-        }}
-      ></motion.div>
+    <motion.div className="flex items-center gap-3 w-full max-w-screen-lg my-[5rem]">
       <div className="flex items-center gap-3">
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
           transition={{
             duration: 0.7,
           }}
-          className="flex text-[30pt] font-black bg-primary-gradient bg-clip-text text-transparent px-[1rem]"
+          className="flex text-[19pt] md:text-[30pt] font-black bg-primary-gradient bg-clip-text text-transparent"
         >
           {children}
         </motion.div>
       </div>
       <motion.div
-        initial={{ opacity: 0, x: "50%", scaleX: -1 }}
-        whileInView={{ opacity: 1, x: 0, scaleX: -1 }}
+        initial={{ opacity: 0, scaleX: 0 }}
+        whileInView={{ opacity: 1, scaleX: 1 }}
         transition={{
           duration: 0.7,
         }}
-        className="flex flex-1"
-        style={{
-          background: `url("${SectionTitleLines}")`,
-          maskImage: "linear-gradient(to left, red, transparent)",
-          backgroundRepeat: "no-repeat no-repeat",
-          backgroundPosition: "right center",
+        className="flex flex-1 items-center origin-left"
+      >
+        <div className="flex h-[1rem] w-[1rem] bg-divider rounded-full translate-x-1/2"></div>
+        <div className="flex flex-1 h-[2px] bg-gradient-to-r from-divider to-transparent"></div>
+      </motion.div>
+      <motion.div
+        initial={{ scale: 0, rotate: 90, opacity: 0 }}
+        whileInView={{ scale: 1, rotate: 0, opacity: 1 }}
+        transition={{
+          duration: 0.7,
         }}
-      ></motion.div>
+        className="flex justify-center items-center h-[2.3rem] w-[2.3rem] md:h-[3rem] md:w-[3rem] bg-primary-gradient rounded-lg"
+      >
+        <FontAwesomeIcon
+          icon={icon}
+          className="text-[17pt] text-primary-foreground"
+        ></FontAwesomeIcon>
+      </motion.div>
     </motion.div>
   );
 }

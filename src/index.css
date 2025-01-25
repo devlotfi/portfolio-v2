@@ -115,11 +115,11 @@
   }
 
   @supports (scrollbar-color: auto) {
-    .custom-scrollbar-dark {
+    .scrollbar-dark {
       scrollbar-color: #33a1c7 #171717;
       scrollbar-width: thin;
     }
-    .custom-scrollbar-light {
+    .scrollbar-light {
       scrollbar-color: #33a1c7 #ffffff;
       scrollbar-width: thin;
     }

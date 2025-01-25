@@ -8,6 +8,8 @@ interface NavigationContext {
   onSidebarOpenChange: () => void;
   scrollRef: RefObject<HTMLDivElement | null>;
   sectionRefs: RefObject<SectionRefs>;
+  expandedView: boolean;
+  setExpandedView: (value: boolean) => void;
 }
 
 const initialValue: NavigationContext = {
@@ -17,6 +19,8 @@ const initialValue: NavigationContext = {
   onSidebarOpenChange() {},
   scrollRef: createRef(),
   sectionRefs: createRef() as RefObject<SectionRefs>,
+  expandedView: false,
+  setExpandedView() {},
 };
 
 export const NavigationContext = createContext(initialValue);

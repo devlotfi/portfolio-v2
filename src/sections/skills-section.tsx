@@ -2,6 +2,7 @@ import {
   faCode,
   faDatabase,
   faServer,
+  faStar,
   faWindowRestore,
   faWrench,
 } from "@fortawesome/free-solid-svg-icons";
@@ -60,7 +61,7 @@ export default function SkillsSection() {
       }}
       ref={sectionRefs.current.SKILLS}
     >
-      <SectionTitle>Skills</SectionTitle>
+      <SectionTitle icon={faStar}>Skills</SectionTitle>
       <div className="flex flex-col w-full max-w-screen-md">
         <div className="flex flex-col mt-[2rem]">
           <SkillsLineSection
@@ -111,7 +112,7 @@ export default function SkillsSection() {
             <SkillCard title="Node JS" image={NodeJsSVG}></SkillCard>
             <SkillCard title="Nest JS" image={NestJsSVG}></SkillCard>
             <SkillCard title="Nest JS" image={NextJsSVG}></SkillCard>
-            <SkillCard title="DJango" image={DjangoSVG}></SkillCard>
+            <SkillCard title="Django" image={DjangoSVG}></SkillCard>
             <SkillCard title="Redis" image={RedisSVG}></SkillCard>
             <SkillCard title="Openapi (Swagger)" image={OpenapiSVG}></SkillCard>
             <SkillCard title="Graphql" image={GraphqlSVG}></SkillCard>

@@ -13,7 +13,7 @@ import ScrollIndicator from "./components/scroll-indicator";
 import ProjectsSection from "./sections/projects-section";
 
 export default function App() {
-  const { scrollRef } = useContext(NavigationContext);
+  const { scrollRef, expandedView } = useContext(NavigationContext);
 
   const { scrollY } = useScroll({
     container: scrollRef,
@@ -41,8 +41,8 @@ export default function App() {
         <Sidebar></Sidebar>
         <ScrollShadow
           ref={scrollRef}
-          isEnabled={true}
-          className="scroll-smooth overflow-x-hidden custom-scrollbar-light dark:custom-scrollbar-dark"
+          isEnabled={!expandedView}
+          className="scroll-smooth overflow-x-hidden scrollbar-light dark:scrollbar-dark"
         >
           <HomeSection></HomeSection>
           <SkillsSection></SkillsSection>

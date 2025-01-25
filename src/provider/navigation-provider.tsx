@@ -1,4 +1,4 @@
-import { createRef, PropsWithChildren, useRef } from "react";
+import { createRef, PropsWithChildren, useRef, useState } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { SectionRefs } from "../types/section-refs";
 import { NavigationSections } from "../types/navigation-sections";
@@ -22,6 +22,8 @@ export default function NavigationProvider({ children }: PropsWithChildren) {
     onOpenChange: onSidebarOpenChange,
   } = useDisclosure();
 
+  const [expandedView, setExpandedView] = useState<boolean>(false);
+
   return (
     <NavigationContext.Provider
       value={{
@@ -31,6 +33,8 @@ export default function NavigationProvider({ children }: PropsWithChildren) {
         onSidebarOpenChange,
         scrollRef,
         sectionRefs,
+        expandedView,
+        setExpandedView,
       }}
     >
       {children}

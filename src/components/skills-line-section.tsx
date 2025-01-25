@@ -102,7 +102,7 @@ export default function SkillsLineSection({
         <div className="flex flex-col md:flex-row gap-7">
           {imagePosition === "LEFT" ? (
             <img
-              className="h-[10rem] hidden md:flex"
+              className="h-[13rem] hidden md:flex"
               src={image}
               alt="programming"
             />
@@ -113,7 +113,7 @@ export default function SkillsLineSection({
           </div>
           {imagePosition === "RIGHT" ? (
             <img
-              className="h-[10rem] hidden md:flex"
+              className="h-[13rem] hidden md:flex"
               src={image}
               alt="programming"
             />

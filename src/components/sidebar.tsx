@@ -18,6 +18,8 @@ export default function Sidebar() {
   return (
     <Drawer
       size="xs"
+      shadow="none"
+      backdrop="blur"
       placement="left"
       isOpen={isSidebarOpen}
       onOpenChange={onSidebarOpenChange}
