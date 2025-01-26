@@ -22,10 +22,6 @@ export default defineConfig({
             id.includes("remark-gfm")
           ) {
             return "markdown";
-          } else if (
-            id.includes("motion")
-          ) {
-            return "motion";
           }
         },
       },
