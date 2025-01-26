@@ -23,12 +23,6 @@ function NavbarLinkComponent({
     <motion.div
       className="flex"
       ref={ref}
-      whileHover={{
-        y: "0.5rem",
-        transition: {
-          duration: 0.3,
-        },
-      }}
       variants={{
         hidden: {
           opacity: 0,

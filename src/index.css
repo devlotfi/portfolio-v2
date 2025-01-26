@@ -22,14 +22,12 @@
         rgba(33, 92, 211, 0.15) 0%,
         transparent 80%
       ),
-      radial-gradient(#171717 65%, transparent),
-      linear-gradient(#ffffff34 1px, transparent 1px),
-      linear-gradient(to right, #ffffff34 1px, transparent 1px);
+      radial-gradient(#171717 50%, transparent),
+      radial-gradient(hsl(var(--heroui-divider)) 0.1rem, transparent 0.1rem);
 
-    background-size: 100% 100%, 100% 100%, 100% 100%, 5rem 5rem, 5rem 5rem;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 3rem 3rem;
     background-attachment: fixed, fixed, fixed, fixed, fixed;
   }
-
   .bg-main-light {
     background-color: #ffffff;
 
@@ -43,10 +41,10 @@
         rgba(33, 92, 211, 0.25) 0%,
         transparent 80%
       ),
-      radial-gradient(#ffffff 65%, transparent),
-      linear-gradient(#39475b71 1px, transparent 1px),
-      linear-gradient(to right, #39475b71 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 100% 100%, 5rem 5rem, 5rem 5rem;
+      radial-gradient(#ffffff 50%, transparent),
+      radial-gradient(hsl(var(--heroui-divider)) 0.1rem, transparent 0.1rem);
+
+    background-size: 100% 100%, 100% 100%, 100% 100%, 3rem 3rem;
     background-attachment: fixed, fixed, fixed, fixed, fixed;
   }
 
@@ -110,7 +108,7 @@
   }
   .card-outline-light {
     border: 1px solid hsl(var(--heroui-divider));
-    outline: 7px solid hsl(var(--heroui-divider) / 0.3);
+    outline: 7px solid hsl(var(--heroui-divider) / 0.2);
     outline-offset: 0;
   }
 

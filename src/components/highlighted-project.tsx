@@ -20,24 +20,21 @@ export default function HighlightedProject({ index }: Props) {
   const { isOpen, onOpenChange, onOpen } = useDisclosure();
 
   return (
-    <div
-      className="flex flex-col sticky mt-[7rem] w-full max-w-screen-md"
-      style={{
-        top: `${(index + 1) * 2}rem`,
-      }}
-    >
+    <>
       <ProjectDetails
         isOpen={isOpen}
         onOpenChange={onOpenChange}
       ></ProjectDetails>
+
       <motion.div
         layout
         transition={{
           duration: 0.5,
           ease: "easeOut",
         }}
-        className="flex flex-col flex-1 p-[1rem] rounded-lg card-outline-light dark:card-outline-dark"
+        className="flex flex-col w-full max-w-screen-md sticky top-0 p-[1rem] rounded-lg card-outline-light dark:card-outline-dark"
         style={{
+          top: `${2 + (index + 1) * 0.5}rem`,
           background:
             appliedTheme === ThemeOptions.LIGHT
               ? "linear-gradient(to top,#34D1D150, #ffffff), #ffffff"
@@ -51,7 +48,7 @@ export default function HighlightedProject({ index }: Props) {
               src="https://raw.githubusercontent.com/devlotfi/stack-icons/main/github-assets/logo.svg"
               alt="project-logo"
             />
-            <div className="flex text-[13pt] md:text-[18pt] font-black">
+            <div className="flex font-['Roboto_Serif'] text-[13pt] md:text-[18pt] font-bold">
               Stack Icons
             </div>
           </div>
@@ -95,7 +92,7 @@ export default function HighlightedProject({ index }: Props) {
         </div>
 
         <img
-          className="rounded-md border border-divider hover:mask-none"
+          className="flex rounded-md border border-divider hover:mask-none"
           style={{
             maskImage: "linear-gradient(to bottom, #fff, transparent)",
           }}
@@ -103,6 +100,6 @@ export default function HighlightedProject({ index }: Props) {
           alt=""
         />
       </motion.div>
-    </div>
+    </>
   );
 }

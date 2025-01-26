@@ -61,7 +61,7 @@ export default function SkillsSection() {
       }}
       ref={sectionRefs.current.SKILLS}
     >
-      <SectionTitle icon={faStar}>Skills</SectionTitle>
+      <SectionTitle icon={faStar}>My Skills</SectionTitle>
       <div className="flex flex-col w-full max-w-screen-md">
         <div className="flex flex-col mt-[2rem]">
           <SkillsLineSection

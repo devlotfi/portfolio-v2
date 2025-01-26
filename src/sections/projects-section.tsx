@@ -17,6 +17,7 @@ export default function ProjectsSection() {
 
       return {};
     },
+    refetchOnWindowFocus: false,
   });
 
   return (
@@ -26,7 +27,7 @@ export default function ProjectsSection() {
     >
       {JSON.stringify(data)}
       <SectionTitle icon={faList}>Projects</SectionTitle>
-      <div className="flex flex-col relative">
+      <div className="flex flex-col relative gap-[10rem]">
         <HighlightedProject index={0}></HighlightedProject>
         <HighlightedProject index={1}></HighlightedProject>
         <HighlightedProject index={2}></HighlightedProject>

@@ -19,7 +19,6 @@ export default function ProjectDetails({ isOpen, onOpenChange }: Props) {
     <Modal
       size="full"
       scrollBehavior="inside"
-      backdrop="blur"
       className="bg-background-light-200 dark:bg-background-dark-200"
       isOpen={isOpen}
       onOpenChange={onOpenChange}
@@ -30,7 +29,7 @@ export default function ProjectDetails({ isOpen, onOpenChange }: Props) {
             <ModalHeader className="flex flex-col gap-1">
               Project details
             </ModalHeader>
-            <ModalBody className="px-[1rem] py-[1rem] md:px-[2rem] md:py-[2rem]">
+            <ModalBody className="p-[1rem] md:p-[2rem] pt-0 md:pt-[0.5rem]">
               <div className="flex flex-col overflow-hidden rounded-lg card-outline-light dark:card-outline-dark">
                 <div className="flex flex-col bg-background-light-100 dark:bg-background-dark-100">
                   <div className="flex relative border-b border-divider h-[2.3rem] items-center px-[0.5rem]">

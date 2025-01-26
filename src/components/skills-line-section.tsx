@@ -31,14 +31,14 @@ export default function SkillsLineSection({
   index,
 }: PropsWithChildren<Props>) {
   return (
-    <div className="flex flex-col relative p-[1.5rem] md:p-[3rem] mt-[-1px]">
+    <div className="flex flex-col relative p-[1.5rem] md:p-[3rem] mt-[-2px]">
       <div
         className={cn(
-          "flex absolute top-0 h-full w-1/2 border-divider pointer-events-none",
-          top && "border-t-[1px]",
-          bottom && "border-b-[1px]",
-          left && "border-l-[1px] left-0",
-          right && "border-r-[1px] right-0",
+          "flex absolute top-0 h-full w-1/2 border-divider border-dashed pointer-events-none",
+          top && "border-t-[2px]",
+          bottom && "border-b-[2px]",
+          left && "border-l-[2px] left-0",
+          right && "border-r-[2px] right-0",
           top && right && "rounded-tr-3xl",
           top && left && "rounded-tl-3xl",
           bottom && right && "rounded-br-3xl",
@@ -98,27 +98,28 @@ export default function SkillsLineSection({
         transition={{
           duration: 0.5,
         }}
+        className="flex flex-col md:flex-row gap-7"
       >
-        <div className="flex flex-col md:flex-row gap-7">
-          {imagePosition === "LEFT" ? (
-            <img
-              className="h-[13rem] hidden md:flex"
-              src={image}
-              alt="programming"
-            />
-          ) : null}
-          <div className="flex flex-col space-y-3">
-            <div className="flex font-black text-[20pt]">{title}</div>
-            <div className="flex gap-3 items-start flex-wrap">{children}</div>
+        {imagePosition === "LEFT" ? (
+          <img
+            className="h-[13rem] hidden md:flex"
+            src={image}
+            alt="programming"
+          />
+        ) : null}
+        <div className="flex flex-col space-y-3">
+          <div className="flex font-bold text-[20pt] font-['Roboto_Serif']">
+            {title}
           </div>
-          {imagePosition === "RIGHT" ? (
-            <img
-              className="h-[13rem] hidden md:flex"
-              src={image}
-              alt="programming"
-            />
-          ) : null}
+          <div className="flex gap-3 items-start flex-wrap">{children}</div>
         </div>
+        {imagePosition === "RIGHT" ? (
+          <img
+            className="h-[13rem] hidden md:flex"
+            src={image}
+            alt="programming"
+          />
+        ) : null}
       </motion.div>
     </div>
   );

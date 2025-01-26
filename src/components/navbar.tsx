@@ -60,7 +60,7 @@ export default function Navbar() {
       </div>
 
       <motion.div
-        className="space-x-2 hidden lg:flex absolute left-1/2 -translate-x-1/2"
+        className="bg-background-light-100 dark:bg-background-dark-100 card-outline-light dark:card-outline-dark !outline-[0.3rem] rounded-full p-[0.2rem] space-x-2 hidden lg:flex absolute left-1/2 -translate-x-1/2"
         initial="hidden"
         animate="visible"
         transition={{
