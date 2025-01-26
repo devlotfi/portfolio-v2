@@ -5,6 +5,7 @@ import { StrictMode, useEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
 
 export default function ProjectReadme() {
   const shadoDomRef = useRef<HTMLDivElement>(null);
@@ -32,7 +33,9 @@ export default function ProjectReadme() {
 
       createRoot(shadow).render(
         <StrictMode>
-          <Markdown rehypePlugins={[rehypeRaw]}>{data}</Markdown>
+          <Markdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
+            {data}
+          </Markdown>
         </StrictMode>
       );
     }

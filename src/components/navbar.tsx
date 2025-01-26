@@ -9,7 +9,7 @@ import {
 import NavbarLink from "./navbar-link";
 import ThemeDropdown from "./theme-dropdown";
 import Logo from "./logo";
-import { Button, cn } from "@heroui/react";
+import { Button } from "@heroui/react";
 import { useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,15 +17,10 @@ import { motion } from "motion/react";
 import { NavigationSections } from "../types/navigation-sections";
 
 export default function Navbar() {
-  const { onSidebarOpen, expandedView } = useContext(NavigationContext);
+  const { onSidebarOpen } = useContext(NavigationContext);
 
   return (
-    <div
-      className={cn(
-        "flex relative justify-between items-center min-h-[5rem] px-[1rem]",
-        expandedView && "hidden"
-      )}
-    >
+    <div className="flex relative justify-between items-center min-h-[5rem] px-[1rem]">
       <div className="flex items-center space-x-2">
         <motion.div
           initial={{ opacity: 0, rotate: 90, scale: 0 }}

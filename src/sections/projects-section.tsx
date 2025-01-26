@@ -3,15 +3,28 @@ import SectionTitle from "../components/section-title";
 import { NavigationContext } from "../context/navigation-context";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import HighlightedProject from "../components/highlighted-project";
+import { useQuery } from "@tanstack/react-query";
+import { supabaseClient } from "../supabase-client";
 
 export default function ProjectsSection() {
   const { sectionRefs } = useContext(NavigationContext);
+
+  const { data } = useQuery({
+    queryKey: ["lol"],
+    queryFn: async () => {
+      const { data } = await supabaseClient.from("projects").select();
+      console.log(data);
+
+      return {};
+    },
+  });
 
   return (
     <div
       ref={sectionRefs.current.PROJECTS}
       className="flex flex-col items-center px-[1rem]"
     >
+      {JSON.stringify(data)}
       <SectionTitle icon={faList}>Projects</SectionTitle>
       <div className="flex flex-col relative">
         <HighlightedProject index={0}></HighlightedProject>

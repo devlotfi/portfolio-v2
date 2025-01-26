@@ -13,6 +13,8 @@ export default defineConfig({
         manualChunks: (id) => {
           if (id.includes("@heroui")) {
             return "heroui";
+          } else if (id.includes("@supabase/supabase-js")) {
+            return "supabase";
           }
         },
       },
