@@ -1,6 +1,6 @@
 import { ComponentProps, useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
-import SectionTitle from "../components/section-title";
+import SectionTitleH1 from "../components/section-title-h1";
 import {
   faAt,
   faEnvelope,
@@ -117,7 +117,7 @@ export default function ContactSection() {
       ref={sectionRefs.current.CONTACT}
       className="flex flex-col px-[1rem] py-[5rem] items-center"
     >
-      <SectionTitle icon={faAt}>Contact</SectionTitle>
+      <SectionTitleH1 icon={faEnvelope}>Contact</SectionTitleH1>
       <div className="flex flex-col-reverse xl:flex-row gap-16 justify-center items-center w-full">
         <motion.form
           variants={variants}

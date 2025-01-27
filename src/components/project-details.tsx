@@ -29,9 +29,9 @@ export default function ProjectDetails({ isOpen, onOpenChange }: Props) {
             <ModalHeader className="flex flex-col gap-1">
               Project details
             </ModalHeader>
-            <ModalBody className="p-[1rem] md:p-[2rem] pt-0 md:pt-[0.5rem]">
-              <div className="flex flex-col overflow-hidden rounded-lg card-outline-light dark:card-outline-dark">
-                <div className="flex flex-col bg-background-light-100 dark:bg-background-dark-100">
+            <ModalBody className="p-[1rem] md:p-[2rem] pt-[0.5rem]">
+              <div className="flex flex-col overflow-hidden rounded-lg bg-background-light-100 dark:bg-background-dark-100 card-outline-light dark:card-outline-dark">
+                <div className="flex flex-col">
                   <div className="flex relative border-b border-divider h-[2.3rem] items-center px-[0.5rem]">
                     <div className="flex gap-1">
                       <div className="flex bg-[#FC5753] border-[#DF4744] border h-[1rem] w-[1rem] rounded-full"></div>
@@ -45,7 +45,8 @@ export default function ProjectDetails({ isOpen, onOpenChange }: Props) {
                   </div>
                   <div className="flex items-center px-[0.5rem] h-[3.5rem] border-b border-divider">
                     <Button
-                      variant="bordered"
+                      color="primary"
+                      variant="flat"
                       startContent={
                         <FontAwesomeIcon icon={faMarkdown}></FontAwesomeIcon>
                       }
@@ -56,7 +57,7 @@ export default function ProjectDetails({ isOpen, onOpenChange }: Props) {
                   </div>
                 </div>
 
-                <div className="flex flex-col scrollbar-light dark:scrollbar-dark h-[calc(100dvh-12rem)] overflow-y-auto bg-background-light-200 dark:bg-background-dark-200">
+                <div className="flex flex-col scrollbar-light dark:scrollbar-dark h-[calc(100dvh-12rem)] overflow-y-auto">
                   <ProjectReadme></ProjectReadme>
                 </div>
               </div>

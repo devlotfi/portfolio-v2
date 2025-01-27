@@ -3,7 +3,6 @@ import {
   faCode,
   faFileLines,
   faInfoCircle,
-  faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Divider, Link } from "@heroui/react";
@@ -35,7 +34,7 @@ const transition: Transition = {
   stiffness: 70,
 };
 
-export default function HomeSection() {
+export default function AboutSection() {
   const { appliedTheme } = useContext(ThemeContext);
   const { sectionRefs } = useContext(NavigationContext);
   const aboutMeRef = useRef<HTMLDivElement>(null);
@@ -186,7 +185,7 @@ export default function HomeSection() {
             projects. I hold a Bachelor's in Information Systems and Software
             Engineering from{" "}
             <a
-              className="inline underline bg-primary-gradient bg-clip-text text-transparent"
+              className="inline underline font-bold bg-primary-gradient bg-clip-text text-transparent"
               href="https://www.usthb.dz/"
               target="_blank"
             >
@@ -217,10 +216,31 @@ export default function HomeSection() {
             </div>
             <Divider className="mx-[1rem]" orientation="vertical"></Divider>
             <div className="flex flex-col flex-1 justify-center items-center">
-              <FontAwesomeIcon
-                className="mb-[1rem] text-primary text-[40pt]"
-                icon={faMapMarkerAlt}
-              ></FontAwesomeIcon>
+              <svg
+                className="h-[3rem] animate-bounce mb-[1rem] text-primary text-[40pt]"
+                viewBox="0 0 333 445"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M149.389 436.022C23.388 252.947 0 234.158 0 166.875C0 74.7122 74.5443 0 166.5 0C258.456 0 333 74.7122 333 166.875C333 234.158 309.612 252.947 183.611 436.022C175.343 447.993 157.656 447.992 149.389 436.022ZM166.5 236.406C204.815 236.406 235.875 205.276 235.875 166.875C235.875 128.474 204.815 97.3437 166.5 97.3437C128.185 97.3437 97.125 128.474 97.125 166.875C97.125 205.276 128.185 236.406 166.5 236.406Z"
+                  fill="url(#paint0_linear_363_559)"
+                />
+                <defs>
+                  <linearGradient
+                    id="paint0_linear_363_559"
+                    x1="-3.72157e-06"
+                    y1="438.047"
+                    x2="426.93"
+                    y2="118.569"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stopColor="#3F6394" />
+                    <stop offset="1" stopColor="#2DBFE0" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
               <div className="flex text-[11pt] lg:text-[12pt]">Based in</div>
               <div className="flex text-[11pt] lg:text-[12pt]">
                 Algiers, Algeria

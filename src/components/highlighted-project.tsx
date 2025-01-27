@@ -1,15 +1,15 @@
 import { Button, Link, useDisclosure } from "@heroui/react";
-import { motion } from "motion/react";
 import { useContext } from "react";
 import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGlobe,
-  faUpRightAndDownLeftFromCenter,
+  faUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import ProjectDetails from "./project-details";
+import { motion } from "motion/react";
 
 interface Props {
   index: number;
@@ -27,11 +27,6 @@ export default function HighlightedProject({ index }: Props) {
       ></ProjectDetails>
 
       <motion.div
-        layout
-        transition={{
-          duration: 0.5,
-          ease: "easeOut",
-        }}
         className="flex flex-col w-full max-w-screen-md sticky top-0 p-[1rem] rounded-lg card-outline-light dark:card-outline-dark"
         style={{
           top: `${2 + (index + 1) * 0.5}rem`,
@@ -57,13 +52,13 @@ export default function HighlightedProject({ index }: Props) {
             <div className="flex h-[3rem] gap-3">
               <Link>
                 <FontAwesomeIcon
-                  className="text-[23pt] text-foreground hover:text-primary duration-300 transition-[color] cursor-pointer"
+                  className="text-[20pt] text-foreground hover:text-primary duration-300 transition-[color] cursor-pointer"
                   icon={faGithub}
                 ></FontAwesomeIcon>
               </Link>
               <Link>
                 <FontAwesomeIcon
-                  className="text-[23pt] text-foreground hover:text-primary duration-300 transition-[color] cursor-pointer"
+                  className="text-[20pt] text-foreground hover:text-primary duration-300 transition-[color] cursor-pointer"
                   icon={faGlobe}
                 ></FontAwesomeIcon>
               </Link>
@@ -74,9 +69,7 @@ export default function HighlightedProject({ index }: Props) {
                 onOpen();
               }}
               endContent={
-                <FontAwesomeIcon
-                  icon={faUpRightAndDownLeftFromCenter}
-                ></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faUpRightFromSquare}></FontAwesomeIcon>
               }
               variant="light"
             >

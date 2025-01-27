@@ -35,7 +35,7 @@ export default function Footer() {
         <Logo className="h-[3.5rem]"></Logo>
       </div>
       <div className="flex flex-col space-y-3">
-        <div className="flex lg:hidden space-x-2">
+        <div className="flex xl:hidden space-x-2">
           <SocialIcon url="https://github.com/devlotfi">
             <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon>
           </SocialIcon>

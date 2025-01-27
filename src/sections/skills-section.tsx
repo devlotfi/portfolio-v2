@@ -48,7 +48,7 @@ import ArduinoSVG from "../assets/skills/arduino.svg";
 
 import { useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
-import SectionTitle from "../components/section-title";
+import SectionTitleH1 from "../components/section-title-h1";
 
 export default function SkillsSection() {
   const { sectionRefs } = useContext(NavigationContext);
@@ -61,7 +61,10 @@ export default function SkillsSection() {
       }}
       ref={sectionRefs.current.SKILLS}
     >
-      <SectionTitle icon={faStar}>My Skills</SectionTitle>
+      <SectionTitleH1 icon={faStar} secondaryTitle="">
+        My Skills
+      </SectionTitleH1>
+
       <div className="flex flex-col w-full max-w-screen-md">
         <div className="flex flex-col mt-[2rem]">
           <SkillsLineSection

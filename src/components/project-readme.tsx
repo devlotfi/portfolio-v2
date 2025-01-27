@@ -21,8 +21,6 @@ export default function ProjectReadme() {
       const utf8Decoder = new TextDecoder();
       const bytes = Uint8Array.from(binaryString, (char) => char.charCodeAt(0));
       const decodedText = utf8Decoder.decode(bytes);
-      console.log(decodedText);
-
       return decodedText;
     },
   });
@@ -50,10 +48,10 @@ export default function ProjectReadme() {
   }
 
   return (
-    <div className="flex flex-col items-center px-[0.5rem]">
+    <div className="flex flex-col items-center">
       <div
         ref={shadoDomRef}
-        className="shadow-dom max-w-screen-md w-full flex-col flex p-[1rem] lg:border-l lg:border-r border-divider"
+        className="shadow-dom max-w-screen-md w-full flex-col flex p-[0.7rem] md:p-[1rem] lg:border-l lg:border-r border-divider"
       ></div>
     </div>
   );

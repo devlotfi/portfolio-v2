@@ -6,7 +6,7 @@ import Navbar from "./components/navbar";
 import InitialLoading from "./components/initial-loading";
 import Sidebar from "./components/sidebar";
 import SocialSideBtns from "./components/social-side-btns";
-import HomeSection from "./sections/home-section";
+import AboutSection from "./sections/about-section";
 import Footer from "./components/footer";
 import SkillsSection from "./sections/skills-section";
 import ScrollIndicator from "./components/scroll-indicator";
@@ -44,7 +44,7 @@ export default function App() {
           ref={scrollRef}
           className="scroll-smooth overflow-x-hidden scrollbar-light dark:scrollbar-dark"
         >
-          <HomeSection></HomeSection>
+          <AboutSection></AboutSection>
           <SkillsSection></SkillsSection>
           <ProjectsSection></ProjectsSection>
           <ContactSection></ContactSection>
