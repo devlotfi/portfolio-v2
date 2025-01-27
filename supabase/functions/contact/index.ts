@@ -4,29 +4,65 @@
 
 // Setup type definitions for built-in Supabase Runtime APIs
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { z } from "https://deno.land/x/zod@v3.24.1/mod.ts";
+import { corsHeaders } from "../_shared/cors.ts";
 
-console.log("Hello from Functions!");
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
-Deno.serve(async (req) => {
-  const { name } = await req.json();
-  const data = {
-    message: `Hello ${name}!`,
-  };
-
-  return new Response(
-    JSON.stringify(data),
-    { headers: { "Content-Type": "application/json" } },
-  );
+const ContactDto = z.object({
+  email: z.string().email(),
+  subject: z.string().min(1).max(512),
+  text: z.string().min(1).max(4096),
 });
 
-/* To invoke locally:
+Deno.serve(async (req) => {
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders });
+  }
+  if (req.method !== "POST") {
+    return new Response("Method Not Allowed", {
+      status: 405,
+      headers: corsHeaders,
+    });
+  }
 
-  1. Run `supabase start` (see: https://supabase.com/docs/reference/cli/supabase-start)
-  2. Make an HTTP request:
+  try {
+    const body = await req.json();
+    const validatedData = ContactDto.parse(body);
 
-  curl -i --location --request POST 'http://127.0.0.1:54321/functions/v1/contact' \
-    --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0' \
-    --header 'Content-Type: application/json' \
-    --data '{"name":"Functions"}'
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: `Portfolio V2 Contact Form <onboarding@resend.dev>`,
+        to: "debbal.lotfi.dev@gmail.com",
+        subject: `<${validatedData.email}> ${validatedData.subject}`,
+        text: validatedData.text,
+      }),
+    });
 
-*/
+    const data = await response.json();
+
+    return new Response(
+      JSON.stringify(data),
+      { headers: { "Content-Type": "application/json", ...corsHeaders } },
+    );
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return new Response(
+        JSON.stringify({ error: "Validation error", details: error.errors }),
+        {
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+          status: 400,
+        },
+      );
+    }
+    return new Response("Internal Server Error", {
+      status: 500,
+      headers: corsHeaders,
+    });
+  }
+});

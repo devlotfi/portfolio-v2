@@ -11,6 +11,7 @@ import Footer from "./components/footer";
 import SkillsSection from "./sections/skills-section";
 import ScrollIndicator from "./components/scroll-indicator";
 import ProjectsSection from "./sections/projects-section";
+import ContactSection from "./sections/contact-section";
 
 export default function App() {
   const { scrollRef } = useContext(NavigationContext);
@@ -46,6 +47,7 @@ export default function App() {
           <HomeSection></HomeSection>
           <SkillsSection></SkillsSection>
           <ProjectsSection></ProjectsSection>
+          <ContactSection></ContactSection>
           <Footer></Footer>
         </ScrollShadow>
       </motion.div>

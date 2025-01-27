@@ -18,12 +18,14 @@
     "@octokit/rest": "^21.1.0",
     "@supabase/supabase-js": "^2.48.1",
     "@tanstack/react-query": "^5.64.2",
+    "formik": "^2.4.6",
     "motion": "^12.0.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^9.0.3",
     "rehype-raw": "^7.0.0",
-    "remark-gfm": "^4.0.0"
+    "remark-gfm": "^4.0.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

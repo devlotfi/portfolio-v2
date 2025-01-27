@@ -234,16 +234,11 @@ export default function HomeSection() {
             transition={transition}
             className="hidden lg:flex relative rounded-lg z-10 overflow-hidden bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
           >
-            <div
-              className="flex justify-center items-center absolute h-full w-full top-0 left-0"
-              style={{
-                background:
-                  "radial-gradient(circle, hsl(var(--heroui-primary)), transparent 30%), hsl(var(--heroui-primary) / 0.3)",
-              }}
-            >
-              <div className="flex justify-center items-center h-[4rem] w-[4rem] rounded-full bg-primary-gradient">
+            <div className="flex bg-[hsl(var(--heroui-primary)/0.2)] justify-center items-center absolute h-full w-full top-0 left-0">
+              <div className="flex justify-center items-center z-10 h-[4rem] w-[4rem] rounded-full bg-primary-gradient">
                 <img src={AvatarMap} alt="avatar" />
               </div>
+              <div className="flex animate-ping absolute h-[5rem] w-[5rem] rounded-full bg-[hsl(var(--heroui-primary)/0.5)]"></div>
             </div>
             {appliedTheme === ThemeOptions.LIGHT ? (
               <img className="h-[15rem]" src={MapLight} alt="map" />
