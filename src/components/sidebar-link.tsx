@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Card } from "@heroui/react";
+import { Button, cn } from "@heroui/react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { ComponentPropsWithRef, useContext } from "react";
-import { motion } from "motion/react";
+import { PropsWithChildren, useContext } from "react";
+import { motion, useInView } from "motion/react";
 import { NavigationSections } from "../types/navigation-sections";
 import { NavigationContext } from "../context/navigation-context";
 
@@ -15,57 +15,50 @@ function SidebarLinkComponent({
   icon,
   section,
   children,
-  ref,
-}: ComponentPropsWithRef<"div"> & Props) {
-  const { sectionRefs, onSidebarClose } = useContext(NavigationContext);
+}: PropsWithChildren<Props>) {
+  const { sectionRefs, scrollRef, onSidebarClose } =
+    useContext(NavigationContext);
+  const isInView = useInView(sectionRefs.current[section], {
+    root: scrollRef,
+    margin: "-50% 0px -50% 0px",
+  });
 
   return (
-    <motion.div
-      className="flex"
-      ref={ref}
-      variants={{
-        hidden: {
-          opacity: 0,
-          y: 70,
-        },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            duration: 0.5,
-            type: "spring",
-            stiffness: 70,
-          },
-        },
-      }}
-    >
-      <Button
-        fullWidth
-        onPress={() => {
-          onSidebarClose();
-          if (sectionRefs.current[section].current) {
-            sectionRefs.current[section].current.scrollIntoView({
-              block: "start",
-            });
-          }
-        }}
-        variant="light"
-        className="h-[3rem] font-bold"
-        startContent={
-          <Card
-            shadow="none"
-            className="h-[2.5rem] w-[2.5rem] justify-center items-center bg-primary-gradient"
-          >
-            <FontAwesomeIcon
-              className="text-[18pt] text-primary-foreground"
-              icon={icon}
-            ></FontAwesomeIcon>
-          </Card>
+    <Button
+      fullWidth
+      onPress={() => {
+        onSidebarClose();
+        if (sectionRefs.current[section].current) {
+          sectionRefs.current[section].current.scrollIntoView({
+            block: "start",
+          });
         }
+      }}
+      variant="light"
+      className="h-[3rem] font-bold"
+      startContent={
+        <div
+          className={cn(
+            "flex rounded-lg h-[2.5rem] w-[2.5rem] justify-center items-center",
+            isInView && "bg-primary-gradient"
+          )}
+        >
+          <FontAwesomeIcon
+            className="text-[18pt] text-primary-foreground"
+            icon={icon}
+          ></FontAwesomeIcon>
+        </div>
+      }
+    >
+      <div
+        className={cn(
+          "flex flex-1 text-[13pt]",
+          isInView && "bg-primary-gradient bg-clip-text text-transparent"
+        )}
       >
-        <div className="flex flex-1 text-[13pt]">{children}</div>
-      </Button>
-    </motion.div>
+        {children}
+      </div>
+    </Button>
   );
 }
 

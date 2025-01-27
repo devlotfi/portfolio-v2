@@ -117,7 +117,9 @@ export default function ContactSection() {
       ref={sectionRefs.current.CONTACT}
       className="flex flex-col px-[1rem] py-[5rem] items-center"
     >
-      <SectionTitleH1 icon={faEnvelope}>Contact</SectionTitleH1>
+      <SectionTitleH1 icon={faEnvelope} secondaryTitle="Get in touch">
+        Contact
+      </SectionTitleH1>
       <div className="flex flex-col-reverse xl:flex-row gap-16 justify-center items-center w-full">
         <motion.form
           variants={variants}

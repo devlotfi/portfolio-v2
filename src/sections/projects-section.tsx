@@ -31,7 +31,9 @@ export default function ProjectsSection() {
       className="flex flex-col items-center px-[1rem]"
     >
       {JSON.stringify(data)}
-      <SectionTitleH1 icon={faList}>Projects</SectionTitleH1>
+      <SectionTitleH1 icon={faList} secondaryTitle="See my work">
+        Projects
+      </SectionTitleH1>
       <div className="flex flex-col relative gap-[10rem]">
         <HighlightedProject index={0}></HighlightedProject>
         <HighlightedProject index={1}></HighlightedProject>
@@ -41,7 +43,7 @@ export default function ProjectsSection() {
       </div>
 
       <SectionTitleH2 icon={faList}>All projects</SectionTitleH2>
-      <div className="grid grid-cols-3 gap-7 w-full  max-w-screen-lg">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-[2rem] gap-7 w-full  max-w-screen-lg">
         <Project></Project>
         <Project></Project>
         <Project></Project>

@@ -61,7 +61,7 @@ export default function SkillsSection() {
       }}
       ref={sectionRefs.current.SKILLS}
     >
-      <SectionTitleH1 icon={faStar} secondaryTitle="">
+      <SectionTitleH1 icon={faStar} secondaryTitle="What i can do">
         My Skills
       </SectionTitleH1>
 

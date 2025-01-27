@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "@heroui/react";
+import { cn, Link } from "@heroui/react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { ComponentPropsWithRef, useContext } from "react";
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
 import { NavigationContext } from "../context/navigation-context";
 import { NavigationSections } from "../types/navigation-sections";
 
@@ -17,7 +17,11 @@ function NavbarLinkComponent({
   children,
   ref,
 }: ComponentPropsWithRef<"div"> & Props) {
-  const { sectionRefs } = useContext(NavigationContext);
+  const { sectionRefs, scrollRef } = useContext(NavigationContext);
+  const isInView = useInView(sectionRefs.current[section], {
+    root: scrollRef,
+    margin: "-50% 0px -50% 0px",
+  });
 
   return (
     <motion.div
@@ -45,7 +49,11 @@ function NavbarLinkComponent({
             });
           }
         }}
-        className="flex gap-2 whitespace-nowrap px-[1rem] py-[0.5rem] cursor-pointer text-foreground hover:text-primary duration-300 transition-[color]"
+        className={cn(
+          "flex gap-2 rounded-full whitespace-nowrap px-[1rem] py-[0.5rem] cursor-pointer text-foreground hover:text-primary duration-300 transition-[color]",
+          isInView &&
+            "bg-primary-gradient text-primary-foreground hover:text-primary-foreground"
+        )}
       >
         <FontAwesomeIcon className="text-[12pt]" icon={icon}></FontAwesomeIcon>
         <div className="flex text-[12pt] font-bold">{children}</div>

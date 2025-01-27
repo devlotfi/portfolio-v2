@@ -29,7 +29,7 @@ export default function ProjectDetails({ isOpen, onOpenChange }: Props) {
             <ModalHeader className="flex flex-col gap-1">
               Project details
             </ModalHeader>
-            <ModalBody className="p-[1rem] md:p-[2rem] pt-[0.5rem]">
+            <ModalBody className="p-[1rem] md:p-[2rem] pt-[0.5rem] md:pt-[0.5rem]">
               <div className="flex flex-col overflow-hidden rounded-lg bg-background-light-100 dark:bg-background-dark-100 card-outline-light dark:card-outline-dark">
                 <div className="flex flex-col">
                   <div className="flex relative border-b border-divider h-[2.3rem] items-center px-[0.5rem]">
