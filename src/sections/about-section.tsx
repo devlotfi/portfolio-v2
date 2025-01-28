@@ -49,12 +49,8 @@ export default function AboutSection() {
 
   return (
     <div
-      className="flex flex-col home-page-lines"
-      style={{
-        background:
-          "radial-gradient(circle, hsl(var(--heroui-primary) / 0.1), transparent 50%)",
-      }}
       ref={sectionRefs.current.ABOUT}
+      className="flex flex-col bg-[radial-gradient(circle,hsl(var(--heroui-primary)/0.2),transparent_50%)] dark:bg-[radial-gradient(circle,hsl(var(--heroui-primary)/0.15),transparent_50%)]"
     >
       <div className="flex flex-col relative min-h-[calc(100vh-5rem)] pt-[2rem] lg:pt-0 lg:justify-center items-center">
         <motion.div
@@ -199,7 +195,7 @@ export default function AboutSection() {
             whileInView="visible"
             variants={variants}
             transition={transition}
-            className="flex flex-1 rounded-lg p-[0.7rem] lg:p-[1.5rem] z-10 overflow-hidden bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
+            className="flex flex-1 rounded-lg p-[1.5rem] z-10 overflow-hidden bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
           >
             <div className="flex flex-col text-center justify-center items-center flex-1">
               <div className="flex flex-col items-center">

@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, cn } from "@heroui/react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { PropsWithChildren, useContext } from "react";
-import { motion, useInView } from "motion/react";
+import { useInView } from "motion/react";
 import { NavigationSections } from "../types/navigation-sections";
 import { NavigationContext } from "../context/navigation-context";
 
@@ -11,7 +11,7 @@ interface Props {
   section: NavigationSections;
 }
 
-function SidebarLinkComponent({
+export default function SidebarLinkComponent({
   icon,
   section,
   children,
@@ -44,7 +44,10 @@ function SidebarLinkComponent({
           )}
         >
           <FontAwesomeIcon
-            className="text-[18pt] text-primary-foreground"
+            className={cn(
+              "text-[18pt] text-foreground",
+              isInView && "text-primary-foreground"
+            )}
             icon={icon}
           ></FontAwesomeIcon>
         </div>
@@ -61,6 +64,3 @@ function SidebarLinkComponent({
     </Button>
   );
 }
-
-const SidebarLink = motion.create(SidebarLinkComponent);
-export default SidebarLink;

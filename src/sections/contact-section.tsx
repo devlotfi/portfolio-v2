@@ -137,8 +137,8 @@ export default function ContactSection() {
               inputWrapper:
                 "border border-divider bg-background-light-200 dark:bg-background-dark-200",
             }}
-            label="Email"
-            placeholder="Enter your email"
+            label="E-mail"
+            placeholder="E-mail"
             type="email"
             name="email"
             value={values.email}
@@ -154,8 +154,8 @@ export default function ContactSection() {
               inputWrapper:
                 "border border-divider bg-background-light-200 dark:bg-background-dark-200",
             }}
-            label="Email"
-            placeholder="Enter your email"
+            label="Subject"
+            placeholder="Subject"
             type="text"
             name="subject"
             value={values.subject}
@@ -173,8 +173,8 @@ export default function ContactSection() {
               inputWrapper:
                 "border border-divider bg-background-light-200 dark:bg-background-dark-200",
             }}
-            label="Description"
-            placeholder="Enter your description"
+            label="Text"
+            placeholder="Text"
             name="text"
             value={values.text}
             errorMessage={errors.text}

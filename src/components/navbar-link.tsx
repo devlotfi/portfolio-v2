@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { cn, Link } from "@heroui/react";
+import { Button, cn } from "@heroui/react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { ComponentPropsWithRef, useContext } from "react";
 import { motion, useInView } from "motion/react";
@@ -41,7 +41,7 @@ function NavbarLinkComponent({
         },
       }}
     >
-      <Link
+      <Button
         onPress={() => {
           if (sectionRefs.current[section].current) {
             sectionRefs.current[section].current.scrollIntoView({
@@ -49,15 +49,18 @@ function NavbarLinkComponent({
             });
           }
         }}
+        variant={isInView ? "solid" : "light"}
+        color={isInView ? "primary" : "default"}
+        radius="full"
         className={cn(
-          "flex gap-2 rounded-full whitespace-nowrap px-[1rem] py-[0.5rem] cursor-pointer text-foreground hover:text-primary duration-300 transition-[color]",
+          "flex gap-2 font-medium hover:text-primary duration-300 transition-[color]",
           isInView &&
-            "bg-primary-gradient text-primary-foreground hover:text-primary-foreground"
+            "font-bold bg-primary-gradient hover:text-primary-foreground"
         )}
       >
         <FontAwesomeIcon className="text-[12pt]" icon={icon}></FontAwesomeIcon>
-        <div className="flex text-[12pt] font-bold">{children}</div>
-      </Link>
+        <div className="flex text-[11pt]">{children}</div>
+      </Button>
     </motion.div>
   );
 }

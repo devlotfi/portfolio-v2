@@ -12,6 +12,7 @@ import SkillsSection from "./sections/skills-section";
 import ScrollIndicator from "./components/scroll-indicator";
 import ProjectsSection from "./sections/projects-section";
 import ContactSection from "./sections/contact-section";
+import ExperienceSection from "./sections/experiecne-section";
 
 export default function App() {
   const { scrollRef } = useContext(NavigationContext);
@@ -46,6 +47,7 @@ export default function App() {
         >
           <AboutSection></AboutSection>
           <SkillsSection></SkillsSection>
+          <ExperienceSection></ExperienceSection>
           <ProjectsSection></ProjectsSection>
           <ContactSection></ContactSection>
           <Footer></Footer>

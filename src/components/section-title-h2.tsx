@@ -1,15 +1,19 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "motion/react";
-import { PropsWithChildren } from "react";
+import { ComponentProps } from "react";
 
 interface Props {
   icon: IconProp;
 }
 
-export function SectionTitleH2({ children, icon }: PropsWithChildren<Props>) {
+export function SectionTitleH2({
+  children,
+  icon,
+  ...props
+}: ComponentProps<"div"> & Props) {
   return (
-    <motion.div className="flex items-center gap-3 w-full max-w-screen-md mt-[10rem]">
+    <div className="flex items-center gap-3 w-full max-w-screen-md" {...props}>
       <div className="flex items-center gap-3">
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -43,6 +47,6 @@ export function SectionTitleH2({ children, icon }: PropsWithChildren<Props>) {
           className="text-[17pt] text-primary-foreground"
         ></FontAwesomeIcon>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
