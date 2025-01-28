@@ -6,6 +6,7 @@ import {
   ModalHeader,
   ModalBody,
   Button,
+  ScrollShadow,
 } from "@heroui/react";
 import ProjectReadme from "./project-readme";
 
@@ -57,9 +58,9 @@ export default function ProjectDetails({ isOpen, onOpenChange }: Props) {
                   </div>
                 </div>
 
-                <div className="flex flex-col scrollbar-light dark:scrollbar-dark h-[calc(100dvh-12rem)] overflow-y-auto">
+                <ScrollShadow className="flex flex-col scrollbar-light dark:scrollbar-dark h-[calc(100dvh-12rem)] overflow-y-auto">
                   <ProjectReadme></ProjectReadme>
-                </div>
+                </ScrollShadow>
               </div>
             </ModalBody>
           </>

@@ -8,6 +8,12 @@
   font-style: normal;
 }
 
+*::selection {
+  background-color: hsl(var(--heroui-primary));
+  color: hsl(var(--heroui-primary-foreground));
+  text-decoration: underline dashed hsl(var(--heroui-primary-foreground));
+}
+
 @layer utilities {
   .bg-main-dark {
     background-color: #171717;

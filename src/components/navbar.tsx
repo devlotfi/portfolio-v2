@@ -1,7 +1,7 @@
 import {
   faAt,
   faBars,
-  faGraduationCap,
+  faBriefcase,
   faInfoCircle,
   faList,
   faStar,
@@ -74,10 +74,7 @@ export default function Navbar() {
         <NavbarLink icon={faStar} section={NavigationSections.SKILLS}>
           Skills
         </NavbarLink>
-        <NavbarLink
-          icon={faGraduationCap}
-          section={NavigationSections.EXPERIENCE}
-        >
+        <NavbarLink icon={faBriefcase} section={NavigationSections.EXPERIENCE}>
           Experience
         </NavbarLink>
         <NavbarLink icon={faList} section={NavigationSections.PROJECTS}>

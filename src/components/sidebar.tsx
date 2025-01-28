@@ -1,6 +1,6 @@
 import {
   faAt,
-  faGraduationCap,
+  faBriefcase,
   faInfoCircle,
   faList,
   faStar,
@@ -40,7 +40,7 @@ export default function Sidebar() {
                   Skills
                 </SidebarLink>
                 <SidebarLink
-                  icon={faGraduationCap}
+                  icon={faBriefcase}
                   section={NavigationSections.EXPERIENCE}
                 >
                   Experience

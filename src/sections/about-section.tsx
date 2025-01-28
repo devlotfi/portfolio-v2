@@ -73,6 +73,7 @@ export default function AboutSection() {
               />
             </div>
 
+            <div className="flex h-[16rem] w-[16rem] lg:h-[20rem] lg:w-[20rem] absolute justify-center items-center rounded-full border-[2px] border-dashed border-divider"></div>
             <motion.div
               animate={{ rotate: 360 }}
               transition={{
@@ -80,7 +81,7 @@ export default function AboutSection() {
                 duration: 15,
                 ease: "linear",
               }}
-              className="flex h-[16rem] w-[16rem] lg:h-[20rem] lg:w-[20rem] absolute justify-center items-center rounded-full border-[2px] border-dashed border-divider"
+              className="flex h-[16rem] w-[16rem] lg:h-[20rem] lg:w-[20rem] absolute justify-center items-center"
             >
               <div className="flex justify-center items-center absolute rounded-full top-0 mt-[-1rem] h-[2rem] w-[2rem] bg-primary-gradient">
                 <FontAwesomeIcon
@@ -102,9 +103,9 @@ export default function AboutSection() {
             <motion.div
               variants={variants}
               transition={transition}
-              className="flex text-[35pt] font-['Roboto_Serif'] font-extrabold"
+              className="flex text-[30pt] sm:text-[35pt] font-['Roboto_Serif'] font-extrabold whitespace-nowrap"
             >
-              Debbal Lotfi
+              Debbal Lotfi ⵣ
             </motion.div>
             <motion.div
               variants={variants}
@@ -200,7 +201,7 @@ export default function AboutSection() {
             <div className="flex flex-col text-center justify-center items-center flex-1">
               <div className="flex flex-col items-center">
                 <div className="flex leading-[2.5rem] font-black text-[25pt] lg:text-[35pt] bg-primary-gradient bg-clip-text text-transparent">
-                  5+
+                  {new Date().getFullYear() - 2019}+
                 </div>
                 <div className="flex text-[15pt] lg:text-[18pt] font-bold bg-primary-gradient bg-clip-text text-transparent">
                   Years

@@ -30,7 +30,6 @@ export default function ProjectsSection() {
       ref={sectionRefs.current.PROJECTS}
       className="flex flex-col items-center px-[1rem]"
     >
-      {JSON.stringify(data)}
       <SectionTitleH1 icon={faList} secondaryTitle="See my work">
         Projects
       </SectionTitleH1>

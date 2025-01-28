@@ -15,13 +15,22 @@ export default function SectionTitleH1({
 }: PropsWithChildren<Props>) {
   return (
     <div className="flex relative w-full max-w-screen-sm mt-[10rem] py-[5rem] items-center gap-5 bg-[radial-gradient(ellipse,hsl(var(--heroui-primary)/0.3),transparent_60%)] dark:bg-[radial-gradient(ellipse,hsl(var(--heroui-primary)/0.15),transparent_60%)]">
-      <FontAwesomeIcon
-        className="absolute left-[50%] -translate-x-1/2 -translate-y-[3rem] text-[7rem] text-primary"
-        style={{
-          maskImage: "linear-gradient(to bottom, red, transparent 65%)",
+      <motion.div
+        initial={{ scale: 0, translateX: "-50%", translateY: "-3rem" }}
+        whileInView={{ scale: 1 }}
+        transition={{
+          duration: 0.7,
         }}
-        icon={icon}
-      ></FontAwesomeIcon>
+        className="absolute left-[50%]"
+      >
+        <FontAwesomeIcon
+          className="text-[7rem] text-primary"
+          style={{
+            maskImage: "linear-gradient(to bottom, red, transparent 65%)",
+          }}
+          icon={icon}
+        ></FontAwesomeIcon>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, scaleX: 0 }}
@@ -42,7 +51,7 @@ export default function SectionTitleH1({
         <div className="flex text-[25pt] lg:text-[45pt] font-medium font-['Roboto_Serif']">
           {children}
         </div>
-        <div className="flex text-[15pt] font-medium bg-primary-gradient bg-clip-text text-transparent">
+        <div className="flex text-[12pt] lg:text-[15pt] font-medium bg-primary-gradient bg-clip-text text-transparent">
           {secondaryTitle}
         </div>
       </motion.div>
