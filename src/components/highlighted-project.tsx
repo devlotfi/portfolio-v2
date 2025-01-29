@@ -1,5 +1,5 @@
 import { Button, Link, useDisclosure } from "@heroui/react";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,15 +9,29 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import ProjectDetails from "./project-details";
-import { motion } from "motion/react";
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
+import { NavigationContext } from "../context/navigation-context";
 
 interface Props {
   index: number;
 }
 
 export default function HighlightedProject({ index }: Props) {
+  const cardRef = useRef<HTMLDivElement>(null);
   const { appliedTheme } = useContext(ThemeContext);
+  const { scrollRef } = useContext(NavigationContext);
   const { isOpen, onOpenChange, onOpen } = useDisclosure();
+
+  const { scrollYProgress } = useScroll({
+    container: scrollRef,
+    target: cardRef,
+    layoutEffect: false,
+    offset: ["end center", "start center"],
+  });
+
+  const cardScale = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
+
+  const spring = useSpring(cardScale);
 
   return (
     <>
@@ -27,9 +41,11 @@ export default function HighlightedProject({ index }: Props) {
       ></ProjectDetails>
 
       <motion.div
-        className="flex flex-col w-full max-w-screen-md sticky top-0 p-[1rem] rounded-lg card-outline-light dark:card-outline-dark"
+        ref={cardRef}
+        className="flex flex-col w-full origin-top max-w-screen-sm sticky top-0 p-[1rem] rounded-lg card-outline-light dark:card-outline-dark"
         style={{
-          top: `${2 + (index + 1) * 0.5}rem`,
+          scale: spring,
+          top: `${(index + 1) * 0.5}rem`,
           background:
             appliedTheme === ThemeOptions.LIGHT
               ? "linear-gradient(to top,#34D1D150, #ffffff), #ffffff"

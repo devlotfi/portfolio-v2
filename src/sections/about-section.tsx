@@ -105,7 +105,7 @@ export default function AboutSection() {
               transition={transition}
               className="flex text-[30pt] sm:text-[35pt] font-['Roboto_Serif'] font-extrabold whitespace-nowrap"
             >
-              Debbal Lotfi ⵣ
+              Debbal Lotfi
             </motion.div>
             <motion.div
               variants={variants}
@@ -214,7 +214,7 @@ export default function AboutSection() {
             <Divider className="mx-[1rem]" orientation="vertical"></Divider>
             <div className="flex flex-col flex-1 justify-center items-center">
               <svg
-                className="h-[3rem] animate-bounce mb-[1rem] text-primary text-[40pt]"
+                className="h-[3rem] mb-[1rem] text-primary text-[40pt]"
                 viewBox="0 0 333 445"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
