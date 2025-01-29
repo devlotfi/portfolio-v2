@@ -51,16 +51,6 @@ export default function Footer() {
           </SocialIcon>
         </div>
         <div className="flex space-x-1">
-          <div className="flex">Illustrations designed by</div>
-          <Link
-            href="https://freepik.com/"
-            target="_blank"
-            className="bg-primary-gradient bg-clip-text text-transparent"
-          >
-            Freepik
-          </Link>
-        </div>
-        <div className="flex space-x-1">
           <div className="flex">Memoji avatars figma project found</div>
           <Link
             href="https://www.figma.com/community/file/1128570662923831097/diverse-collection-of-1785-memojis"

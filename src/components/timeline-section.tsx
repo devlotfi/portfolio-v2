@@ -1,11 +1,11 @@
 import { Chip, cn } from "@heroui/react";
-import { motion } from "motion/react";
-import { PropsWithChildren } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { PropsWithChildren, useContext, useRef } from "react";
+import { NavigationContext } from "../context/navigation-context";
 
 interface Props {
   cardPosition: "LEFT" | "RIGHT";
   dateContent: string;
-  endTop?: boolean;
   endBottom?: boolean;
 }
 
@@ -13,9 +13,30 @@ export default function TimelineSection({
   children,
   cardPosition,
   dateContent,
-  endTop,
   endBottom,
 }: PropsWithChildren<Props>) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const { scrollRef } = useContext(NavigationContext);
+
+  const { scrollYProgress } = useScroll({
+    container: scrollRef,
+    target: contentRef,
+    layoutEffect: false,
+    offset: ["start center", "end 1.5"],
+  });
+
+  const cardTranslateLeft = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0%", "-100%"]
+  );
+  const cardTranslateRight = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0%", "100%"]
+  );
+  const cardOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+
   return (
     <div
       className={cn(
@@ -25,9 +46,12 @@ export default function TimelineSection({
     >
       <div className="flex flex-1 flex-col gap-3 py-[2rem] lg:py-[1.5rem]">
         <motion.div
-          initial={{ x: cardPosition === "LEFT" ? -50 : 50, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
+          ref={contentRef}
+          style={{
+            translateX:
+              cardPosition === "LEFT" ? cardTranslateLeft : cardTranslateRight,
+            opacity: cardOpacity,
+          }}
           className="flex relative flex-col gap-3 z-10 rounded-lg p-[1.2rem] bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
         >
           <Chip
@@ -45,9 +69,6 @@ export default function TimelineSection({
         </motion.div>
       </div>
       <div className="flex absolute items-center h-full lg:h-auto left-[50%] -translate-x-1/2 lg:translate-x-0 lg:static w-[3px] bg-foreground">
-        {endTop ? (
-          <div className="flex absolute h-[3px] w-[2rem] rounded-full bg-foreground top-0 left-[50%] -translate-x-1/2"></div>
-        ) : null}
         {endBottom ? (
           <svg
             className="flex absolute h-[1.6rem] bottom-[-1.5rem] left-[50%] -translate-x-1/2"
@@ -71,7 +92,7 @@ export default function TimelineSection({
             duration: 0.5,
             ease: "easeInOut",
           }}
-          className="flex absolute left-[50%] h-[1.3rem] w-[1.3rem] bg-foreground rounded-full"
+          className="flex absolute left-[50%] h-[1rem] w-[1rem] bg-foreground border-[2px] border-primary rounded-full"
         ></motion.div>
       </div>
       <div className="hidden lg:flex flex-1"></div>

@@ -46,7 +46,7 @@ export default function ExperienceSection() {
         />
       </div>
 
-      <TimelineSection cardPosition="LEFT" dateContent="september 2021" endTop>
+      <TimelineSection cardPosition="LEFT" dateContent="september 2021">
         <TimelineSectionListItem>
           Started studying at USTHB
         </TimelineSectionListItem>

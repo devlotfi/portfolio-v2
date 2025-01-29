@@ -1,8 +1,9 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Card, cn } from "@heroui/react";
-import { motion } from "motion/react";
-import { PropsWithChildren } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { PropsWithChildren, useContext, useRef } from "react";
+import { NavigationContext } from "../context/navigation-context";
 
 interface Props {
   top?: boolean;
@@ -12,8 +13,6 @@ interface Props {
   endPosition?: "TOP_LEFT" | "TOP_RIGHT" | "BOTTOM_LEFT" | "BOTTOM_RIGHT";
   title: string;
   icon: IconProp;
-  image: string;
-  imagePosition: "LEFT" | "RIGHT";
   index?: number;
 }
 
@@ -26,10 +25,30 @@ export default function SkillsLineSection({
   endPosition,
   title,
   icon,
-  image,
-  imagePosition,
   index,
 }: PropsWithChildren<Props>) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const { scrollRef } = useContext(NavigationContext);
+
+  const { scrollYProgress } = useScroll({
+    container: scrollRef,
+    target: contentRef,
+    layoutEffect: false,
+    offset: ["start center", "end 1.5"],
+  });
+
+  const cardTranslateLeft = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0%", "100%"]
+  );
+  const cardTranslateRight = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0%", "-100%"]
+  );
+  const cardOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+
   return (
     <div className="flex flex-col relative p-[1.5rem] md:p-[3rem] mt-[-2px]">
       <div
@@ -93,33 +112,24 @@ export default function SkillsLineSection({
       </motion.div>
 
       <motion.div
+        ref={contentRef}
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{
           duration: 0.5,
         }}
+        style={{
+          translateX: left ? cardTranslateLeft : cardTranslateRight,
+          opacity: cardOpacity,
+        }}
         className="flex flex-col md:flex-row gap-7"
       >
-        {imagePosition === "LEFT" ? (
-          <img
-            className="h-[13rem] hidden md:flex"
-            src={image}
-            alt="programming"
-          />
-        ) : null}
         <div className="flex flex-col space-y-3">
           <div className="flex font-bold text-[20pt] font-['Roboto_Serif']">
             {title}
           </div>
           <div className="flex gap-3 items-start flex-wrap">{children}</div>
         </div>
-        {imagePosition === "RIGHT" ? (
-          <img
-            className="h-[13rem] hidden md:flex"
-            src={image}
-            alt="programming"
-          />
-        ) : null}
       </motion.div>
     </div>
   );

@@ -9,12 +9,6 @@ import {
 import SkillsLineSection from "../components/skills-line-section";
 import SkillCard from "../components/skill-card";
 
-import ProgrammingSVG from "../assets/freepik/programming.svg";
-import FrontendSVG from "../assets/freepik/frontend.svg";
-import BackendSVG from "../assets/freepik/backend.svg";
-import DatabaseSVG from "../assets/freepik/database.svg";
-import ToolsSVG from "../assets/freepik/tools.svg";
-
 import HtmlSVG from "../assets/skills/html.svg";
 import CssSVG from "../assets/skills/css.svg";
 import TypescriptSVG from "../assets/skills/typescript.svg";
@@ -65,12 +59,10 @@ export default function SkillsSection() {
         My Skills
       </SectionTitleH1>
 
-      <div className="flex flex-col w-full max-w-screen-md">
+      <div className="flex flex-col w-full max-w-screen-sm">
         <div className="flex flex-col mt-[2rem]">
           <SkillsLineSection
             title="Languages"
-            image={ProgrammingSVG}
-            imagePosition="LEFT"
             icon={faCode}
             left
             bottom
@@ -86,8 +78,6 @@ export default function SkillsSection() {
           </SkillsLineSection>
           <SkillsLineSection
             title="Front-end"
-            image={FrontendSVG}
-            imagePosition="LEFT"
             icon={faWindowRestore}
             right
             top
@@ -104,8 +94,6 @@ export default function SkillsSection() {
           </SkillsLineSection>
           <SkillsLineSection
             title="Back-end"
-            image={BackendSVG}
-            imagePosition="LEFT"
             icon={faServer}
             left
             top
@@ -122,8 +110,6 @@ export default function SkillsSection() {
           </SkillsLineSection>
           <SkillsLineSection
             title="Databases"
-            image={DatabaseSVG}
-            imagePosition="LEFT"
             icon={faDatabase}
             right
             top
@@ -136,8 +122,6 @@ export default function SkillsSection() {
           </SkillsLineSection>
           <SkillsLineSection
             title="Tools"
-            image={ToolsSVG}
-            imagePosition="LEFT"
             icon={faWrench}
             left
             top
