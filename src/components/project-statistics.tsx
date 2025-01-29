@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { QueryFunctionContext, useQuery } from "@tanstack/react-query";
 import Chart from "chart.js/auto";
 import { useContext, useEffect, useRef } from "react";
 import { octokitClient } from "../octokit-client";
@@ -14,6 +14,7 @@ import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { Tables } from "../__generated__/database.types";
 
 function StatisticsValue({
   name,
@@ -51,7 +52,11 @@ function StatisticsValue({
   );
 }
 
-export default function ProjectStatistics() {
+interface Props {
+  project: Tables<"projects">;
+}
+
+export default function ProjectStatistics({ project }: Props) {
   const pieChartRef = useRef<HTMLCanvasElement>(null);
   const { appliedTheme } = useContext(ThemeContext);
 
@@ -69,13 +74,15 @@ export default function ProjectStatistics() {
       rateLimitData &&
       rateLimitData?.data.rate.remaining >= 5,
     refetchOnWindowFocus: false,
-    queryKey: ["LANGUAGES"],
-    queryFn: async () => {
+    queryKey: ["LANGUAGES", project.repository_name],
+    queryFn: async ({
+      queryKey: [, respository_name],
+    }: QueryFunctionContext<[string, string]>) => {
       const languages = await octokitClient.request(
         "GET /repos/{owner}/{repo}/languages",
         {
           owner: "devlotfi",
-          repo: "etu-access",
+          repo: respository_name,
         }
       );
       return languages;

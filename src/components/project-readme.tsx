@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { QueryFunctionContext, useQuery } from "@tanstack/react-query";
 import { octokitClient } from "../octokit-client";
 import { Spinner } from "@heroui/react";
 import { StrictMode, useEffect, useRef } from "react";
@@ -8,8 +8,13 @@ import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { Tables } from "../__generated__/database.types";
 
-export default function ProjectReadme() {
+interface Props {
+  project: Tables<"projects">;
+}
+
+export default function ProjectReadme({ project }: Props) {
   const shadoDomRef = useRef<HTMLDivElement>(null);
 
   const { isLoading: isLoadingRateLimit, data: rateLimitData } = useQuery({
@@ -26,12 +31,14 @@ export default function ProjectReadme() {
       !isLoadingRateLimit &&
       rateLimitData &&
       rateLimitData?.data.rate.remaining >= 5,
-    queryKey: ["README"],
-    queryFn: async () => {
+    queryKey: ["README", project.repository_name],
+    queryFn: async ({
+      queryKey: [, respository_name],
+    }: QueryFunctionContext<[string, string]>) => {
       octokitClient.rateLimit.get();
       const response = await octokitClient.rest.repos.getReadme({
         owner: "devlotfi",
-        repo: "etu-access",
+        repo: respository_name,
       });
       const binaryString = atob(response.data.content);
       const utf8Decoder = new TextDecoder();

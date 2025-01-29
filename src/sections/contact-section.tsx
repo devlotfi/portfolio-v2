@@ -200,6 +200,7 @@ export default function ContactSection() {
             className="bg-primary-gradient"
             color="primary"
             isLoading={isPending}
+            aria-label="send"
           >
             Send
           </Button>

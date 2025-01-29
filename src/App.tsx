@@ -43,7 +43,7 @@ export default function App() {
         <Sidebar></Sidebar>
         <ScrollShadow
           ref={scrollRef}
-          className="scroll-smooth overflow-x-hidden scrollbar-light dark:scrollbar-dark"
+          className="relative scroll-smooth overflow-x-hidden scrollbar-light dark:scrollbar-dark"
         >
           <AboutSection></AboutSection>
           <SkillsSection></SkillsSection>

@@ -1,28 +1,42 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import SectionTitleH1 from "../components/section-title-h1";
 import { NavigationContext } from "../context/navigation-context";
-import { faList } from "@fortawesome/free-solid-svg-icons";
+import { faList, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import HighlightedProject from "../components/highlighted-project";
 import { useQuery } from "@tanstack/react-query";
 import { supabaseClient } from "../supabase-client";
 import { SectionTitleH2 } from "../components/section-title-h2";
 import Project from "../components/project";
+import { Button, Spinner } from "@heroui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function ProjectsSection() {
   const { sectionRefs } = useContext(NavigationContext);
+  const [showFullList, setShowFullList] = useState<boolean>(false);
 
-  const { data } = useQuery({
-    queryKey: ["lol"],
+  const {
+    isLoading: isLoadingHighlightedProjects,
+    data: highlightedProjectsData,
+  } = useQuery({
+    queryKey: ["HIGHLIGHTED_PROJECTS"],
+    refetchOnWindowFocus: false,
     queryFn: async () => {
       const { data } = await supabaseClient
         .from("projects")
         .select()
-        .eq("highlighted", false);
-      console.log(data);
-
-      return {};
+        .eq("highlighted", true);
+      return data;
     },
+  });
+
+  const { isLoading: isLoadingProjects, data: projectsData } = useQuery({
+    enabled: showFullList,
     refetchOnWindowFocus: false,
+    queryKey: ["PROJECTS"],
+    queryFn: async () => {
+      const { data } = await supabaseClient.from("projects").select();
+      return data;
+    },
   });
 
   return (
@@ -31,25 +45,63 @@ export default function ProjectsSection() {
       className="flex flex-col items-center px-[1rem]"
     >
       <SectionTitleH1 icon={faList} secondaryTitle="See my work">
-        Projects {JSON.stringify(data)}
+        Projects
       </SectionTitleH1>
       <div className="flex flex-col relative gap-[2rem]">
-        <HighlightedProject index={0}></HighlightedProject>
-        <HighlightedProject index={1}></HighlightedProject>
-        <HighlightedProject index={2}></HighlightedProject>
-        <HighlightedProject index={3}></HighlightedProject>
+        {!isLoadingHighlightedProjects && highlightedProjectsData ? (
+          highlightedProjectsData.map((project, index) => (
+            <HighlightedProject
+              key={project.id}
+              index={index}
+              project={project}
+            ></HighlightedProject>
+          ))
+        ) : (
+          <div className="flex h-[50dvh]">
+            <Spinner size="lg" color="primary"></Spinner>
+          </div>
+        )}
       </div>
+      <SectionTitleH2 className="mt-[2rem]">All projects</SectionTitleH2>
+      {showFullList ? (
+        <Button
+          onPress={() => setShowFullList(false)}
+          color="primary"
+          size="lg"
+          variant="shadow"
+          className="bg-primary-gradient"
+          startContent={<FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>}
+          aria-label="show-less"
+        >
+          Show less
+        </Button>
+      ) : (
+        <Button
+          onPress={() => setShowFullList(true)}
+          color="primary"
+          size="lg"
+          variant="shadow"
+          className="bg-primary-gradient"
+          startContent={<FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>}
+          aria-label="show-more"
+        >
+          See the full list
+        </Button>
+      )}
 
-      <SectionTitleH2>All projects</SectionTitleH2>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-[2rem] gap-7 w-full  max-w-screen-lg">
-        <Project></Project>
-        <Project></Project>
-        <Project></Project>
-        <Project></Project>
-        <Project></Project>
-        <Project></Project>
-        <Project></Project>
-      </div>
+      {showFullList ? (
+        !isLoadingProjects && projectsData ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-[2rem] gap-7 w-full  max-w-screen-lg">
+            {projectsData.map((project) => (
+              <Project key={project.id} project={project}></Project>
+            ))}
+          </div>
+        ) : (
+          <div className="flex h-[50dvh]">
+            <Spinner size="lg" color="primary"></Spinner>
+          </div>
+        )
+      ) : null}
     </div>
   );
 }

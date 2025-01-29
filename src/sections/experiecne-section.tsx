@@ -47,21 +47,20 @@ export default function ExperienceSection() {
       </div>
 
       <TimelineSection cardPosition="LEFT" dateContent="september 2021" endTop>
-        Study
-      </TimelineSection>
-      <TimelineSection cardPosition="RIGHT" dateContent="10 july 2024">
         <TimelineSectionListItem>
-          Studied for a bachelor's degree at USTHB
-        </TimelineSectionListItem>
-        <TimelineSectionListItem>
-          Obtained a bachelor's degree in Information Systems and Software
-          Engineering
+          Started studying at USTHB
         </TimelineSectionListItem>
         <TimelineSectionListItem>
           Completed several projects during the studies
         </TimelineSectionListItem>
         <TimelineSectionListItem>
           Learned various technologies and skills
+        </TimelineSectionListItem>
+      </TimelineSection>
+      <TimelineSection cardPosition="RIGHT" dateContent="10 july 2024">
+        <TimelineSectionListItem>
+          Obtained a bachelor's degree in Information Systems and Software
+          Engineering
         </TimelineSectionListItem>
       </TimelineSection>
       <TimelineSection
@@ -77,13 +76,13 @@ export default function ExperienceSection() {
         </TimelineSectionListItem>
       </TimelineSection>
 
-      <SectionTitleH2 className="mt-[3rem]">Jobs</SectionTitleH2>
+      <SectionTitleH2 className="mt-[3rem]">Developer Jobs</SectionTitleH2>
       <div className="flex items-center gap-5 p-[2rem]">
         <FontAwesomeIcon
           className="text-[25pt]"
           icon={faFolderOpen}
         ></FontAwesomeIcon>
-        <div className="flex text-[30pt] font-['Roboto_Serif']">Not yet</div>
+        <div className="flex text-[25pt] font-['Roboto_Serif']">Not yet</div>
       </div>
     </div>
   );

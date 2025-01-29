@@ -22,6 +22,7 @@ function SocialIcon({ url, children }: PropsWithChildren<SocialIconsProps>) {
       variant="light"
       isIconOnly
       className="text-[22pt] pointer-events-none"
+      aria-label="social-media-link"
     >
       {children}
     </Button>
@@ -34,7 +35,7 @@ export default function Footer() {
       <div className="self-start">
         <Logo className="h-[3.5rem]"></Logo>
       </div>
-      <div className="flex flex-col space-y-3">
+      <div className="flex flex-col">
         <div className="flex xl:hidden space-x-2">
           <SocialIcon url="https://github.com/devlotfi">
             <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon>
@@ -57,6 +58,16 @@ export default function Footer() {
             className="bg-primary-gradient bg-clip-text text-transparent"
           >
             Freepik
+          </Link>
+        </div>
+        <div className="flex space-x-1">
+          <div className="flex">Memoji avatars figma project found</div>
+          <Link
+            href="https://www.figma.com/community/file/1128570662923831097/diverse-collection-of-1785-memojis"
+            target="_blank"
+            className="bg-primary-gradient bg-clip-text text-transparent"
+          >
+            Here
           </Link>
         </div>
         <div className="flex space-x-1">

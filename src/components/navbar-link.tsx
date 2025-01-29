@@ -57,6 +57,7 @@ function NavbarLinkComponent({
           isInView &&
             "font-bold bg-primary-gradient hover:text-primary-foreground"
         )}
+        aria-label={`navigate to ${section}`}
       >
         <FontAwesomeIcon className="text-[12pt]" icon={icon}></FontAwesomeIcon>
         <div className="flex text-[11pt]">{children}</div>

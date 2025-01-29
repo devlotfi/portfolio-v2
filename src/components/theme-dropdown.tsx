@@ -38,7 +38,7 @@ export default function ThemeDropdown() {
         className="bg-background-light-100 dark:bg-background-dark-100"
       >
         <DropdownTrigger>
-          <Button isIconOnly variant="light" size="lg">
+          <Button isIconOnly variant="light" size="lg" aria-label="themes">
             <FontAwesomeIcon icon={faPaintBrush}></FontAwesomeIcon>
           </Button>
         </DropdownTrigger>

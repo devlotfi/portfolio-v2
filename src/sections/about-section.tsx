@@ -133,6 +133,7 @@ export default function AboutSection() {
                   startContent={
                     <FontAwesomeIcon icon={faFileLines}></FontAwesomeIcon>
                   }
+                  aria-label="resume (CV)"
                 >
                   Resume
                 </Button>
@@ -152,6 +153,7 @@ export default function AboutSection() {
                     <FontAwesomeIcon icon={faAngleDoubleDown}></FontAwesomeIcon>
                   }
                   onPress={scrollToAboutMe}
+                  aria-label="About me"
                 >
                   About me
                 </Button>
@@ -201,7 +203,7 @@ export default function AboutSection() {
             <div className="flex flex-col text-center justify-center items-center flex-1">
               <div className="flex flex-col items-center">
                 <div className="flex leading-[2.5rem] font-black text-[25pt] lg:text-[35pt] bg-primary-gradient bg-clip-text text-transparent">
-                  {new Date().getFullYear() - 2019}+
+                  {new Date().getFullYear() - 2020}+
                 </div>
                 <div className="flex text-[15pt] lg:text-[18pt] font-bold bg-primary-gradient bg-clip-text text-transparent">
                   Years

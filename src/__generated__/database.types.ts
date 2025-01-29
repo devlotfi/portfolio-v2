@@ -17,6 +17,7 @@ export type Database = {
           id: string
           logo: string
           repository: string
+          repository_name: string
           thumbnail: string
           title: string
           website: string | null
@@ -28,6 +29,7 @@ export type Database = {
           id?: string
           logo: string
           repository: string
+          repository_name: string
           thumbnail: string
           title: string
           website?: string | null
@@ -39,6 +41,7 @@ export type Database = {
           id?: string
           logo?: string
           repository?: string
+          repository_name?: string
           thumbnail?: string
           title?: string
           website?: string | null

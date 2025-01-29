@@ -52,6 +52,7 @@ export default function SidebarLinkComponent({
           ></FontAwesomeIcon>
         </div>
       }
+      aria-label={`Navigate to ${section}`}
     >
       <div
         className={cn(

@@ -63,6 +63,7 @@ export default function ScrollIndicator() {
               size="lg"
               radius="full"
               isIconOnly
+              aria-label="scroll-top"
             >
               <FontAwesomeIcon
                 className="text-[16pt]"

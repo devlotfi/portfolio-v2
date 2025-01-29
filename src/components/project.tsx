@@ -7,8 +7,13 @@ import {
   faUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Tables } from "../__generated__/database.types";
 
-export default function Project() {
+interface Props {
+  project: Tables<"projects">;
+}
+
+export default function Project({ project }: Props) {
   const { isOpen, onOpenChange, onOpen } = useDisclosure();
 
   return (
@@ -16,6 +21,7 @@ export default function Project() {
       <ProjectDetails
         isOpen={isOpen}
         onOpenChange={onOpenChange}
+        project={project}
       ></ProjectDetails>
 
       <motion.div
@@ -29,19 +35,15 @@ export default function Project() {
         }}
         transition={{
           duration: 0.7,
-          ease: "easeOut",
+          ease: "easeInOut",
         }}
         className="flex flex-col gap-1 w-full max-w-screen-md p-[1rem] rounded-lg bg-background-light-100 dark:bg-background-dark-100 card-outline-light dark:card-outline-dark"
       >
         <div className="flex flex-col">
           <div className="flex h-[3rem] gap-3 items-center">
-            <img
-              className="h-[1.5rem]"
-              src="https://raw.githubusercontent.com/devlotfi/stack-icons/main/github-assets/logo.svg"
-              alt="project-logo"
-            />
+            <img className="h-[1.5rem]" src={project.logo} alt="project-logo" />
             <div className="flex font-['Roboto_Serif'] text-[14pt] font-bold">
-              Stack Icons
+              {project.title}
             </div>
           </div>
         </div>
@@ -51,30 +53,28 @@ export default function Project() {
           style={{
             maskImage: "linear-gradient(to bottom, #fff, transparent)",
           }}
-          src="https://raw.githubusercontent.com/devlotfi/stack-icons/main/github-assets/preview-1.png"
-          alt=""
+          src={project.thumbnail}
+          alt="thumbnail"
         />
 
-        <div className="flex text-[9pt]">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-          hic a ex reiciendis laborum vero officiis autem aspernatur mollitia
-          quo, accusantium deserunt cumque nulla ipsam natus possimus minima
-        </div>
+        <div className="flex flex-1 text-[9pt]">{project.description}</div>
 
         <div className="flex gap-3 justify-between items-center">
           <div className="flex gap-3">
-            <Link>
+            <Link href={project.repository} target="_blank">
               <FontAwesomeIcon
                 className="text-[20pt] text-foreground hover:text-primary duration-300 transition-[color] cursor-pointer"
                 icon={faGithub}
               ></FontAwesomeIcon>
             </Link>
-            <Link>
-              <FontAwesomeIcon
-                className="text-[20pt] text-foreground hover:text-primary duration-300 transition-[color] cursor-pointer"
-                icon={faGlobe}
-              ></FontAwesomeIcon>
-            </Link>
+            {project.website ? (
+              <Link href={project.website} target="_blank">
+                <FontAwesomeIcon
+                  className="text-[20pt] text-foreground hover:text-primary duration-300 transition-[color] cursor-pointer"
+                  icon={faGlobe}
+                ></FontAwesomeIcon>
+              </Link>
+            ) : null}
           </div>
 
           <Button
@@ -85,6 +85,7 @@ export default function Project() {
               <FontAwesomeIcon icon={faUpRightFromSquare}></FontAwesomeIcon>
             }
             variant="light"
+            aria-label="project-details"
           >
             Details
           </Button>

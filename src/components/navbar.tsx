@@ -38,6 +38,7 @@ export default function Navbar() {
             isIconOnly
             variant="light"
             size="lg"
+            aria-label="open-sidebar"
           >
             <FontAwesomeIcon
               icon={faBars}

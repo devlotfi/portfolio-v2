@@ -12,13 +12,19 @@ import ProjectReadme from "./project-readme";
 import { faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import ProjectStatistics from "./project-statistics";
+import { Tables } from "../__generated__/database.types";
 
 interface Props {
   isOpen: boolean;
   onOpenChange: () => void;
+  project: Tables<"projects">;
 }
 
-export default function ProjectDetails({ isOpen, onOpenChange }: Props) {
+export default function ProjectDetails({
+  isOpen,
+  onOpenChange,
+  project,
+}: Props) {
   const [tab, setTab] = useState<"README" | "STATISTICS">("README");
 
   return (
@@ -28,12 +34,15 @@ export default function ProjectDetails({ isOpen, onOpenChange }: Props) {
       scrollBehavior="inside"
       backdrop="blur"
       shadow="none"
-      className="bg-transparent overflow-x-hidden"
+      className="bg-transparent overflow-hidden"
+      classNames={{
+        wrapper: "overflow-hidden",
+      }}
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       hideCloseButton
     >
-      <ModalContent className="min-h-[calc(100dvh-1rem)] sm:min-h-[calc(100dvh-8rem)]">
+      <ModalContent className="min-h-[calc(100dvh-1rem)] sm:min-h-[calc(100dvh-2rem)]">
         {(onClose) => (
           <ModalBody className="flex flex-1 p-0 gap-0 flex-col overflow-hidden rounded-lg bg-background-light-100 dark:bg-background-dark-100 card-outline-light dark:card-outline-dark">
             <div className="flex flex-col">
@@ -43,19 +52,22 @@ export default function ProjectDetails({ isOpen, onOpenChange }: Props) {
                     onPress={onClose}
                     isIconOnly
                     className="flex bg-[#FC5753] border-[#DF4744] border min-w-[1rem] h-[1.7rem] w-[1.7rem] rounded-full"
+                    aria-label="close-modal"
                   ></Button>
                   <Button
                     isIconOnly
                     className="flex bg-[#FDBC40] border-[#DE9F34] border min-w-[1rem] h-[1.7rem] w-[1.7rem] rounded-full"
+                    aria-label="unused-1"
                   ></Button>
                   <Button
                     isIconOnly
                     className="flex bg-[#33C748] border-[#27AA35] border min-w-[1rem] h-[1.7rem] w-[1.7rem] rounded-full"
+                    aria-label="unused-2"
                   ></Button>
                 </div>
 
                 <div className="hidden md:flex text-[10pt] absolute left-1/2 -translate-x-1/2">
-                  Stack Icons - README.md
+                  {project.title} - README.md
                 </div>
               </div>
               <div className="flex items-center gap-2 px-[0.5rem] h-[3.5rem] border-b border-divider">
@@ -67,6 +79,7 @@ export default function ProjectDetails({ isOpen, onOpenChange }: Props) {
                   startContent={
                     <FontAwesomeIcon icon={faMarkdown}></FontAwesomeIcon>
                   }
+                  aria-label="readme-tab"
                 >
                   README.md
                 </Button>
@@ -78,6 +91,7 @@ export default function ProjectDetails({ isOpen, onOpenChange }: Props) {
                   startContent={
                     <FontAwesomeIcon icon={faChartLine}></FontAwesomeIcon>
                   }
+                  aria-label="statistics-tab"
                 >
                   Statistics
                 </Button>
@@ -86,9 +100,9 @@ export default function ProjectDetails({ isOpen, onOpenChange }: Props) {
 
             <ScrollShadow className="flex flex-1 flex-col bg-background-light-200 dark:bg-background-dark-200 scrollbar-light dark:scrollbar-dark overflow-y-auto">
               {tab === "README" ? (
-                <ProjectReadme></ProjectReadme>
+                <ProjectReadme project={project}></ProjectReadme>
               ) : (
-                <ProjectStatistics></ProjectStatistics>
+                <ProjectStatistics project={project}></ProjectStatistics>
               )}
             </ScrollShadow>
           </ModalBody>
