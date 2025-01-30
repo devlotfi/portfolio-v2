@@ -128,6 +128,7 @@ export default function AboutSection() {
                   as={Link}
                   href={`${import.meta.env.BASE_URL}resume.pdf`}
                   target="_blank"
+                  radius="full"
                   color="primary"
                   className="bg-primary-gradient"
                   startContent={
@@ -149,6 +150,7 @@ export default function AboutSection() {
                 <Button
                   className="font-bold"
                   variant="light"
+                  radius="full"
                   startContent={
                     <FontAwesomeIcon icon={faAngleDoubleDown}></FontAwesomeIcon>
                   }

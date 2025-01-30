@@ -63,7 +63,7 @@ export default function ProjectsSection() {
           </div>
         )}
       </div>
-      <SectionTitleH2 className="mt-[2rem]">All projects</SectionTitleH2>
+      <SectionTitleH2 className="my-[2rem]">All projects</SectionTitleH2>
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         whileInView={{
@@ -75,10 +75,11 @@ export default function ProjectsSection() {
         {showFullList ? (
           <Button
             onPress={() => setShowFullList(false)}
+            radius="full"
             color="primary"
             size="lg"
-            variant="shadow"
-            className="bg-primary-gradient"
+            variant="solid"
+            className="bg-primary-gradient card-outline-dark"
             startContent={<FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>}
             aria-label="show-less"
           >
@@ -87,10 +88,11 @@ export default function ProjectsSection() {
         ) : (
           <Button
             onPress={() => setShowFullList(true)}
+            radius="full"
             color="primary"
             size="lg"
-            variant="shadow"
-            className="bg-primary-gradient"
+            variant="solid"
+            className="bg-primary-gradient card-outline-dark"
             startContent={<FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>}
             aria-label="show-more"
           >
