@@ -34,7 +34,7 @@ export default function App() {
       <SocialSideBtns></SocialSideBtns>
 
       <motion.div
-        className="flex flex-col h-dvh bg-main-light dark:bg-main-dark"
+        className="flex flex-col will-change-[background-position] h-dvh bg-main-light dark:bg-main-dark"
         style={{
           backgroundPosition: backgroundPosition,
         }}

@@ -122,7 +122,7 @@ export default function SkillsLineSection({
           translateX: left ? cardTranslateLeft : cardTranslateRight,
           opacity: cardOpacity,
         }}
-        className="flex flex-col md:flex-row gap-7"
+        className="flex flex-col will-change-[transform,opacity] md:flex-row gap-7"
       >
         <div className="flex flex-col space-y-3">
           <div className="flex font-bold text-[20pt] font-['Roboto_Serif']">

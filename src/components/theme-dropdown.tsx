@@ -34,7 +34,7 @@ export default function ThemeDropdown() {
       }}
     >
       <Dropdown
-        backdrop="blur"
+        backdrop="opaque"
         className="bg-background-light-100 dark:bg-background-dark-100"
       >
         <DropdownTrigger>

@@ -31,7 +31,7 @@ export default function HighlightedProject({ index, project }: Props) {
     offset: ["start end", "end end"],
   });
 
-  const cardScale = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
+  const cardScale = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
 
   return (
     <>
@@ -43,7 +43,7 @@ export default function HighlightedProject({ index, project }: Props) {
 
       <motion.div
         ref={cardRef}
-        className="flex flex-col w-full origin-center max-w-screen-md p-[1rem] rounded-lg card-outline-light dark:card-outline-dark"
+        className="flex flex-col will-change-[transform,opacity] w-full origin-center max-w-screen-md p-[1rem] rounded-lg card-outline-light dark:card-outline-dark"
         style={{
           scale: cardScale,
           opacity: cardScale,

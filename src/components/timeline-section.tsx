@@ -22,7 +22,7 @@ export default function TimelineSection({
     container: scrollRef,
     target: contentRef,
     layoutEffect: false,
-    offset: ["start center", "end 1.5"],
+    offset: ["start center", "end 2"],
   });
 
   const cardTranslateLeft = useTransform(
@@ -52,7 +52,7 @@ export default function TimelineSection({
               cardPosition === "LEFT" ? cardTranslateLeft : cardTranslateRight,
             opacity: cardOpacity,
           }}
-          className="flex relative flex-col gap-3 z-10 rounded-lg p-[1.2rem] bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
+          className="flex relative flex-col will-change-[transform,opacity] gap-3 z-10 rounded-lg p-[1.2rem] bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
         >
           <Chip
             size="lg"
@@ -92,7 +92,7 @@ export default function TimelineSection({
             duration: 0.5,
             ease: "easeInOut",
           }}
-          className="flex absolute left-[50%] h-[1rem] w-[1rem] bg-foreground border-[2px] border-primary rounded-full"
+          className="flex absolute left-[50%] h-[1rem] w-[1rem] bg-primary-gradient rounded-full"
         ></motion.div>
       </div>
       <div className="hidden lg:flex flex-1"></div>

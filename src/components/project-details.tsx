@@ -32,7 +32,6 @@ export default function ProjectDetails({
       size="5xl"
       placement="center"
       scrollBehavior="inside"
-      backdrop="blur"
       shadow="none"
       className="bg-transparent overflow-hidden"
       classNames={{
@@ -51,17 +50,17 @@ export default function ProjectDetails({
                   <Button
                     onPress={onClose}
                     isIconOnly
-                    className="flex bg-[#FC5753] border-[#DF4744] border min-w-[1rem] h-[1.7rem] w-[1.7rem] rounded-full"
+                    className="flex bg-[#FC5753] border-[#DF4744] border min-w-[1rem] h-[1.5rem] w-[1.5rem] rounded-full"
                     aria-label="close-modal"
                   ></Button>
                   <Button
                     isIconOnly
-                    className="flex bg-[#FDBC40] border-[#DE9F34] border min-w-[1rem] h-[1.7rem] w-[1.7rem] rounded-full"
+                    className="flex bg-[#FDBC40] border-[#DE9F34] border min-w-[1rem] h-[1.5rem] w-[1.5rem] rounded-full"
                     aria-label="unused-1"
                   ></Button>
                   <Button
                     isIconOnly
-                    className="flex bg-[#33C748] border-[#27AA35] border min-w-[1rem] h-[1.7rem] w-[1.7rem] rounded-full"
+                    className="flex bg-[#33C748] border-[#27AA35] border min-w-[1rem] h-[1.5rem] w-[1.5rem] rounded-full"
                     aria-label="unused-2"
                   ></Button>
                 </div>

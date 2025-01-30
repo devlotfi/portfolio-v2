@@ -9,6 +9,7 @@ import { SectionTitleH2 } from "../components/section-title-h2";
 import Project from "../components/project";
 import { Button, Spinner } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion } from "motion/react";
 
 export default function ProjectsSection() {
   const { sectionRefs } = useContext(NavigationContext);
@@ -63,31 +64,40 @@ export default function ProjectsSection() {
         )}
       </div>
       <SectionTitleH2 className="mt-[2rem]">All projects</SectionTitleH2>
-      {showFullList ? (
-        <Button
-          onPress={() => setShowFullList(false)}
-          color="primary"
-          size="lg"
-          variant="shadow"
-          className="bg-primary-gradient"
-          startContent={<FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>}
-          aria-label="show-less"
-        >
-          Show less
-        </Button>
-      ) : (
-        <Button
-          onPress={() => setShowFullList(true)}
-          color="primary"
-          size="lg"
-          variant="shadow"
-          className="bg-primary-gradient"
-          startContent={<FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>}
-          aria-label="show-more"
-        >
-          See the full list
-        </Button>
-      )}
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{
+          opacity: 1,
+          scale: 1,
+        }}
+        transition={{ duration: 1, type: "spring", stiffness: 70 }}
+      >
+        {showFullList ? (
+          <Button
+            onPress={() => setShowFullList(false)}
+            color="primary"
+            size="lg"
+            variant="shadow"
+            className="bg-primary-gradient"
+            startContent={<FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>}
+            aria-label="show-less"
+          >
+            Show less
+          </Button>
+        ) : (
+          <Button
+            onPress={() => setShowFullList(true)}
+            color="primary"
+            size="lg"
+            variant="shadow"
+            className="bg-primary-gradient"
+            startContent={<FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>}
+            aria-label="show-more"
+          >
+            See the full list
+          </Button>
+        )}
+      </motion.div>
 
       {showFullList ? (
         !isLoadingProjects && projectsData ? (

@@ -17,6 +17,7 @@ export default function SectionTitleH1({
     <div className="flex relative w-full max-w-screen-sm mt-[10rem] py-[5rem] items-center gap-5 bg-[radial-gradient(ellipse,hsl(var(--heroui-primary)/0.3),transparent_60%)] dark:bg-[radial-gradient(ellipse,hsl(var(--heroui-primary)/0.15),transparent_60%)]">
       <motion.div
         initial={{ scale: 0, translateX: "-50%", translateY: "-3rem" }}
+        style={{ willChange: "" }}
         whileInView={{ scale: 1 }}
         transition={{
           duration: 0.7,
