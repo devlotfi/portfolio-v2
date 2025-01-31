@@ -1,50 +1,57 @@
-# React + TypeScript + Vite
+<img height="100px" width="100px" src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/logo.svg">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 📜 portfolio-v2
+My developer portfolio
 
-Currently, two official plugins are available:
+# 📌 Contents
+- [Tech stack](#-tech-stack)
+- [Project setup](#-project-setup)
+- [Preview](#-preview)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 💻 Tech stack
 
-## Expanding the ESLint configuration
+<p float="left">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/html.svg">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/css.svg">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/ts.svg">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/vite.svg">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/react.svg">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/tailwind.svg">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/heroui.svg">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/motion.svg">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/fontawesome.svg">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/formik.svg">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/tanstack-query.svg">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/supabase.svg">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/github-api.svg">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/chartjs.svg">
+</p>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+# 📂 Project Setup
 
-- Configure the top-level `parserOptions` property like this:
+## Requirements
+- Node JS
+- pnpm
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Install
+
+```bash
+$ pnpm i
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Development
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+$ pnpm run dev
 ```
+
+# 📷 Preview
+
+<img src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/preview-1.png">
+<img src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/preview-2.png">
+<img src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/preview-3.png">
+<img src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/preview-4.png">
+<img src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/preview-5.png">
+<img src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/preview-6.png">
+<img src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/preview-7.png">
+<img src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/preview-8.png">
