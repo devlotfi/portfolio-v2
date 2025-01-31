@@ -10,6 +10,8 @@ My developer portfolio
 
 # 💻 Tech stack
 
+## Front-end
+
 <p float="left">
   <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/html.svg">
   <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/css.svg">
@@ -22,9 +24,14 @@ My developer portfolio
   <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/fontawesome.svg">
   <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/formik.svg">
   <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/tanstack-query.svg">
+  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/chartjs.svg">
+</p>
+
+## Back-end
+
+<p float="left">
   <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/supabase.svg">
   <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/github-api.svg">
-  <img height="50px" src="https://devlotfi.github.io/stack-icons/icons/chartjs.svg">
 </p>
 
 # 📂 Project Setup
