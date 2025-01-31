@@ -104,7 +104,8 @@ export default function ProjectDetails({
                 </div>
 
                 <div className="hidden md:flex text-[10pt] absolute left-1/2 -translate-x-1/2">
-                  {project.title} - README.md
+                  {project.title} -{" "}
+                  {tab === "README" ? "README.md" : "Statistics"}
                 </div>
               </div>
               <div className="flex items-center gap-2 px-[0.5rem] h-[3.5rem] border-b border-divider">
