@@ -11,7 +11,7 @@ export default function SkillCard({ title, image }: Props) {
       </div>
 
       <div className="flex w-full h-[2rem] justify-center items-center py-[0.5rem] px-[0.5rem]">
-        <div className="flex text-[9pt] leading-[0.8rem] font-bold text-wrap">
+        <div className="flex text-[9pt] text-center leading-[0.8rem] font-bold text-wrap">
           {title}
         </div>
       </div>

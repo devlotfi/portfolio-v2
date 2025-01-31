@@ -124,11 +124,13 @@ export default function SkillsLineSection({
         }}
         className="flex flex-col will-change-[transform,opacity] md:flex-row gap-7"
       >
-        <div className="flex flex-col space-y-3">
+        <div className="flex flex-col items-center flex-1 space-y-3">
           <div className="flex font-bold text-[20pt] font-['Roboto_Serif']">
             {title}
           </div>
-          <div className="flex gap-3 items-start flex-wrap">{children}</div>
+          <div className="flex gap-3 justify-center items-start flex-wrap">
+            {children}
+          </div>
         </div>
       </motion.div>
     </div>

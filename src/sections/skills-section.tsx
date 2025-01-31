@@ -50,9 +50,6 @@ export default function SkillsSection() {
   return (
     <div
       className="flex flex-col flex-1 items-center px-[1.5rem] md:px-[2.5rem] lg:px-[6rem]"
-      style={{
-        background: "radial-gradient(at top, cyan / 20, transparent 20%)",
-      }}
       ref={sectionRefs.current.SKILLS}
     >
       <SectionTitleH1 icon={faStar} secondaryTitle="What i can do">
