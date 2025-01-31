@@ -102,7 +102,7 @@ export default function SkillsSection() {
           >
             <SkillCard title="Node JS" image={NodeJsSVG}></SkillCard>
             <SkillCard title="Nest JS" image={NestJsSVG}></SkillCard>
-            <SkillCard title="Nest JS" image={NextJsSVG}></SkillCard>
+            <SkillCard title="Next JS" image={NextJsSVG}></SkillCard>
             <SkillCard title="Django" image={DjangoSVG}></SkillCard>
             <SkillCard title="Redis" image={RedisSVG}></SkillCard>
             <SkillCard title="Openapi (Swagger)" image={OpenapiSVG}></SkillCard>

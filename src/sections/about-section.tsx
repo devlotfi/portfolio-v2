@@ -150,7 +150,6 @@ export default function AboutSection() {
                 <Button
                   className="font-bold"
                   variant="light"
-                  radius="full"
                   startContent={
                     <FontAwesomeIcon icon={faAngleDoubleDown}></FontAwesomeIcon>
                   }

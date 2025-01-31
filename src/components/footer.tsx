@@ -35,7 +35,7 @@ export default function Footer() {
       <div className="self-start">
         <Logo className="h-[3.5rem]"></Logo>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-1">
         <div className="flex xl:hidden space-x-2">
           <SocialIcon url="https://github.com/devlotfi">
             <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon>
@@ -60,11 +60,8 @@ export default function Footer() {
             Here
           </Link>
         </div>
-        <div className="flex space-x-1">
-          <div className="flex">Website made by</div>
-          <Link className="bg-primary-gradient bg-clip-text text-transparent">
-            Debbal Lotfi
-          </Link>
+        <div className="flex ">
+          &copy; Debbal Lotfi {new Date().getFullYear()}
         </div>
       </div>
     </div>

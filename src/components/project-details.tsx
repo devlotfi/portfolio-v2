@@ -175,7 +175,7 @@ export default function ProjectDetails({
                   )}
                 </>
               ) : (
-                <div className="flex flex-1 justify-center items-center">
+                <div className="flex flex-1 bg-background-light-200 dark:bg-background-dark-200 justify-center items-center">
                   <Spinner size="lg" color="primary"></Spinner>
                 </div>
               )}
