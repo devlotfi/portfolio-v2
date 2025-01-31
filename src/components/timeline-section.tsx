@@ -22,7 +22,7 @@ export default function TimelineSection({
     container: scrollRef,
     target: contentRef,
     layoutEffect: false,
-    offset: ["start center", "end 2"],
+    offset: ["start 0.7", "end 1.8"],
   });
 
   const cardTranslateLeft = useTransform(
