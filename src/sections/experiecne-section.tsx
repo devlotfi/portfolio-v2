@@ -18,7 +18,10 @@ export default function ExperienceSection() {
       ref={sectionRefs.current.EXPERIENCE}
       className="flex flex-col relative items-center px-[1rem]"
     >
-      <SectionTitleH1 icon={faBriefcase} secondaryTitle="My experience">
+      <SectionTitleH1
+        icon={faBriefcase}
+        secondaryTitle="What i have done so far"
+      >
         Experience
       </SectionTitleH1>
       <SectionTitleH2>Education</SectionTitleH2>

@@ -63,7 +63,7 @@ export default function ProjectsSection() {
           </div>
         )}
       </div>
-      <SectionTitleH2 className="my-[2rem]">All projects</SectionTitleH2>
+      <SectionTitleH2 className="m-[2rem]">All projects</SectionTitleH2>
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         whileInView={{

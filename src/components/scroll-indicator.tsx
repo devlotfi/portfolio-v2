@@ -4,14 +4,16 @@ import {
   AnimatePresence,
   useScroll,
 } from "motion/react";
-import { useContext, useState } from "react";
-import { NavigationContext } from "../context/navigation-context";
+import { RefObject, useState } from "react";
 import { Button } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleUp } from "@fortawesome/free-solid-svg-icons";
 
-export default function ScrollIndicator() {
-  const { scrollRef } = useContext(NavigationContext);
+interface Props {
+  scrollRef: RefObject<HTMLDivElement | null>;
+}
+
+export default function ScrollIndicator({ scrollRef }: Props) {
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
 
   const { scrollYProgress } = useScroll({
@@ -36,7 +38,7 @@ export default function ScrollIndicator() {
   return (
     <>
       <motion.div
-        className="flex w-screen h-[0.3rem] bg-primary-gradient z-10 fixed origin-left"
+        className="flex w-full h-[0.3rem] bg-primary-gradient z-10 absolute origin-left"
         style={{
           scaleX: scrollYProgress,
         }}
@@ -54,7 +56,7 @@ export default function ScrollIndicator() {
               type: "spring",
               stiffness: 70,
             }}
-            className="fixed bottom-[2rem] right-[2rem] lg:bottom-[3rem] lg:right-[3rem] z-20"
+            className="flex absolute bottom-[2rem] right-[2rem] lg:bottom-[3rem] lg:right-[3rem] z-20"
           >
             <Button
               onPress={scrollToTop}

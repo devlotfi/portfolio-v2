@@ -1,4 +1,4 @@
-import { faMarkdown } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faMarkdown } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Modal,
@@ -7,12 +7,16 @@ import {
   Button,
   ScrollShadow,
   cn,
+  Spinner,
 } from "@heroui/react";
 import ProjectReadme from "./project-readme";
 import { faChartLine } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ProjectStatistics from "./project-statistics";
 import { Tables } from "../__generated__/database.types";
+import ScrollIndicator from "./scroll-indicator";
+import { QueryFunctionContext, useQuery } from "@tanstack/react-query";
+import { octokitClient } from "../octokit-client";
 
 interface Props {
   isOpen: boolean;
@@ -25,7 +29,41 @@ export default function ProjectDetails({
   onOpenChange,
   project,
 }: Props) {
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [tab, setTab] = useState<"README" | "STATISTICS">("README");
+
+  const { isLoading: isLoadingRateLimit, data: rateLimitData } = useQuery({
+    enabled: isOpen,
+    queryKey: ["RATE_LIMIT"],
+    queryFn: async () => {
+      const response = await octokitClient.rateLimit.get();
+      return response;
+    },
+  });
+
+  const { isLoading: isLoadingReadme, data: readmeData } = useQuery({
+    refetchOnWindowFocus: false,
+    enabled:
+      isOpen &&
+      !isLoadingRateLimit &&
+      rateLimitData &&
+      rateLimitData?.data.rate.remaining >= 5,
+    queryKey: ["README", project.repository_name],
+    queryFn: async ({
+      queryKey: [, respository_name],
+    }: QueryFunctionContext<[string, string]>) => {
+      octokitClient.rateLimit.get();
+      const response = await octokitClient.rest.repos.getReadme({
+        owner: "devlotfi",
+        repo: respository_name,
+      });
+      const binaryString = atob(response.data.content);
+      const utf8Decoder = new TextDecoder();
+      const bytes = Uint8Array.from(binaryString, (char) => char.charCodeAt(0));
+      const decodedText = utf8Decoder.decode(bytes);
+      return decodedText;
+    },
+  });
 
   return (
     <Modal
@@ -97,13 +135,51 @@ export default function ProjectDetails({
               </div>
             </div>
 
-            <ScrollShadow className="flex flex-1 flex-col bg-background-light-200 dark:bg-background-dark-200 scrollbar-light dark:scrollbar-dark overflow-y-auto">
-              {tab === "README" ? (
-                <ProjectReadme project={project}></ProjectReadme>
+            <div className="flex h-[calc(100dvh-1rem-2.5rem-3.5rem)] sm:h-[calc(100dvh-2rem-2.5rem-3.5rem)]">
+              {!isLoadingRateLimit && !isLoadingReadme ? (
+                <>
+                  {rateLimitData && rateLimitData.data.rate.remaining >= 5 ? (
+                    <>
+                      {tab === "README" ? (
+                        <ScrollIndicator
+                          scrollRef={scrollRef}
+                        ></ScrollIndicator>
+                      ) : null}
+                      <ScrollShadow
+                        ref={scrollRef}
+                        className="flex flex-1 flex-col bg-background-light-200 dark:bg-background-dark-200 scrollbar-light dark:scrollbar-dark overflow-y-auto scroll-smooth"
+                      >
+                        {tab === "README" ? (
+                          <ProjectReadme readme={readmeData!}></ProjectReadme>
+                        ) : (
+                          <ProjectStatistics
+                            project={project}
+                          ></ProjectStatistics>
+                        )}
+                      </ScrollShadow>
+                    </>
+                  ) : (
+                    <div className="flex flex-col bg-background-light-200 dark:bg-background-dark-200 text-center gap-2 px-[1rem] flex-1 justify-center items-center">
+                      <FontAwesomeIcon
+                        className="text-[50pt]"
+                        icon={faGithub}
+                      ></FontAwesomeIcon>
+                      <div className="flex text-[20pt] font-bold">
+                        Rate limit exceede
+                      </div>
+                      <div className="flex text-[12pt] opacity-80">
+                        The public Github API allow only 60 request/hour for
+                        each IP
+                      </div>
+                    </div>
+                  )}
+                </>
               ) : (
-                <ProjectStatistics project={project}></ProjectStatistics>
+                <div className="flex flex-1 justify-center items-center">
+                  <Spinner size="lg" color="primary"></Spinner>
+                </div>
               )}
-            </ScrollShadow>
+            </div>
           </ModalBody>
         )}
       </ModalContent>

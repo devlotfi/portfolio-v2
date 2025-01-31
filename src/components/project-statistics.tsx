@@ -13,7 +13,6 @@ import { Heading } from "./heading";
 import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { Tables } from "../__generated__/database.types";
 
 function StatisticsValue({
@@ -60,19 +59,7 @@ export default function ProjectStatistics({ project }: Props) {
   const pieChartRef = useRef<HTMLCanvasElement>(null);
   const { appliedTheme } = useContext(ThemeContext);
 
-  const { isLoading: isLoadingRateLimit, data: rateLimitData } = useQuery({
-    queryKey: ["RATE_LIMIT"],
-    queryFn: async () => {
-      const response = await octokitClient.rateLimit.get();
-      return response;
-    },
-  });
-
   const { isLoading: isLoadingLanguages, data: languagesData } = useQuery({
-    enabled:
-      !isLoadingRateLimit &&
-      rateLimitData &&
-      rateLimitData?.data.rate.remaining >= 5,
     refetchOnWindowFocus: false,
     queryKey: ["LANGUAGES", project.repository_name],
     queryFn: async ({
@@ -90,10 +77,6 @@ export default function ProjectStatistics({ project }: Props) {
   });
 
   const { isLoading: isLoadingRepository, data: repositoryData } = useQuery({
-    enabled:
-      !isLoadingRateLimit &&
-      rateLimitData &&
-      rateLimitData?.data.rate.remaining >= 5,
     refetchOnWindowFocus: false,
     queryKey: ["REPOSITORY"],
     queryFn: async () => {
@@ -111,8 +94,6 @@ export default function ProjectStatistics({ project }: Props) {
     if (pieChartRef.current && languagesData) {
       const keys = Object.keys(languagesData.data);
       const values = keys.map((key) => languagesData.data[key]);
-
-      console.log(keys, values);
 
       chart = new Chart(pieChartRef.current, {
         type: "doughnut",
@@ -149,25 +130,6 @@ export default function ProjectStatistics({ project }: Props) {
       }
     };
   }, [appliedTheme, languagesData]);
-
-  if (
-    !isLoadingRateLimit &&
-    rateLimitData &&
-    rateLimitData.data.rate.remaining < 5
-  ) {
-    return (
-      <div className="flex flex-col text-center gap-2 px-[1rem] flex-1 justify-center items-center">
-        <FontAwesomeIcon
-          className="text-[50pt]"
-          icon={faGithub}
-        ></FontAwesomeIcon>
-        <div className="flex text-[20pt] font-bold">Rate limit exceede</div>
-        <div className="flex text-[12pt] opacity-80">
-          The public Github API allow only 60 request/hour for each IP
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="flex flex-col flex-1 p-[1rem] gap-3">

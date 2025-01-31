@@ -30,7 +30,7 @@ export default function App() {
   return (
     <>
       <InitialLoading></InitialLoading>
-      <ScrollIndicator></ScrollIndicator>
+      <ScrollIndicator scrollRef={scrollRef}></ScrollIndicator>
       <SocialSideBtns></SocialSideBtns>
 
       <motion.div

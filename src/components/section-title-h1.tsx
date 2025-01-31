@@ -17,12 +17,11 @@ export default function SectionTitleH1({
     <div className="flex relative w-full max-w-screen-sm mt-[10rem] py-[5rem] items-center gap-5 bg-[radial-gradient(ellipse,hsl(var(--heroui-primary)/0.3),transparent_60%)] dark:bg-[radial-gradient(ellipse,hsl(var(--heroui-primary)/0.15),transparent_60%)]">
       <motion.div
         initial={{ scale: 0, translateX: "-50%", translateY: "-3rem" }}
-        style={{ willChange: "" }}
         whileInView={{ scale: 1 }}
         transition={{
           duration: 0.7,
         }}
-        className="absolute left-[50%]"
+        className="flex will-change-[transform] absolute left-[50%]"
       >
         <FontAwesomeIcon
           className="text-[7rem] text-primary"
@@ -39,7 +38,7 @@ export default function SectionTitleH1({
         transition={{
           duration: 0.7,
         }}
-        className="flex flex-1 items-center origin-right h-[3px] bg-gradient-to-l from-foreground to-transparent"
+        className="flex flex-1 will-change-[transform,opacity] items-center origin-right h-[3px] bg-gradient-to-l from-foreground to-transparent"
       ></motion.div>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -47,7 +46,7 @@ export default function SectionTitleH1({
         transition={{
           duration: 0.7,
         }}
-        className="flex flex-col items-center z-10"
+        className="flex flex-col will-change-[transform,opacity] items-center z-10"
       >
         <div className="flex text-[25pt] lg:text-[45pt] font-medium font-['Roboto_Serif']">
           {children}
@@ -62,7 +61,7 @@ export default function SectionTitleH1({
         transition={{
           duration: 0.7,
         }}
-        className="flex flex-1 items-center origin-left h-[3px] bg-gradient-to-r from-foreground to-transparent"
+        className="flex flex-1 will-change-[transform,opacity] items-center origin-left h-[3px] bg-gradient-to-r from-foreground to-transparent"
       ></motion.div>
     </div>
   );
