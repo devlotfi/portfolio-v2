@@ -96,9 +96,15 @@ export default function AboutSection() {
             <motion.div
               variants={variants}
               transition={transition}
-              className="flex text-[20pt] font-bold bg-primary-gradient bg-clip-text text-transparent"
+              className="flex items-center text-[20pt] font-bold"
             >
-              Hi, my name is
+              <div className="flex bg-primary-gradient bg-clip-text text-transparent">
+                Hi{" "}
+              </div>
+              <div className="flex">👋</div>
+              <div className="flex bg-primary-gradient bg-clip-text text-transparent">
+                , my name is
+              </div>
             </motion.div>
             <motion.div
               variants={variants}
