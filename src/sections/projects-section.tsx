@@ -63,43 +63,45 @@ export default function ProjectsSection() {
           </div>
         )}
       </div>
-      <SectionTitleH2 className="m-[2rem]">All projects</SectionTitleH2>
-      <motion.div
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{
-          opacity: 1,
-          scale: 1,
-        }}
-        transition={{ duration: 1, type: "spring", stiffness: 70 }}
-      >
-        {showFullList ? (
-          <Button
-            onPress={() => setShowFullList(false)}
-            radius="full"
-            color="primary"
-            size="lg"
-            variant="solid"
-            className="bg-primary-gradient card-outline-dark"
-            startContent={<FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>}
-            aria-label="show-less"
-          >
-            Show less
-          </Button>
-        ) : (
-          <Button
-            onPress={() => setShowFullList(true)}
-            radius="full"
-            color="primary"
-            size="lg"
-            variant="solid"
-            className="bg-primary-gradient card-outline-dark"
-            startContent={<FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>}
-            aria-label="show-more"
-          >
-            See the full list
-          </Button>
-        )}
-      </motion.div>
+      <SectionTitleH2 className="mt-[2rem]">All projects</SectionTitleH2>
+      <div className="flex px-[10rem] py-[5rem] bg-[radial-gradient(ellipse,hsl(var(--heroui-primary)/0.30),transparent_60%)] dark:bg-[radial-gradient(ellipse,hsl(var(--heroui-primary)/0.2),transparent_60%)]">
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{
+            opacity: 1,
+            scale: 1,
+          }}
+          transition={{ duration: 1, type: "spring", stiffness: 70 }}
+        >
+          {showFullList ? (
+            <Button
+              onPress={() => setShowFullList(false)}
+              radius="full"
+              color="primary"
+              size="lg"
+              variant="solid"
+              className="bg-primary-gradient card-outline-light dark:card-outline-dark !border-none"
+              startContent={<FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>}
+              aria-label="show-less"
+            >
+              Show less
+            </Button>
+          ) : (
+            <Button
+              onPress={() => setShowFullList(true)}
+              radius="full"
+              color="primary"
+              size="lg"
+              variant="solid"
+              className="bg-primary-gradient card-outline-light dark:card-outline-dark !border-none"
+              startContent={<FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>}
+              aria-label="show-more"
+            >
+              See the full list
+            </Button>
+          )}
+        </motion.div>
+      </div>
 
       {showFullList ? (
         !isLoadingProjects && projectsData ? (
