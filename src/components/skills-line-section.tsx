@@ -113,11 +113,6 @@ export default function SkillsLineSection({
 
       <motion.div
         ref={contentRef}
-        initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{
-          duration: 0.5,
-        }}
         style={{
           translateX: left ? cardTranslateLeft : cardTranslateRight,
           opacity: cardOpacity,
