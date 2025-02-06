@@ -50,15 +50,17 @@ export default function Footer() {
             <FontAwesomeIcon icon={faXTwitter}></FontAwesomeIcon>
           </SocialIcon>
         </div>
-        <div className="flex space-x-1">
-          <div className="flex">Memoji avatars figma project found</div>
-          <Link
-            href="https://www.figma.com/community/file/1128570662923831097/diverse-collection-of-1785-memojis"
-            target="_blank"
-            className="bg-primary-gradient bg-clip-text text-transparent"
-          >
-            Here
-          </Link>
+        <div>
+          Memoji avatars figma project found{" "}
+          <span>
+            <Link
+              href="https://www.figma.com/community/file/1128570662923831097/diverse-collection-of-1785-memojis"
+              target="_blank"
+              className="bg-primary-gradient bg-clip-text text-transparent font-bold"
+            >
+              Here
+            </Link>
+          </span>
         </div>
         <div className="flex ">
           &copy; Debbal Lotfi {new Date().getFullYear()}

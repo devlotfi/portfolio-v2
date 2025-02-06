@@ -110,10 +110,14 @@ export default function AboutSection() {
             <motion.div
               variants={variants}
               transition={transition}
-              className="flex text-[15pt]"
+              className="text-[15pt]"
             >
-              A Full-Stack Software Engineer crafting scalable and efficient
-              digital solutions
+              A{" "}
+              <span className="underline underline-offset-[0.3rem] decoration-primary decoration-dashed">
+                Full-Stack
+              </span>{" "}
+              Software Engineer crafting scalable and efficient digital
+              solutions
             </motion.div>
             <div className="flex space-x-2 mt-[1rem]">
               <motion.div
@@ -185,13 +189,13 @@ export default function AboutSection() {
             updated on industry trends and excel in both solo and collaborative
             projects. I hold a Bachelor's in Information Systems and Software
             Engineering from{" "}
-            <a
+            <Link
               className="inline underline font-bold bg-primary-gradient bg-clip-text text-transparent"
               href="https://www.usthb.dz/"
               target="_blank"
             >
               USTHB University.
-            </a>
+            </Link>
           </div>
         </motion.div>
         <div className="flex w-full max-w-screen-md gap-7">
@@ -216,7 +220,7 @@ export default function AboutSection() {
               </div>
             </div>
             <Divider className="mx-[1rem]" orientation="vertical"></Divider>
-            <div className="flex flex-col flex-1 justify-center items-center">
+            <div className="flex flex-col flex-1 justify-center items-center text-center">
               <svg
                 className="h-[3rem] mb-[1rem] text-primary text-[40pt]"
                 viewBox="0 0 333 445"
