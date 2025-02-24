@@ -4,8 +4,6 @@
 
 My developer portfolio
 
-<img src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/banner.png">
-
 # 📌 Contents
 
 - [Tech stack](#-tech-stack)
