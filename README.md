@@ -1,9 +1,11 @@
-<img height="100px" width="100px" src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/logo.svg">
+<img src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/banner.png">
 
 # 📜 portfolio-v2
+
 My developer portfolio
 
 # 📌 Contents
+
 - [Tech stack](#-tech-stack)
 - [Project setup](#-project-setup)
 - [Preview](#-preview)
@@ -37,6 +39,7 @@ My developer portfolio
 # 📂 Project Setup
 
 ## Requirements
+
 - Node JS
 - pnpm
 
