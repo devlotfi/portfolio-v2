@@ -1,8 +1,10 @@
-<img src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/github-banner.png">
+<img height="100px" width="100px" src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/logo.svg">
 
 # 📜 portfolio-v2
 
 My developer portfolio
+
+<img src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/banner.png">
 
 # 📌 Contents
 
