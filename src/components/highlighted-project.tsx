@@ -1,7 +1,5 @@
 import { Button, Link, useDisclosure } from "@heroui/react";
 import { useContext, useRef } from "react";
-import { ThemeContext } from "../context/theme-context";
-import { ThemeOptions } from "../types/theme-options";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGlobe,
@@ -20,7 +18,6 @@ interface Props {
 
 export default function HighlightedProject({ index, project }: Props) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const { appliedTheme } = useContext(ThemeContext);
   const { scrollRef } = useContext(NavigationContext);
   const { isOpen, onOpenChange, onOpen } = useDisclosure();
 
@@ -43,15 +40,11 @@ export default function HighlightedProject({ index, project }: Props) {
 
       <motion.div
         ref={cardRef}
-        className="flex flex-col will-change-[transform,opacity] w-full origin-center max-w-screen-md p-[1rem] rounded-lg card-outline-light dark:card-outline-dark"
+        className="flex flex-col will-change-[transform,opacity] w-full origin-center max-w-screen-md p-[1rem] rounded-lg bg-background-light-100 dark:bg-background-dark-100 card-outline-light dark:card-outline-dark"
         style={{
           scale: cardScale,
           opacity: cardScale,
           top: `${(index + 1) * 2}rem`,
-          background:
-            appliedTheme === ThemeOptions.LIGHT
-              ? `linear-gradient(to top,${project.color}, #ffffff), #ffffff`
-              : `linear-gradient(to top,${project.color}, #171717), #171717`,
         }}
       >
         <div className="flex justify-between mb-[1rem] md:items-center flex-col md:flex-row">
