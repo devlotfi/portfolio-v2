@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/banner.png">
+<img src="https://raw.githubusercontent.com/devlotfi/portfolio-v2/main/github-assets/github-banner.png">
 
 # 📜 portfolio-v2
 
