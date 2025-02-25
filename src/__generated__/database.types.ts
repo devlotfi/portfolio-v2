@@ -11,7 +11,6 @@ export type Database = {
     Tables: {
       projects: {
         Row: {
-          color: string | null
           description: string
           highlighted: boolean
           id: string
@@ -23,7 +22,6 @@ export type Database = {
           website: string | null
         }
         Insert: {
-          color?: string | null
           description: string
           highlighted?: boolean
           id?: string
@@ -35,7 +33,6 @@ export type Database = {
           website?: string | null
         }
         Update: {
-          color?: string | null
           description?: string
           highlighted?: boolean
           id?: string
