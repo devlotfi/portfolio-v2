@@ -86,7 +86,7 @@ export default function TimelineSection({
         ) : null}
 
         <motion.div
-          initial={{ scale: 0, translateX: "-50%" }}
+          initial={{ scale: 0, x: "-50%" }}
           whileInView={{ scale: 1 }}
           transition={{
             duration: 0.5,
