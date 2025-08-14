@@ -5,11 +5,11 @@ import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { motion, useScroll, useTransform } from "motion/react";
 import { NavigationContext } from "../context/navigation-context";
-import { Tables } from "../__generated__/database.types";
+import { ProjectType } from "../types/project";
 
 interface Props {
   index: number;
-  project: Tables<"projects">;
+  project: ProjectType;
 }
 
 export default function HighlightedProject({ index, project }: Props) {
@@ -19,7 +19,6 @@ export default function HighlightedProject({ index, project }: Props) {
   const { scrollYProgress } = useScroll({
     container: scrollRef,
     target: cardRef,
-    layoutEffect: false,
     offset: ["start end", "end end"],
   });
 

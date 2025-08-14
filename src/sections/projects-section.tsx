@@ -9,6 +9,7 @@ import Project from "../components/project";
 import { Button, Spinner } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "motion/react";
+import { ProjectType } from "../types/project";
 
 export default function ProjectsSection() {
   const { sectionRefs } = useContext(NavigationContext);
@@ -21,7 +22,7 @@ export default function ProjectsSection() {
     queryKey: ["HIGHLIGHTED_PROJECTS"],
     refetchOnWindowFocus: false,
     queryFn: async () => {
-      return [];
+      return [] as ProjectType[];
     },
   });
 
@@ -30,7 +31,7 @@ export default function ProjectsSection() {
     refetchOnWindowFocus: false,
     queryKey: ["PROJECTS"],
     queryFn: async () => {
-      return [];
+      return [] as ProjectType[];
     },
   });
 

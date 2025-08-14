@@ -3,10 +3,10 @@ import { motion } from "motion/react";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Tables } from "../__generated__/database.types";
+import { ProjectType } from "../types/project";
 
 interface Props {
-  project: Tables<"projects">;
+  project: ProjectType;
 }
 
 export default function Project({ project }: Props) {
