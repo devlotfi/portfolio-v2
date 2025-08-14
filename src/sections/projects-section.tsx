@@ -10,28 +10,29 @@ import { Button, Spinner } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "motion/react";
 import { ProjectType } from "../types/project";
+import { devData } from "../dev-data";
+import axios, { AxiosResponse } from "axios";
 
 export default function ProjectsSection() {
   const { sectionRefs } = useContext(NavigationContext);
   const [showFullList, setShowFullList] = useState<boolean>(false);
 
-  const {
-    isLoading: isLoadingHighlightedProjects,
-    data: highlightedProjectsData,
-  } = useQuery({
-    queryKey: ["HIGHLIGHTED_PROJECTS"],
-    refetchOnWindowFocus: false,
-    queryFn: async () => {
-      return [] as ProjectType[];
-    },
-  });
-
-  const { isLoading: isLoadingProjects, data: projectsData } = useQuery({
-    enabled: showFullList,
+  const { isLoading, data } = useQuery({
     refetchOnWindowFocus: false,
     queryKey: ["PROJECTS"],
     queryFn: async () => {
-      return [] as ProjectType[];
+      if (import.meta.env.MODE === "production") {
+        try {
+          const res: AxiosResponse<ProjectType[]> = await axios.get(
+            `${import.meta.env.BASE_URL}projects.json`
+          );
+          return res.data;
+        } catch {
+          return [];
+        }
+      } else {
+        return devData;
+      }
     },
   });
 
@@ -44,14 +45,16 @@ export default function ProjectsSection() {
         Projects
       </SectionTitleH1>
       <div className="flex flex-col relative gap-[2rem]">
-        {!isLoadingHighlightedProjects && highlightedProjectsData ? (
-          highlightedProjectsData.map((project, index) => (
-            <HighlightedProject
-              key={project.id}
-              index={index}
-              project={project}
-            ></HighlightedProject>
-          ))
+        {!isLoading && data ? (
+          data
+            .filter((project) => project.highlighted)
+            .map((project, index) => (
+              <HighlightedProject
+                key={project.id}
+                index={index}
+                project={project}
+              ></HighlightedProject>
+            ))
         ) : (
           <div className="flex h-[50dvh]">
             <Spinner size="lg" color="primary"></Spinner>
@@ -99,9 +102,9 @@ export default function ProjectsSection() {
       </div>
 
       {showFullList ? (
-        !isLoadingProjects && projectsData ? (
+        !isLoading && data ? (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-[2rem] gap-7 w-full  max-w-screen-lg">
-            {projectsData.map((project) => (
+            {data.map((project) => (
               <Project key={project.id} project={project}></Project>
             ))}
           </div>

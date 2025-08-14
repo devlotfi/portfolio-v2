@@ -18,7 +18,6 @@ export default function ScrollIndicator({ scrollRef }: Props) {
 
   const { scrollYProgress } = useScroll({
     container: scrollRef,
-    layoutEffect: false,
   });
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {

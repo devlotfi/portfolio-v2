@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
+    "prebuild": "cp docs/projects.json projects.temp.json",
     "build": "tsc -b && vite build",
+    "postbuild": "mv projects.temp.json docs/projects.json",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -17,6 +19,7 @@
     "@heroui/react": "^2.8.2",
     "@tailwindcss/vite": "^4.1.11",
     "@tanstack/react-query": "^5.85.2",
+    "axios": "^1.11.0",
     "formik": "^2.4.6",
     "framer-motion": "^12.23.12",
     "motion": "^12.23.12",

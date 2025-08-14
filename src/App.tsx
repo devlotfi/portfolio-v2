@@ -19,7 +19,6 @@ export default function App() {
 
   const { scrollY } = useScroll({
     container: scrollRef,
-    layoutEffect: false,
   });
 
   const backgroundPosition = useTransform(

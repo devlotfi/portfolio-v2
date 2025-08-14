@@ -33,7 +33,6 @@ export default function SkillsLineSection({
   const { scrollYProgress } = useScroll({
     container: scrollRef,
     target: contentRef,
-    layoutEffect: false,
     offset: ["start center", "end 1.5"],
   });
 

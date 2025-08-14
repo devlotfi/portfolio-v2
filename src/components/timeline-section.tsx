@@ -21,7 +21,6 @@ export default function TimelineSection({
   const { scrollYProgress } = useScroll({
     container: scrollRef,
     target: contentRef,
-    layoutEffect: false,
     offset: ["start 0.7", "end 1.8"],
   });
 
