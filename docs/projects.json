@@ -133,7 +133,7 @@
   },
   {
     "id": "a776c5de-c536-4eb4-880d-11751d15c913",
-    "title": "iot-wol",
+    "title": "IOT Wake-On-Lan",
     "description": "A system for remotely turning on a computer from anywhere on the internet",
     "logo": "https://raw.githubusercontent.com/devlotfi/iot-wol/main/github-assets/logo.svg",
     "thumbnail": "https://raw.githubusercontent.com/devlotfi/iot-wol/main/github-assets/preview/preview-1.png",
