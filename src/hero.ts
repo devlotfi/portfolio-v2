@@ -20,7 +20,7 @@ export default heroui({
           foreground: "#2c4271",
         },
         primary: {
-          DEFAULT: "#2EB9DC",
+          DEFAULT: "#c93030",
           foreground: "#FFFFFF",
         },
       },
@@ -36,7 +36,7 @@ export default heroui({
           foreground: "#dbe7f3",
         },
         primary: {
-          DEFAULT: "#2EB9DC",
+          DEFAULT: "#c93030",
           foreground: "#FFFFFF",
         },
       },

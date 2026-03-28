@@ -53,7 +53,7 @@ function NavbarLinkComponent({
         className={cn(
           "flex rounded-full gap-2 font-medium hover:text-accent duration-300 transition-[color]",
           isInView &&
-            "font-bold bg-primary-gradient hover:text-primary-foreground",
+            "font-bold bg-primary-gradient hover:text-accent-foreground",
           !isInView && "text-foreground",
         )}
         aria-label={`navigate to ${section}`}

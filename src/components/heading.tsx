@@ -1,6 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { cn } from "@heroui/react";
+import { cn } from "@heroui-v3/react";
 import { PropsWithChildren } from "react";
 
 interface ClassNames {
@@ -29,7 +29,7 @@ export function Heading({
       <div className="flex h-[2.5rem] w-[2.5rem] justify-center items-center bg-primary-gradient rounded-lg">
         <FontAwesomeIcon
           icon={icon}
-          className={cn("text-primary-foreground", classNames.icon)}
+          className={cn("text-accent-foreground", classNames.icon)}
         ></FontAwesomeIcon>
       </div>
       <div className={cn("font-bold !font-['Roboto_Serif']", classNames.text)}>

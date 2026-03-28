@@ -9,7 +9,7 @@ import {
 import NavbarLink from "./navbar-link";
 import ThemeDropdown from "./theme-dropdown";
 import Logo from "./logo";
-import { Button } from "@heroui/react";
+import { Button } from "@heroui-v3/react";
 import { useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -36,7 +36,7 @@ export default function Navbar() {
             onPress={() => onSidebarOpen()}
             className="lg:hidden group"
             isIconOnly
-            variant="light"
+            variant="ghost"
             size="lg"
             aria-label="open-sidebar"
           >

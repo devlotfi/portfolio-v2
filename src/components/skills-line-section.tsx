@@ -1,6 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Card, cn } from "@heroui/react";
+import { cn } from "@heroui-v3/react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { PropsWithChildren, useContext, useRef } from "react";
 import { NavigationContext } from "../context/navigation-context";
@@ -97,17 +97,16 @@ export default function SkillsLineSection({
           stiffness: 70,
         }}
       >
-        <Card
-          shadow="none"
+        <div
           className={cn(
-            "bg-primary-gradient justify-center items-center h-[2rem] w-[2rem] md:h-[3rem] md:w-[3rem]",
+            "bg-primary-gradient flex justify-center items-center h-[2rem] w-[2rem] md:h-[3rem] md:w-[3rem] rounded-2xl",
           )}
         >
           <FontAwesomeIcon
-            className="text-[15pt] md:text-[17pt] text-primary-foreground"
+            className="text-[15pt] md:text-[17pt] text-accent-foreground"
             icon={icon}
           ></FontAwesomeIcon>
-        </Card>
+        </div>
       </motion.div>
 
       <motion.div

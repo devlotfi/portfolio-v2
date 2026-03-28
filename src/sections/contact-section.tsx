@@ -1,19 +1,16 @@
 import { ComponentProps, useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import SectionTitleH1 from "../components/section-title-h1";
-import {
-  faEnvelope,
-  faEnvelopeOpenText,
-  faFont,
-  faPaperPlane,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { motion, Variants } from "motion/react";
 import { Heading } from "../components/heading";
-import { Button, Input, Textarea } from "@heroui/react";
+import { Button } from "@heroui-v3/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Transition } from "motion";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import ValidatedTextField from "../components/validated-text-field";
+import ValidatedTextArea from "../components/validated-text-area";
 
 function AtSVG({ ...props }: ComponentProps<"svg">) {
   return (
@@ -79,26 +76,25 @@ const transition: Transition = {
 export default function ContactSection() {
   const { sectionRefs } = useContext(NavigationContext);
 
-  const { values, touched, errors, handleSubmit, handleChange, handleBlur } =
-    useFormik({
-      initialValues: {
-        subject: "",
-        body: "",
-      },
-      validationSchema: yup.object({
-        subject: yup.string().min(1).max(512).required(),
-        body: yup.string().min(1).max(4096).required(),
-      }),
-      onSubmit(values) {
-        const email = "debbal.lotfi.dev@gmail.com";
-        const mailtoLink = `mailto:${encodeURIComponent(
-          email,
-        )}?subject=${encodeURIComponent(
-          values.subject,
-        )}&body=${encodeURIComponent(values.body)}`;
-        window.location.href = mailtoLink;
-      },
-    });
+  const formik = useFormik({
+    initialValues: {
+      subject: "",
+      body: "",
+    },
+    validationSchema: yup.object({
+      subject: yup.string().min(1).max(512).required(),
+      body: yup.string().min(1).max(4096).required(),
+    }),
+    onSubmit(values) {
+      const email = "debbal.lotfi.dev@gmail.com";
+      const mailtoLink = `mailto:${encodeURIComponent(
+        email,
+      )}?subject=${encodeURIComponent(
+        values.subject,
+      )}&body=${encodeURIComponent(values.body)}`;
+      window.location.href = mailtoLink;
+    },
+  });
 
   const getRef = () => sectionRefs.CONTACT;
   return (
@@ -115,53 +111,38 @@ export default function ContactSection() {
           transition={transition}
           initial="hidden"
           whileInView="visible"
-          onSubmit={handleSubmit}
-          className="flex flex-col gap-3 max-w-screen-sm w-full rounded-lg p-[1.5rem] overflow-hidden bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
+          onSubmit={formik.handleSubmit}
+          className="flex flex-col gap-3 max-w-screen-sm w-full rounded-2xl p-[1.5rem] overflow-hidden bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
         >
           <Heading icon={faEnvelope}>Send e-mail</Heading>
-          <Input
-            isRequired
-            startContent={<FontAwesomeIcon icon={faFont}></FontAwesomeIcon>}
-            classNames={{
-              inputWrapper:
-                "border border-divider bg-background-light-200 dark:bg-background-dark-200",
-            }}
-            label="Subject"
-            placeholder="Subject"
-            type="text"
+          <ValidatedTextField
+            formik={formik}
             name="subject"
-            value={values.subject}
-            errorMessage={errors.subject}
-            isInvalid={touched.subject && errors.subject !== undefined}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          <Textarea
-            isRequired
-            startContent={
-              <FontAwesomeIcon icon={faEnvelopeOpenText}></FontAwesomeIcon>
-            }
-            classNames={{
-              inputWrapper:
-                "border border-divider bg-background-light-200 dark:bg-background-dark-200",
+            textFieldProps={{ isRequired: true }}
+            labelProps={{ children: "Subject" }}
+            inputGroupProps={{
+              className:
+                "border border-border bg-background-light-200 dark:bg-background-dark-200",
             }}
-            label="Text"
-            placeholder="Body"
+          ></ValidatedTextField>
+          <ValidatedTextArea
+            formik={formik}
             name="body"
-            value={values.body}
-            errorMessage={errors.body}
-            isInvalid={touched.body && errors.body !== undefined}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
+            textFieldProps={{ isRequired: true }}
+            labelProps={{ children: "body" }}
+            textAreaProps={{
+              className:
+                "border border-border bg-background-light-200 dark:bg-background-dark-200 min-h-[7rem]",
+            }}
+          ></ValidatedTextArea>
 
           <Button
             type="submit"
-            endContent={<FontAwesomeIcon icon={faPaperPlane}></FontAwesomeIcon>}
+            fullWidth
             className="bg-primary-gradient"
-            color="primary"
             aria-label="send"
           >
+            <FontAwesomeIcon icon={faPaperPlane}></FontAwesomeIcon>
             Send
           </Button>
         </motion.form>

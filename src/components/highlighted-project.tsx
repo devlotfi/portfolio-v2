@@ -1,4 +1,3 @@
-import { Link } from "@heroui/react";
 import { useContext, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
@@ -48,19 +47,19 @@ export default function HighlightedProject({ index, project }: Props) {
 
         <div className="flex gap-3 justify-between items-center">
           <div className="flex h-[3rem] gap-3">
-            <Link href={project.repository} target="_blank">
+            <a href={project.repository} target="_blank">
               <FontAwesomeIcon
-                className="text-[20pt] text-foreground hover:text-primary duration-300 transition-[color] cursor-pointer"
+                className="text-[20pt] text-foreground hover:text-accent duration-300 transition-[color] cursor-pointer"
                 icon={faGithub}
               ></FontAwesomeIcon>
-            </Link>
+            </a>
             {project.website ? (
-              <Link href={project.website} target="_blank">
+              <a href={project.website} target="_blank">
                 <FontAwesomeIcon
-                  className="text-[20pt] text-foreground hover:text-primary duration-300 transition-[color] cursor-pointer"
+                  className="text-[20pt] text-foreground hover:text-accent duration-300 transition-[color] cursor-pointer"
                   icon={faGlobe}
                 ></FontAwesomeIcon>
-              </Link>
+              </a>
             ) : null}
           </div>
         </div>

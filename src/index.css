@@ -17,6 +17,12 @@
   text-decoration: underline dashed var(--accent-foreground);
 }
 
+@layer components {
+  .dropdown__popover {
+    @apply bg-background-light-100 dark:bg-background-dark-100;
+  }
+}
+
 @layer base {
   :root {
     color-scheme: light;
@@ -76,6 +82,7 @@
     --accent: #2eb9dc;
 
     --border: #575f69;
+    --separator: #575f69;
 
     --field-background: var(--surface);
     --field-foreground: var(--foreground);

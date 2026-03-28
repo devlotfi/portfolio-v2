@@ -24,7 +24,7 @@ export default function SectionTitleH1({
         className="flex will-change-[transform] absolute left-[50%]"
       >
         <FontAwesomeIcon
-          className="text-[7rem] text-primary"
+          className="text-[7rem] text-accent"
           style={{
             maskImage: "linear-gradient(to bottom, red, transparent 65%)",
           }}

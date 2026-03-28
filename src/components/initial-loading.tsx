@@ -1,4 +1,4 @@
-import { cn } from "@heroui/react";
+import { cn } from "@heroui-v3/react";
 import { useEffect, useState } from "react";
 
 export default function InitialLoading() {
@@ -18,7 +18,7 @@ export default function InitialLoading() {
     <div
       className={cn(
         "fixed h-dvh w-dvw top-0 left-0 flex justify-center items-center z-[1000] duration-300 transition-[opacity] bg-background-light-100 dark:bg-background-dark-100",
-        hidden && "opacity-0 pointer-events-none"
+        hidden && "opacity-0 pointer-events-none",
       )}
     >
       <svg

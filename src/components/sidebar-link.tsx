@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, cn } from "@heroui/react";
+import { Button, cn } from "@heroui-v3/react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { PropsWithChildren, useContext } from "react";
 import { useInView } from "motion/react";
@@ -34,26 +34,25 @@ export default function SidebarLinkComponent({
           });
         }
       }}
-      variant="light"
+      variant="ghost"
       className="h-[3rem] font-bold"
-      startContent={
-        <div
-          className={cn(
-            "flex rounded-lg h-[2.5rem] w-[2.5rem] justify-center items-center",
-            isInView && "bg-primary-gradient",
-          )}
-        >
-          <FontAwesomeIcon
-            className={cn(
-              "text-[18pt] text-foreground",
-              isInView && "text-primary-foreground",
-            )}
-            icon={icon}
-          ></FontAwesomeIcon>
-        </div>
-      }
       aria-label={`Navigate to ${section}`}
     >
+      <div
+        className={cn(
+          "flex rounded-lg h-[2.5rem] w-[2.5rem] justify-center items-center",
+          isInView && "bg-primary-gradient",
+        )}
+      >
+        <FontAwesomeIcon
+          className={cn(
+            "text-[18pt] text-foreground",
+            isInView && "text-accent-foreground",
+          )}
+          icon={icon}
+        ></FontAwesomeIcon>
+      </div>
+
       <div
         className={cn(
           "flex flex-1 text-[13pt]",

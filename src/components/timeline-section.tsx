@@ -1,4 +1,4 @@
-import { Chip, cn } from "@heroui/react";
+import { Chip, cn } from "@heroui-v3/react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { PropsWithChildren, useContext, useRef } from "react";
 import { NavigationContext } from "../context/navigation-context";
@@ -27,12 +27,12 @@ export default function TimelineSection({
   const cardTranslateLeft = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0%", "-100%"]
+    ["0%", "-100%"],
   );
   const cardTranslateRight = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0%", "100%"]
+    ["0%", "100%"],
   );
   const cardOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
@@ -40,7 +40,7 @@ export default function TimelineSection({
     <div
       className={cn(
         "flex relative gap-5 px-[1.5rem] w-full max-w-screen-lg lg:flex-row",
-        cardPosition === "RIGHT" && "lg:flex-row-reverse"
+        cardPosition === "RIGHT" && "lg:flex-row-reverse",
       )}
     >
       <div className="flex flex-1 flex-col gap-3 py-[2rem] lg:py-[1.5rem]">
@@ -51,15 +51,14 @@ export default function TimelineSection({
               cardPosition === "LEFT" ? cardTranslateLeft : cardTranslateRight,
             opacity: cardOpacity,
           }}
-          className="flex relative flex-col will-change-[transform,opacity] gap-3 z-10 rounded-lg p-[1.2rem] bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
+          className="flex relative flex-col will-change-[transform,opacity] gap-3 z-10 rounded-2xl p-[1.2rem] bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
         >
           <Chip
             size="lg"
-            color="primary"
             className={cn(
-              "flex z-10 absolute top-[-1.5rem] bg-primary-gradient !font-medium self-start",
+              "flex z-10 absolute top-[-1rem] bg-primary-gradient !font-medium self-start",
               cardPosition === "LEFT" && "lg:self-start",
-              cardPosition === "RIGHT" && "lg:self-end"
+              cardPosition === "RIGHT" && "lg:self-end",
             )}
           >
             {dateContent}

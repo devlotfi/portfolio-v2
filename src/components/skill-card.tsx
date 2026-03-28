@@ -5,7 +5,7 @@ interface Props {
 
 export default function SkillCard({ title, image }: Props) {
   return (
-    <div className="flex flex-col rounded-lg border border-divider w-[5rem] bg-background-light-100 dark:bg-background-dark-100">
+    <div className="flex flex-col rounded-2xl border border-divider w-[5rem] bg-background-light-100 dark:bg-background-dark-100">
       <div className="flex w-full h-[4rem] justify-center items-center">
         <img className="h-[2.5rem]" src={image} alt="image" />
       </div>

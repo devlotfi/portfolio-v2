@@ -1,4 +1,4 @@
-import { cn } from "@heroui/react";
+import { cn } from "@heroui-v3/react";
 import { ComponentProps } from "react";
 
 export function SectionTitleH2({

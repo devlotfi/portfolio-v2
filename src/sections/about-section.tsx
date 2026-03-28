@@ -5,7 +5,7 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Divider, Link } from "@heroui/react";
+import { Button, Separator } from "@heroui-v3/react";
 import Avatar from "../assets/avatar.png";
 import AvatarMap from "../assets/avatar-map.png";
 import { useContext, useRef } from "react";
@@ -130,20 +130,18 @@ export default function AboutSection() {
                   scale: 1.1,
                 }}
               >
-                <Button
-                  as={Link}
+                <a
                   href={`${import.meta.env.BASE_URL}resume.pdf`}
                   target="_blank"
-                  radius="full"
-                  color="primary"
-                  className="bg-primary-gradient"
-                  startContent={
-                    <FontAwesomeIcon icon={faFileLines}></FontAwesomeIcon>
-                  }
-                  aria-label="resume (CV)"
                 >
-                  Resume
-                </Button>
+                  <Button
+                    className="bg-primary-gradient rounded-full"
+                    aria-label="resume (CV)"
+                  >
+                    <FontAwesomeIcon icon={faFileLines}></FontAwesomeIcon>
+                    Resume
+                  </Button>
+                </a>
               </motion.div>
               <motion.div
                 className="self-start"
@@ -154,15 +152,12 @@ export default function AboutSection() {
                 }}
               >
                 <Button
-                  className="font-bold"
-                  variant="light"
-                  radius="full"
-                  startContent={
-                    <FontAwesomeIcon icon={faAngleDoubleDown}></FontAwesomeIcon>
-                  }
+                  className="font-bold rounded-full"
+                  variant="ghost"
                   onPress={scrollToAboutMe}
                   aria-label="About me"
                 >
+                  <FontAwesomeIcon icon={faAngleDoubleDown}></FontAwesomeIcon>
                   About me
                 </Button>
               </motion.div>
@@ -191,13 +186,13 @@ export default function AboutSection() {
             updated on industry trends and excel in both solo and collaborative
             projects. I hold a Bachelor's in Information Systems and Software
             Engineering from{" "}
-            <Link
+            <a
               className="inline underline font-bold bg-primary-gradient bg-clip-text text-transparent"
               href="https://www.usthb.dz/"
               target="_blank"
             >
               USTHB University.
-            </Link>
+            </a>
           </div>
         </motion.div>
         <div className="flex w-full max-w-screen-md gap-7">
@@ -221,7 +216,7 @@ export default function AboutSection() {
                 Experience in web development
               </div>
             </div>
-            <Divider className="mx-[1rem]" orientation="vertical"></Divider>
+            <Separator className="mx-[1rem]" orientation="vertical"></Separator>
             <div className="flex flex-col flex-1 justify-center items-center text-center">
               <svg
                 className="h-[3rem] mb-[1rem] text-primary text-[40pt]"

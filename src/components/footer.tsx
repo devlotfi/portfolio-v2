@@ -1,5 +1,5 @@
 import Logo from "./logo";
-import { Button, Link } from "@heroui/react";
+import { Button } from "@heroui-v3/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
@@ -15,17 +15,17 @@ interface SocialIconsProps {
 
 function SocialIcon({ url, children }: PropsWithChildren<SocialIconsProps>) {
   return (
-    <Button
-      href={url}
-      target="_blank"
-      as={Link}
-      variant="light"
-      isIconOnly
-      className="text-[22pt] pointer-events-none"
-      aria-label="social-media-link"
-    >
-      {children}
-    </Button>
+    <a href={url} target="_blank">
+      <Button
+        variant="ghost"
+        isIconOnly
+        size="lg"
+        className="text-[21pt]"
+        aria-label="social-media-link"
+      >
+        {children}
+      </Button>
+    </a>
   );
 }
 
@@ -49,18 +49,6 @@ export default function Footer() {
           <SocialIcon url="https://x.com/LDebbal">
             <FontAwesomeIcon icon={faXTwitter}></FontAwesomeIcon>
           </SocialIcon>
-        </div>
-        <div>
-          Memoji avatars figma project found{" "}
-          <span>
-            <Link
-              href="https://www.figma.com/community/file/1128570662923831097/diverse-collection-of-1785-memojis"
-              target="_blank"
-              className="bg-primary-gradient bg-clip-text text-transparent font-bold"
-            >
-              Here
-            </Link>
-          </span>
         </div>
         <div className="flex ">
           &copy; Debbal Lotfi {new Date().getFullYear()}

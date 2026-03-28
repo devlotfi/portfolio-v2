@@ -5,7 +5,7 @@ import {
   useScroll,
 } from "motion/react";
 import { RefObject, useState } from "react";
-import { Button } from "@heroui/react";
+import { Button } from "@heroui-v3/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleUp } from "@fortawesome/free-solid-svg-icons";
 
@@ -59,10 +59,8 @@ export default function ScrollIndicator({ scrollRef }: Props) {
           >
             <Button
               onPress={scrollToTop}
-              color="primary"
-              className="bg-primary-gradient"
+              className="bg-primary-gradient rounded-full"
               size="lg"
-              radius="full"
               isIconOnly
               aria-label="scroll-top"
             >

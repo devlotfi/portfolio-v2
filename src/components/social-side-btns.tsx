@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "@heroui/react";
 import {
   faGithub,
   faLinkedin,
@@ -35,13 +34,13 @@ function SocialIcon({
         },
       }}
     >
-      <Link
+      <a
         href={url}
         target="_blank"
-        className="text-[20pt] py-[0.5rem] duration-300 transition-[color,transform] text-foreground hover:text-primary hover:translate-x-[0.3rem]"
+        className="text-[20pt] py-[0.5rem] duration-300 transition-[color,transform] text-foreground hover:text-accent hover:translate-x-[0.3rem]"
       >
         {children}
-      </Link>
+      </a>
     </motion.div>
   );
 }

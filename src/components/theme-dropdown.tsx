@@ -5,18 +5,20 @@ import {
   faSun,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-  Button,
-  Card,
-} from "@heroui/react";
+import { Dropdown, Button, Label } from "@heroui-v3/react";
 import { useContext } from "react";
 import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
 import { motion } from "motion/react";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+
+function OptionIcon({ icon }: { icon: IconProp }) {
+  return (
+    <div className="h-[1.8rem] w-[1.8rem] flex rounded-xl justify-center items-center bg-primary-gradient text-accent-foreground">
+      <FontAwesomeIcon icon={icon}></FontAwesomeIcon>
+    </div>
+  );
+}
 
 export default function ThemeDropdown() {
   const { themeOption, setTheme } = useContext(ThemeContext);
@@ -33,69 +35,40 @@ export default function ThemeDropdown() {
         },
       }}
     >
-      <Dropdown
-        backdrop="opaque"
-        className="bg-background-light-100 dark:bg-background-dark-100"
-      >
-        <DropdownTrigger>
-          <Button isIconOnly variant="light" size="lg" aria-label="themes">
-            <FontAwesomeIcon icon={faPaintBrush}></FontAwesomeIcon>
-          </Button>
-        </DropdownTrigger>
-        <DropdownMenu
-          selectionMode="single"
-          closeOnSelect={false}
-          selectedKeys={[themeOption]}
-          onAction={(key) => {
-            {
-              switch (key) {
-                case ThemeOptions.SYSTEM:
-                  setTheme(ThemeOptions.SYSTEM);
-                  break;
-                case ThemeOptions.LIGHT:
-                  setTheme(ThemeOptions.LIGHT);
-                  break;
-                case ThemeOptions.DARK:
-                  setTheme(ThemeOptions.DARK);
-                  break;
+      <Dropdown>
+        <Button isIconOnly variant="ghost" size="lg" aria-label="themes">
+          <FontAwesomeIcon icon={faPaintBrush}></FontAwesomeIcon>
+        </Button>
+        <Dropdown.Popover className="min-w-[256px]">
+          <Dropdown.Menu
+            selectedKeys={new Set([themeOption])}
+            selectionMode="single"
+            onSelectionChange={(keys) => {
+              for (const key of keys) {
+                setTheme(key.toString() as ThemeOptions);
+                break;
               }
-            }
-          }}
-        >
-          <DropdownItem
-            startContent={
-              <Card className="h-[1.8rem] w-[1.8rem] justify-center items-center bg-primary-gradient text-primary-foreground">
-                <FontAwesomeIcon icon={faComputer}></FontAwesomeIcon>
-              </Card>
-            }
-            key={ThemeOptions.SYSTEM}
-            textValue="system"
+            }}
           >
-            System
-          </DropdownItem>
-          <DropdownItem
-            startContent={
-              <Card className="h-[1.8rem] w-[1.8rem] justify-center items-center bg-primary-gradient text-primary-foreground">
-                <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
-              </Card>
-            }
-            key={ThemeOptions.LIGHT}
-            textValue="light"
-          >
-            Light
-          </DropdownItem>
-          <DropdownItem
-            startContent={
-              <Card className="h-[1.8rem] w-[1.8rem] justify-center items-center bg-primary-gradient text-primary-foreground">
-                <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
-              </Card>
-            }
-            key={ThemeOptions.DARK}
-            textValue="dark"
-          >
-            Dark
-          </DropdownItem>
-        </DropdownMenu>
+            <Dropdown.Section>
+              <Dropdown.Item id={ThemeOptions.SYSTEM} textValue="System">
+                <Dropdown.ItemIndicator />
+                <OptionIcon icon={faComputer}></OptionIcon>
+                <Label>System</Label>
+              </Dropdown.Item>
+              <Dropdown.Item id={ThemeOptions.LIGHT} textValue="Light">
+                <Dropdown.ItemIndicator />
+                <OptionIcon icon={faSun}></OptionIcon>
+                <Label>Light</Label>
+              </Dropdown.Item>
+              <Dropdown.Item id={ThemeOptions.DARK} textValue="Dark">
+                <Dropdown.ItemIndicator />
+                <OptionIcon icon={faMoon}></OptionIcon>
+                <Label>Dark</Label>
+              </Dropdown.Item>
+            </Dropdown.Section>
+          </Dropdown.Menu>
+        </Dropdown.Popover>
       </Dropdown>
     </motion.div>
   );

@@ -6,7 +6,7 @@ import HighlightedProject from "../components/highlighted-project";
 import { useQuery } from "@tanstack/react-query";
 import { SectionTitleH2 } from "../components/section-title-h2";
 import Project from "../components/project";
-import { Button, Spinner } from "@heroui/react";
+import { Button, Spinner } from "@heroui-v3/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "motion/react";
 import { ProjectType } from "../types/project";
@@ -55,7 +55,7 @@ export default function ProjectsSection() {
             ))
         ) : (
           <div className="flex h-[50dvh]">
-            <Spinner size="lg" color="primary"></Spinner>
+            <Spinner size="lg" color="accent"></Spinner>
           </div>
         )}
       </div>
@@ -72,27 +72,21 @@ export default function ProjectsSection() {
           {showFullList ? (
             <Button
               onPress={() => setShowFullList(false)}
-              radius="full"
-              color="primary"
               size="lg"
-              variant="solid"
-              className="bg-primary-gradient card-outline-light dark:card-outline-dark !border-none"
-              startContent={<FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>}
+              className="bg-primary-gradient card-outline-light dark:card-outline-dark !border-none rounded-full"
               aria-label="show-less"
             >
+              <FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>
               Show less
             </Button>
           ) : (
             <Button
               onPress={() => setShowFullList(true)}
-              radius="full"
-              color="primary"
               size="lg"
-              variant="solid"
-              className="bg-primary-gradient card-outline-light dark:card-outline-dark !border-none"
-              startContent={<FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>}
+              className="bg-primary-gradient card-outline-light dark:card-outline-dark !border-none rounded-full"
               aria-label="show-more"
             >
+              <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
               See the full list
             </Button>
           )}
@@ -108,7 +102,7 @@ export default function ProjectsSection() {
           </div>
         ) : (
           <div className="flex h-[50dvh]">
-            <Spinner size="lg" color="primary"></Spinner>
+            <Spinner size="lg" color="accent"></Spinner>
           </div>
         )
       ) : null}
