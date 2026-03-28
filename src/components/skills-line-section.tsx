@@ -1,6 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { cn } from "@heroui-v3/react";
+import { cn } from "@heroui/react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { PropsWithChildren, useContext, useRef } from "react";
 import { NavigationContext } from "../context/navigation-context";
@@ -66,7 +66,7 @@ export default function SkillsLineSection({
       {endPosition ? (
         <div
           className={cn(
-            "flex absolute h-[1rem] w-[1rem] bg-divider rounded-full",
+            "flex absolute h-[1rem] w-[1rem] bg-border rounded-full",
             endPosition === "TOP_LEFT" &&
               "top-0 left-0 -translate-x-1/2 -translate-y-1/2",
             endPosition === "TOP_RIGHT" &&
@@ -99,7 +99,7 @@ export default function SkillsLineSection({
       >
         <div
           className={cn(
-            "bg-primary-gradient flex justify-center items-center h-[2rem] w-[2rem] md:h-[3rem] md:w-[3rem] rounded-2xl",
+            "bg-accent-gradient flex justify-center items-center h-[2rem] w-[2rem] md:h-[3rem] md:w-[3rem] rounded-2xl",
           )}
         >
           <FontAwesomeIcon

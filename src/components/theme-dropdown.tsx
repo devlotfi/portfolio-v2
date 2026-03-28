@@ -5,7 +5,7 @@ import {
   faSun,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Dropdown, Button, Label } from "@heroui-v3/react";
+import { Dropdown, Button, Label } from "@heroui/react";
 import { useContext } from "react";
 import { ThemeContext } from "../context/theme-context";
 import { ThemeOptions } from "../types/theme-options";
@@ -14,7 +14,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 function OptionIcon({ icon }: { icon: IconProp }) {
   return (
-    <div className="h-[1.8rem] w-[1.8rem] flex rounded-xl justify-center items-center bg-primary-gradient text-accent-foreground">
+    <div className="h-[1.8rem] w-[1.8rem] flex rounded-xl justify-center items-center bg-accent-gradient text-accent-foreground">
       <FontAwesomeIcon icon={icon}></FontAwesomeIcon>
     </div>
   );

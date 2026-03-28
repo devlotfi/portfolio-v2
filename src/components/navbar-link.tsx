@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, cn } from "@heroui-v3/react";
+import { Button, cn } from "@heroui/react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { ComponentPropsWithRef, useContext } from "react";
 import { motion, useInView } from "motion/react";
@@ -53,7 +53,7 @@ function NavbarLinkComponent({
         className={cn(
           "flex rounded-full gap-2 font-medium hover:text-accent duration-300 transition-[color]",
           isInView &&
-            "font-bold bg-primary-gradient hover:text-accent-foreground",
+            "font-bold bg-accent-gradient hover:text-accent-foreground",
           !isInView && "text-foreground",
         )}
         aria-label={`navigate to ${section}`}

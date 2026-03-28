@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, cn } from "@heroui-v3/react";
+import { Button, cn } from "@heroui/react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { PropsWithChildren, useContext } from "react";
 import { useInView } from "motion/react";
@@ -16,7 +16,7 @@ export default function SidebarLinkComponent({
   section,
   children,
 }: PropsWithChildren<Props>) {
-  const { sectionRefs, scrollRef, onSidebarClose } =
+  const { sectionRefs, scrollRef, setIsSidebarOpen } =
     useContext(NavigationContext);
   const isInView = useInView(sectionRefs[section], {
     root: scrollRef,
@@ -27,7 +27,7 @@ export default function SidebarLinkComponent({
     <Button
       fullWidth
       onPress={() => {
-        onSidebarClose();
+        setIsSidebarOpen(false);
         if (sectionRefs[section].current) {
           sectionRefs[section].current.scrollIntoView({
             block: "start",
@@ -35,13 +35,13 @@ export default function SidebarLinkComponent({
         }
       }}
       variant="ghost"
-      className="h-[3rem] font-bold"
+      className="h-[3rem] gap-[1rem] font-bold"
       aria-label={`Navigate to ${section}`}
     >
       <div
         className={cn(
-          "flex rounded-lg h-[2.5rem] w-[2.5rem] justify-center items-center",
-          isInView && "bg-primary-gradient",
+          "flex rounded-2xl h-[2.5rem] w-[2.5rem] justify-center items-center",
+          isInView && "bg-accent-gradient",
         )}
       >
         <FontAwesomeIcon
@@ -56,7 +56,7 @@ export default function SidebarLinkComponent({
       <div
         className={cn(
           "flex flex-1 text-[13pt]",
-          isInView && "bg-primary-gradient bg-clip-text text-transparent",
+          isInView && "bg-accent-gradient bg-clip-text text-transparent",
         )}
       >
         {children}

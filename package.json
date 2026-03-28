@@ -5,9 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "prebuild": "cp docs/projects.json projects.temp.json",
     "build": "tsc -b && vite build",
-    "postbuild": "mv projects.temp.json docs/projects.json",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -16,10 +14,8 @@
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.0",
-    "@heroui/react": "2.8.6",
-    "@heroui/theme": "2.4.24",
-    "@heroui-v3/react": "npm:@heroui/react@latest",
-    "@heroui-v3/styles": "npm:@heroui/styles@latest",
+    "@heroui/react": "^3.0.1",
+    "@heroui/styles": "^3.0.1",
     "@tailwindcss/vite": "^4.2.2",
     "@tanstack/react-query": "^5.95.2",
     "axios": "^1.14.0",

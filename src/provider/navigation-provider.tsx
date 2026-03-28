@@ -1,8 +1,7 @@
-import { createRef, PropsWithChildren, useMemo, useRef } from "react";
+import { createRef, PropsWithChildren, useMemo, useRef, useState } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { SectionRefs } from "../types/section-refs";
 import { NavigationSections } from "../types/navigation-sections";
-import { useDisclosure } from "@heroui/react";
 
 export default function NavigationProvider({ children }: PropsWithChildren) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -18,20 +17,13 @@ export default function NavigationProvider({ children }: PropsWithChildren) {
     [],
   );
 
-  const {
-    isOpen: isSidebarOpen,
-    onOpen: onSidebarOpen,
-    onClose: onSidebarClose,
-    onOpenChange: onSidebarOpenChange,
-  } = useDisclosure();
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
   return (
     <NavigationContext.Provider
       value={{
         isSidebarOpen,
-        onSidebarOpen,
-        onSidebarClose,
-        onSidebarOpenChange,
+        setIsSidebarOpen,
         scrollRef,
         sectionRefs,
       }}

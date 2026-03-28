@@ -9,7 +9,7 @@ import {
   cn,
   TextArea,
   TextAreaProps,
-} from "@heroui-v3/react";
+} from "@heroui/react";
 
 interface ValidatedTextAreaProps {
   formik: any;

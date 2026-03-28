@@ -4,7 +4,7 @@ import SectionTitleH1 from "../components/section-title-h1";
 import { faEnvelope, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { motion, Variants } from "motion/react";
 import { Heading } from "../components/heading";
-import { Button } from "@heroui-v3/react";
+import { Button } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Transition } from "motion";
 import { useFormik } from "formik";
@@ -139,7 +139,7 @@ export default function ContactSection() {
           <Button
             type="submit"
             fullWidth
-            className="bg-primary-gradient"
+            className="bg-accent-gradient"
             aria-label="send"
           >
             <FontAwesomeIcon icon={faPaperPlane}></FontAwesomeIcon>

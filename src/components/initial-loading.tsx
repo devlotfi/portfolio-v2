@@ -1,4 +1,4 @@
-import { cn } from "@heroui-v3/react";
+import { cn } from "@heroui/react";
 import { useEffect, useState } from "react";
 
 export default function InitialLoading() {

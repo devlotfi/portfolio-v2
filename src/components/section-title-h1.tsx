@@ -14,7 +14,7 @@ export default function SectionTitleH1({
   icon,
 }: PropsWithChildren<Props>) {
   return (
-    <div className="flex relative w-full max-w-screen-sm mt-[10rem] py-[5rem] items-center gap-5 bg-[radial-gradient(ellipse,hsl(var(--heroui-primary)/0.3),transparent_60%)] dark:bg-[radial-gradient(ellipse,hsl(var(--heroui-primary)/0.15),transparent_60%)]">
+    <div className="flex relative w-full max-w-screen-sm mt-[10rem] py-[5rem] items-center gap-5 bg-[radial-gradient(ellipse,color-mix(in_srgb,var(--accent),transparent_70%),transparent_60%)] dark:bg-[radial-gradient(ellipse,color-mix(in_srgb,var(--accent),transparent_85%),transparent_60%)]">
       <motion.div
         initial={{ scale: 0, x: "-50%", y: "-3rem" }}
         whileInView={{ scale: 1 }}
@@ -51,7 +51,7 @@ export default function SectionTitleH1({
         <div className="flex text-[25pt] lg:text-[45pt] font-medium !font-['Roboto_Serif']">
           {children}
         </div>
-        <div className="flex text-[12pt] lg:text-[15pt] font-medium bg-primary-gradient bg-clip-text text-transparent">
+        <div className="flex text-[12pt] lg:text-[15pt] font-medium bg-accent-gradient bg-clip-text text-transparent">
           {secondaryTitle}
         </div>
       </motion.div>

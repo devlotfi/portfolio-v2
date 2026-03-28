@@ -26,7 +26,7 @@ export default function HighlightedProject({ index, project }: Props) {
   return (
     <motion.div
       ref={cardRef}
-      className="flex flex-col will-change-[transform,opacity] w-full origin-center max-w-screen-md p-[1rem] rounded-lg bg-background-light-100 dark:bg-background-dark-100 card-outline-light dark:card-outline-dark"
+      className="flex flex-col will-change-[transform,opacity] w-full origin-center max-w-screen-md p-[1rem] rounded-2xl bg-background-light-100 dark:bg-background-dark-100 card-outline-light dark:card-outline-dark"
       style={{
         scale: cardScale,
         opacity: cardScale,

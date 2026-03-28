@@ -9,7 +9,7 @@ import {
 import NavbarLink from "./navbar-link";
 import ThemeDropdown from "./theme-dropdown";
 import Logo from "./logo";
-import { Button } from "@heroui-v3/react";
+import { Button } from "@heroui/react";
 import { useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,7 +17,7 @@ import { motion } from "motion/react";
 import { NavigationSections } from "../types/navigation-sections";
 
 export default function Navbar() {
-  const { onSidebarOpen } = useContext(NavigationContext);
+  const { setIsSidebarOpen } = useContext(NavigationContext);
 
   return (
     <div className="flex relative justify-between items-center min-h-[5rem] px-[1rem]">
@@ -33,7 +33,7 @@ export default function Navbar() {
           }}
         >
           <Button
-            onPress={() => onSidebarOpen()}
+            onPress={() => setIsSidebarOpen(true)}
             className="lg:hidden group"
             isIconOnly
             variant="ghost"

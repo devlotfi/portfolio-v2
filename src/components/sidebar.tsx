@@ -5,17 +5,17 @@ import {
   faList,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
-import { Drawer } from "@heroui-v3/react";
+import { Drawer } from "@heroui/react";
 import { useContext } from "react";
 import { NavigationContext } from "../context/navigation-context";
 import SidebarLink from "./sidebar-link";
 import { NavigationSections } from "../types/navigation-sections";
 
 export default function Sidebar() {
-  const { isSidebarOpen, onSidebarOpenChange } = useContext(NavigationContext);
+  const { isSidebarOpen, setIsSidebarOpen } = useContext(NavigationContext);
 
   return (
-    <Drawer.Backdrop isOpen={isSidebarOpen} onOpenChange={onSidebarOpenChange}>
+    <Drawer.Backdrop isOpen={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
       <Drawer.Content placement="left">
         <Drawer.Dialog className="bg-background-light-100 dark:bg-background-dark-100 border-r border-border">
           <Drawer.CloseTrigger />

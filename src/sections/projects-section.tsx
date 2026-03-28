@@ -6,11 +6,10 @@ import HighlightedProject from "../components/highlighted-project";
 import { useQuery } from "@tanstack/react-query";
 import { SectionTitleH2 } from "../components/section-title-h2";
 import Project from "../components/project";
-import { Button, Spinner } from "@heroui-v3/react";
+import { Button, Spinner } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "motion/react";
 import { ProjectType } from "../types/project";
-import { devData } from "../dev-data";
 import axios, { AxiosResponse } from "axios";
 
 export default function ProjectsSection() {
@@ -21,17 +20,13 @@ export default function ProjectsSection() {
     refetchOnWindowFocus: false,
     queryKey: ["PROJECTS"],
     queryFn: async () => {
-      if (import.meta.env.MODE === "production") {
-        try {
-          const res: AxiosResponse<ProjectType[]> = await axios.get(
-            `${import.meta.env.BASE_URL}projects.json`,
-          );
-          return res.data;
-        } catch {
-          return [];
-        }
-      } else {
-        return devData;
+      try {
+        const res: AxiosResponse<ProjectType[]> = await axios.get(
+          `${import.meta.env.BASE_URL}projects.json`,
+        );
+        return res.data;
+      } catch {
+        return [];
       }
     },
   });
@@ -60,7 +55,7 @@ export default function ProjectsSection() {
         )}
       </div>
       <SectionTitleH2 className="mt-[2rem]">All projects</SectionTitleH2>
-      <div className="flex px-[10rem] py-[5rem] bg-[radial-gradient(ellipse,hsl(var(--heroui-primary)/0.30),transparent_60%)] dark:bg-[radial-gradient(ellipse,hsl(var(--heroui-primary)/0.2),transparent_60%)]">
+      <div className="flex px-[10rem] py-[5rem] bg-[radial-gradient(ellipse,color-mix(in_srgb,var(--accent),transparent_70%),transparent_60%)] dark:bg-[radial-gradient(ellipse,color-mix(in_srgb,var(--accent),transparent_80%),transparent_60%)]">
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{
@@ -73,7 +68,7 @@ export default function ProjectsSection() {
             <Button
               onPress={() => setShowFullList(false)}
               size="lg"
-              className="bg-primary-gradient card-outline-light dark:card-outline-dark !border-none rounded-full"
+              className="bg-accent-gradient card-outline-light dark:card-outline-dark !border-none rounded-full"
               aria-label="show-less"
             >
               <FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>
@@ -83,7 +78,7 @@ export default function ProjectsSection() {
             <Button
               onPress={() => setShowFullList(true)}
               size="lg"
-              className="bg-primary-gradient card-outline-light dark:card-outline-dark !border-none rounded-full"
+              className="bg-accent-gradient card-outline-light dark:card-outline-dark !border-none rounded-full"
               aria-label="show-more"
             >
               <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>

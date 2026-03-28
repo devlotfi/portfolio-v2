@@ -1,5 +1,5 @@
 import Logo from "./logo";
-import { Button } from "@heroui-v3/react";
+import { Button } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,

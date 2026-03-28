@@ -5,7 +5,7 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Separator } from "@heroui-v3/react";
+import { Button, Separator } from "@heroui/react";
 import Avatar from "../assets/avatar.png";
 import AvatarMap from "../assets/avatar-map.png";
 import { useContext, useRef } from "react";
@@ -51,7 +51,7 @@ export default function AboutSection() {
   return (
     <div
       ref={getRef()}
-      className="flex flex-col bg-[radial-gradient(circle,hsl(var(--heroui-primary)/0.2),transparent_50%)] dark:bg-[radial-gradient(circle,hsl(var(--heroui-primary)/0.15),transparent_50%)]"
+      className="flex flex-col bg-[radial-gradient(circle,color-mix(in_srgb,var(--accent),transparent_80%),transparent_50%)] dark:bg-[radial-gradient(circle,color-mix(in_srgb,var(--accent),transparent_85%),transparent_50%)]"
     >
       <div className="flex flex-col relative min-h-[calc(100vh-5rem)] pt-[2rem] lg:pt-0 lg:justify-center items-center">
         <motion.div
@@ -84,9 +84,9 @@ export default function AboutSection() {
               }}
               className="flex h-[16rem] w-[16rem] lg:h-[20rem] lg:w-[20rem] absolute justify-center items-center"
             >
-              <div className="flex justify-center items-center absolute rounded-full top-0 mt-[-1rem] h-[2rem] w-[2rem] bg-primary-gradient">
+              <div className="flex justify-center items-center absolute rounded-full top-0 mt-[-1rem] h-[2rem] w-[2rem] bg-accent-gradient">
                 <FontAwesomeIcon
-                  className="text-primary-foreground"
+                  className="text-accent-foreground"
                   icon={faCode}
                 ></FontAwesomeIcon>
               </div>
@@ -97,7 +97,7 @@ export default function AboutSection() {
             <motion.div
               variants={variants}
               transition={transition}
-              className="flex text-[20pt] font-bold bg-primary-gradient bg-clip-text text-transparent"
+              className="flex text-[20pt] font-bold bg-accent-gradient bg-clip-text text-transparent"
             >
               Hi, my name is
             </motion.div>
@@ -114,7 +114,7 @@ export default function AboutSection() {
               className="text-[15pt]"
             >
               A{" "}
-              <span className="underline underline-offset-[0.3rem] decoration-primary decoration-dashed">
+              <span className="underline underline-offset-[0.3rem] decoration-accent decoration-dashed">
                 Full-Stack
               </span>{" "}
               Software Engineer crafting scalable and efficient digital
@@ -135,7 +135,7 @@ export default function AboutSection() {
                   target="_blank"
                 >
                   <Button
-                    className="bg-primary-gradient rounded-full"
+                    className="bg-accent-gradient rounded-full"
                     aria-label="resume (CV)"
                   >
                     <FontAwesomeIcon icon={faFileLines}></FontAwesomeIcon>
@@ -175,7 +175,7 @@ export default function AboutSection() {
           whileInView="visible"
           variants={variants}
           transition={transition}
-          className="max-w-screen-md rounded-lg p-[1.5rem] z-10 space-y-3 overflow-hidden bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
+          className="max-w-screen-md rounded-2xl p-[1.5rem] z-10 space-y-3 overflow-hidden bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
         >
           <Heading icon={faInfoCircle}>About me</Heading>
           <div>
@@ -187,7 +187,7 @@ export default function AboutSection() {
             projects. I hold a Bachelor's in Information Systems and Software
             Engineering from{" "}
             <a
-              className="inline underline font-bold bg-primary-gradient bg-clip-text text-transparent"
+              className="inline underline font-bold bg-accent-gradient bg-clip-text text-transparent"
               href="https://www.usthb.dz/"
               target="_blank"
             >
@@ -201,14 +201,14 @@ export default function AboutSection() {
             whileInView="visible"
             variants={variants}
             transition={transition}
-            className="flex flex-1 rounded-lg p-[1.5rem] z-10 overflow-hidden bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
+            className="flex flex-1 rounded-2xl p-[1.5rem] z-10 overflow-hidden bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
           >
             <div className="flex flex-col text-center justify-center items-center flex-1">
               <div className="flex flex-col items-center">
-                <div className="flex leading-[2.5rem] font-black text-[25pt] lg:text-[35pt] bg-primary-gradient bg-clip-text text-transparent">
+                <div className="flex leading-[2.5rem] font-black text-[25pt] lg:text-[35pt] bg-accent-gradient bg-clip-text text-transparent">
                   {new Date().getFullYear() - 2020}+
                 </div>
-                <div className="flex text-[15pt] lg:text-[18pt] font-bold bg-primary-gradient bg-clip-text text-transparent">
+                <div className="flex text-[15pt] lg:text-[18pt] font-bold bg-accent-gradient bg-clip-text text-transparent">
                   Years
                 </div>
               </div>
@@ -219,7 +219,7 @@ export default function AboutSection() {
             <Separator className="mx-[1rem]" orientation="vertical"></Separator>
             <div className="flex flex-col flex-1 justify-center items-center text-center">
               <svg
-                className="h-[3rem] mb-[1rem] text-primary text-[40pt]"
+                className="h-[3rem] mb-[1rem] text-accent text-[40pt]"
                 viewBox="0 0 333 445"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -254,13 +254,13 @@ export default function AboutSection() {
             whileInView="visible"
             variants={variants}
             transition={transition}
-            className="hidden lg:flex relative rounded-lg z-10 overflow-hidden bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
+            className="hidden lg:flex relative rounded-2xl z-10 overflow-hidden bg-background-light-100 card-outline-light dark:bg-background-dark-100 dark:card-outline-dark"
           >
-            <div className="flex bg-[hsl(var(--heroui-primary)/0.2)] justify-center items-center absolute h-full w-full top-0 left-0">
-              <div className="flex justify-center items-center z-10 h-[4rem] w-[4rem] rounded-full bg-primary-gradient">
+            <div className="flex bg-[color-mix(in_srgb,var(--accent),transparent_80%)] justify-center items-center absolute h-full w-full top-0 left-0">
+              <div className="flex justify-center items-center z-10 h-[4rem] w-[4rem] rounded-full bg-accent-gradient">
                 <img src={AvatarMap} alt="avatar" />
               </div>
-              <div className="flex animate-ping absolute h-[5rem] w-[5rem] rounded-full bg-[hsl(var(--heroui-primary)/0.5)]"></div>
+              <div className="flex animate-ping absolute h-[5rem] w-[5rem] rounded-full bg-[color-mix(in_srgb,var(--accent),transparent_50%)]"></div>
             </div>
             {appliedTheme === ThemeOptions.LIGHT ? (
               <img className="h-[15rem]" src={MapLight} alt="map" />

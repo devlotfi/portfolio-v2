@@ -10,7 +10,7 @@ import {
   InputGroup,
   cn,
   InputGroupProps,
-} from "@heroui-v3/react";
+} from "@heroui/react";
 import type { ReactElement } from "react";
 
 interface ValidatedTextFieldProps {

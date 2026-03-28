@@ -1,4 +1,4 @@
-import { Chip, cn } from "@heroui-v3/react";
+import { Chip, cn } from "@heroui/react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { PropsWithChildren, useContext, useRef } from "react";
 import { NavigationContext } from "../context/navigation-context";
@@ -56,7 +56,7 @@ export default function TimelineSection({
           <Chip
             size="lg"
             className={cn(
-              "flex z-10 absolute top-[-1rem] bg-primary-gradient !font-medium self-start",
+              "flex z-10 absolute top-[-1rem] bg-accent-gradient !font-medium self-start",
               cardPosition === "LEFT" && "lg:self-start",
               cardPosition === "RIGHT" && "lg:self-end",
             )}
@@ -90,7 +90,7 @@ export default function TimelineSection({
             duration: 0.5,
             ease: "easeInOut",
           }}
-          className="flex absolute left-[50%] h-[1rem] w-[1rem] bg-primary-gradient rounded-full"
+          className="flex absolute left-[50%] h-[1rem] w-[1rem] bg-accent-gradient rounded-full"
         ></motion.div>
       </div>
       <div className="hidden lg:flex flex-1"></div>

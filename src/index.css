@@ -1,9 +1,5 @@
 @import "tailwindcss";
 @import "@heroui/styles";
-@plugin './hero.ts';
-/* Note: You may need to change the path to fit your project structure */
-@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
-@custom-variant dark (&:is(.dark *));
 
 * {
   font-family: "Inter", sans-serif;
@@ -19,7 +15,7 @@
 
 @layer components {
   .dropdown__popover {
-    @apply bg-background-light-100 dark:bg-background-dark-100;
+    @apply bg-background-light-100 dark:bg-background-dark-100 shadow-2xl border border-border;
   }
 }
 
@@ -211,7 +207,7 @@
   outline-offset: 0;
 }
 
-@utility bg-primary-gradient {
+@utility bg-accent-gradient {
   background-image: linear-gradient(to top right, #3f6394, #2dbfe0);
 }
 
