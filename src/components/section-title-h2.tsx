@@ -12,7 +12,7 @@ export function SectionTitleH2({
       {...props}
     >
       <div className="flex relative justify-center items-center gap-3">
-        <div className="flex z-10 text-[19pt] md:text-[30pt] font-['Roboto_Serif'] font-medium">
+        <div className="flex z-10 text-[19pt] md:text-[30pt] !font-['Roboto_Serif'] font-medium">
           {children}
         </div>
         <div

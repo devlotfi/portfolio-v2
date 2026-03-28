@@ -47,9 +47,10 @@ export default function AboutSection() {
     }
   };
 
+  const getRef = () => sectionRefs.ABOUT;
   return (
     <div
-      ref={sectionRefs.current.ABOUT}
+      ref={getRef()}
       className="flex flex-col bg-[radial-gradient(circle,hsl(var(--heroui-primary)/0.2),transparent_50%)] dark:bg-[radial-gradient(circle,hsl(var(--heroui-primary)/0.15),transparent_50%)]"
     >
       <div className="flex flex-col relative min-h-[calc(100vh-5rem)] pt-[2rem] lg:pt-0 lg:justify-center items-center">
@@ -103,7 +104,7 @@ export default function AboutSection() {
             <motion.div
               variants={variants}
               transition={transition}
-              className="flex text-[30pt] sm:text-[35pt] font-['Roboto_Serif'] font-extrabold whitespace-nowrap"
+              className="flex text-[30pt] sm:text-[35pt] !font-['Roboto_Serif'] font-extrabold whitespace-nowrap"
             >
               Debbal Lotfi
             </motion.div>
@@ -119,6 +120,7 @@ export default function AboutSection() {
               Software Engineer crafting scalable and efficient digital
               solutions
             </motion.div>
+            <div className="flex size-[3rem]"></div>
             <div className="flex space-x-2 mt-[1rem]">
               <motion.div
                 className="self-start"

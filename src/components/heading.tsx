@@ -23,7 +23,7 @@ export function Heading({
     <div
       className={cn(
         "flex items-center space-x-3 text-[20pt]",
-        classNames.wrapper
+        classNames.wrapper,
       )}
     >
       <div className="flex h-[2.5rem] w-[2.5rem] justify-center items-center bg-primary-gradient rounded-lg">
@@ -32,7 +32,7 @@ export function Heading({
           className={cn("text-primary-foreground", classNames.icon)}
         ></FontAwesomeIcon>
       </div>
-      <div className={cn("font-bold font-['Roboto_Serif']", classNames.text)}>
+      <div className={cn("font-bold !font-['Roboto_Serif']", classNames.text)}>
         {children}
       </div>
     </div>

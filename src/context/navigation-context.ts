@@ -7,7 +7,7 @@ interface NavigationContext {
   onSidebarClose: () => void;
   onSidebarOpenChange: () => void;
   scrollRef: RefObject<HTMLDivElement | null>;
-  sectionRefs: RefObject<SectionRefs>;
+  sectionRefs: SectionRefs;
 }
 
 const initialValue: NavigationContext = {
@@ -16,7 +16,7 @@ const initialValue: NavigationContext = {
   onSidebarClose() {},
   onSidebarOpenChange() {},
   scrollRef: createRef(),
-  sectionRefs: createRef() as RefObject<SectionRefs>,
+  sectionRefs: {} as SectionRefs,
 };
 
 export const NavigationContext = createContext(initialValue);

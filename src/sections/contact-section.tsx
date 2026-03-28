@@ -92,17 +92,18 @@ export default function ContactSection() {
       onSubmit(values) {
         const email = "debbal.lotfi.dev@gmail.com";
         const mailtoLink = `mailto:${encodeURIComponent(
-          email
+          email,
         )}?subject=${encodeURIComponent(
-          values.subject
+          values.subject,
         )}&body=${encodeURIComponent(values.body)}`;
         window.location.href = mailtoLink;
       },
     });
 
+  const getRef = () => sectionRefs.CONTACT;
   return (
     <div
-      ref={sectionRefs.current.CONTACT}
+      ref={getRef()}
       className="flex flex-col px-[1rem] py-[5rem] items-center"
     >
       <SectionTitleH1 icon={faEnvelope} secondaryTitle="Get in touch">

@@ -41,7 +41,7 @@ export default function HighlightedProject({ index, project }: Props) {
             src={project.logo}
             alt="project-logo"
           />
-          <div className="flex font-['Roboto_Serif'] text-[13pt] md:text-[18pt] font-bold">
+          <div className="flex !font-['Roboto_Serif'] text-[13pt] md:text-[18pt] font-bold">
             {project.title}
           </div>
         </div>

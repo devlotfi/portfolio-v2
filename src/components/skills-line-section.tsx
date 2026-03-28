@@ -39,12 +39,12 @@ export default function SkillsLineSection({
   const cardTranslateLeft = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0%", "100%"]
+    ["0%", "100%"],
   );
   const cardTranslateRight = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0%", "-100%"]
+    ["0%", "-100%"],
   );
   const cardOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
@@ -60,7 +60,7 @@ export default function SkillsLineSection({
           top && right && "rounded-tr-3xl",
           top && left && "rounded-tl-3xl",
           bottom && right && "rounded-br-3xl",
-          bottom && left && "rounded-bl-3xl"
+          bottom && left && "rounded-bl-3xl",
         )}
       ></div>
       {endPosition ? (
@@ -74,7 +74,7 @@ export default function SkillsLineSection({
             endPosition === "BOTTOM_LEFT" &&
               "bottom-0 left-0 -translate-x-1/2 translate-y-1/2",
             endPosition === "BOTTOM_RIGHT" &&
-              "bottom-0 right-0 translate-x-1/2 translate-y-1/2"
+              "bottom-0 right-0 translate-x-1/2 translate-y-1/2",
           )}
           style={{
             marginTop: index ? `-${index * 2}rem` : undefined,
@@ -86,7 +86,7 @@ export default function SkillsLineSection({
         className={cn(
           "flex absolute top-1/2",
           left && "left-0",
-          right && "right-0"
+          right && "right-0",
         )}
         style={{ x: right ? "50%" : left ? "-50%" : undefined, y: "-50%" }}
         initial={{ opacity: 0, rotate: 90, scale: 0 }}
@@ -100,7 +100,7 @@ export default function SkillsLineSection({
         <Card
           shadow="none"
           className={cn(
-            "bg-primary-gradient justify-center items-center h-[2rem] w-[2rem] md:h-[3rem] md:w-[3rem]"
+            "bg-primary-gradient justify-center items-center h-[2rem] w-[2rem] md:h-[3rem] md:w-[3rem]",
           )}
         >
           <FontAwesomeIcon
@@ -119,7 +119,7 @@ export default function SkillsLineSection({
         className="flex flex-col will-change-[transform,opacity] md:flex-row gap-7"
       >
         <div className="flex flex-col items-center flex-1 space-y-3">
-          <div className="flex font-bold text-[20pt] font-['Roboto_Serif']">
+          <div className="flex font-bold text-[20pt] !font-['Roboto_Serif']">
             {title}
           </div>
           <div className="flex gap-3 justify-center items-start flex-wrap">

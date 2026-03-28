@@ -48,7 +48,7 @@ export default function SectionTitleH1({
         }}
         className="flex flex-col will-change-[transform,opacity] items-center z-10"
       >
-        <div className="flex text-[25pt] lg:text-[45pt] font-medium font-['Roboto_Serif']">
+        <div className="flex text-[25pt] lg:text-[45pt] font-medium !font-['Roboto_Serif']">
           {children}
         </div>
         <div className="flex text-[12pt] lg:text-[15pt] font-medium bg-primary-gradient bg-clip-text text-transparent">

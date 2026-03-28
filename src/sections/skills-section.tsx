@@ -47,10 +47,11 @@ import SectionTitleH1 from "../components/section-title-h1";
 export default function SkillsSection() {
   const { sectionRefs } = useContext(NavigationContext);
 
+  const getRef = () => sectionRefs.SKILLS;
   return (
     <div
       className="flex flex-col flex-1 items-center px-[1.5rem] md:px-[2.5rem] lg:px-[6rem]"
-      ref={sectionRefs.current.SKILLS}
+      ref={getRef()}
     >
       <SectionTitleH1 icon={faStar} secondaryTitle="What i can do">
         My Skills

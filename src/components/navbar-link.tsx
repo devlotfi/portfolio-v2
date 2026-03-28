@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, cn } from "@heroui/react";
+import { Button, cn } from "@heroui-v3/react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { ComponentPropsWithRef, useContext } from "react";
 import { motion, useInView } from "motion/react";
@@ -18,7 +18,7 @@ function NavbarLinkComponent({
   ref,
 }: ComponentPropsWithRef<"div"> & Props) {
   const { sectionRefs, scrollRef } = useContext(NavigationContext);
-  const isInView = useInView(sectionRefs.current[section], {
+  const isInView = useInView(sectionRefs[section], {
     root: scrollRef,
     margin: "-50% 0px -50% 0px",
   });
@@ -43,19 +43,18 @@ function NavbarLinkComponent({
     >
       <Button
         onPress={() => {
-          if (sectionRefs.current[section].current) {
-            sectionRefs.current[section].current.scrollIntoView({
+          if (sectionRefs[section].current) {
+            sectionRefs[section].current.scrollIntoView({
               block: "start",
             });
           }
         }}
-        variant={isInView ? "solid" : "light"}
-        color={isInView ? "primary" : "default"}
-        radius="full"
+        variant={isInView ? "primary" : "ghost"}
         className={cn(
-          "flex gap-2 font-medium hover:text-primary duration-300 transition-[color]",
+          "flex rounded-full gap-2 font-medium hover:text-accent duration-300 transition-[color]",
           isInView &&
-            "font-bold bg-primary-gradient hover:text-primary-foreground"
+            "font-bold bg-primary-gradient hover:text-primary-foreground",
+          !isInView && "text-foreground",
         )}
         aria-label={`navigate to ${section}`}
       >

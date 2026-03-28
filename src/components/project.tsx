@@ -29,7 +29,7 @@ export default function Project({ project }: Props) {
       <div className="flex flex-col">
         <div className="flex h-[3rem] gap-3 items-center">
           <img className="h-[1.5rem]" src={project.logo} alt="project-logo" />
-          <div className="flex font-['Roboto_Serif'] text-[14pt] font-bold">
+          <div className="flex !font-['Roboto_Serif'] text-[14pt] font-bold">
             {project.title}
           </div>
         </div>

@@ -24,7 +24,7 @@ export default function ProjectsSection() {
       if (import.meta.env.MODE === "production") {
         try {
           const res: AxiosResponse<ProjectType[]> = await axios.get(
-            `${import.meta.env.BASE_URL}projects.json`
+            `${import.meta.env.BASE_URL}projects.json`,
           );
           return res.data;
         } catch {
@@ -36,11 +36,9 @@ export default function ProjectsSection() {
     },
   });
 
+  const getRef = () => sectionRefs.PROJECTS;
   return (
-    <div
-      ref={sectionRefs.current.PROJECTS}
-      className="flex flex-col items-center px-[1rem]"
-    >
+    <div ref={getRef()} className="flex flex-col items-center px-[1rem]">
       <SectionTitleH1 icon={faList} secondaryTitle="See my work">
         Projects
       </SectionTitleH1>

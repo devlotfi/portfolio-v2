@@ -13,9 +13,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function ExperienceSection() {
   const { sectionRefs } = useContext(NavigationContext);
 
+  const getRef = () => sectionRefs.EXPERIENCE;
   return (
     <div
-      ref={sectionRefs.current.EXPERIENCE}
+      ref={getRef()}
       className="flex flex-col relative items-center px-[1rem]"
     >
       <SectionTitleH1
@@ -85,7 +86,7 @@ export default function ExperienceSection() {
           className="text-[25pt]"
           icon={faFolderOpen}
         ></FontAwesomeIcon>
-        <div className="flex text-[25pt] font-['Roboto_Serif']">Not yet</div>
+        <div className="flex text-[25pt] !font-['Roboto_Serif']">Not yet</div>
       </div>
     </div>
   );

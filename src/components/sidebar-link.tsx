@@ -18,7 +18,7 @@ export default function SidebarLinkComponent({
 }: PropsWithChildren<Props>) {
   const { sectionRefs, scrollRef, onSidebarClose } =
     useContext(NavigationContext);
-  const isInView = useInView(sectionRefs.current[section], {
+  const isInView = useInView(sectionRefs[section], {
     root: scrollRef,
     margin: "-50% 0px -50% 0px",
   });
@@ -28,8 +28,8 @@ export default function SidebarLinkComponent({
       fullWidth
       onPress={() => {
         onSidebarClose();
-        if (sectionRefs.current[section].current) {
-          sectionRefs.current[section].current.scrollIntoView({
+        if (sectionRefs[section].current) {
+          sectionRefs[section].current.scrollIntoView({
             block: "start",
           });
         }
@@ -40,13 +40,13 @@ export default function SidebarLinkComponent({
         <div
           className={cn(
             "flex rounded-lg h-[2.5rem] w-[2.5rem] justify-center items-center",
-            isInView && "bg-primary-gradient"
+            isInView && "bg-primary-gradient",
           )}
         >
           <FontAwesomeIcon
             className={cn(
               "text-[18pt] text-foreground",
-              isInView && "text-primary-foreground"
+              isInView && "text-primary-foreground",
             )}
             icon={icon}
           ></FontAwesomeIcon>
@@ -57,7 +57,7 @@ export default function SidebarLinkComponent({
       <div
         className={cn(
           "flex flex-1 text-[13pt]",
-          isInView && "bg-primary-gradient bg-clip-text text-transparent"
+          isInView && "bg-primary-gradient bg-clip-text text-transparent",
         )}
       >
         {children}
